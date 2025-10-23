@@ -11,34 +11,23 @@
   },
   "height": 250,
   "width": "container",
-  "autosize": {
-    "type": "fit",
-    "contains": "padding"
-  },
+  "autosize": {"type": "fit", "contains": "padding"},
   "background": "#ffffff",
-  "view": {
-    "fill": "#f3f0ff",
-    "strokeOpacity": 0
-  },
+  "view": {"fill": "#f3f0ff", "strokeOpacity": 0},
   "data": {
     "url": "https://api.economicsobservatory.com/usa/unem?vega",
-    "format": {
-      "type": "json"
-    }
+    "format": {"type": "json"}
   },
-  "mark": {
-    "type": "line",
-    "color": "#5351e1",
-    "strokeWidth": 2
-  },
+  "mark": {"type": "line", "color": "#5351e1", "strokeWidth": 2},
   "encoding": {
     "x": {
       "field": "date",
-      "type": "temporal",
+      "type": "ordinal",
       "axis": {
         "title": "",
         "titleColor": "#122B39",
-        "grid": false
+        "grid": false,
+        "labelAngle": -45
       }
     },
     "y": {
@@ -52,3 +41,4 @@
     }
   }
 }
+
