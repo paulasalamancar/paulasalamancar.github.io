@@ -1,6 +1,7 @@
-x<!-- The HTML file defines the structure of the page, and the CSS files define how it looks. -->
-<!-- The CSS examples are all designed to work with this page. Try swapping them out on line 29 and see what happens. -->
-<!-- This is a comment -->
+<!-- This HTML file provides a simple example of a portfolio page. It contains a header, a few sections, and a few charts. -->
+<!-- The HTML file defines the structure of the page, and the CSS files define how it looks. -->
+
+
 
 <!DOCTYPE html>
 <html> 
@@ -13,10 +14,10 @@ x<!-- The HTML file defines the structure of the page, and the CSS files define 
     -->
 
 <head>    
-   
-    <!-- Try swapping example1.css to another, and take a look at example1.css to see if you understand it-->
+    <!-- The head tag links to resources our page needs and defines information about it. Tags in the <head> aren't displayed on the page. -->
+    <!-- This is a link to a stylesheet which contains rules about how each element on the page should be defined-->
     <link rel="stylesheet" type="text/css" href="index.css">
-    <title>My PP434 Portfolio</title> <!-- The title displayed in the browser tab, not on the page itself -->
+    <title>PP434 Portfolio Paula Salamanca</title> <!-- The title displayed in the browser tab, not on the page itself -->
 
     <!-- This is a link to the vega-lite which we're using to make graphs -->
     <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
@@ -35,28 +36,42 @@ x<!-- The HTML file defines the structure of the page, and the CSS files define 
 <!-- The body tag contains the elements that visitors to our page will see. -->
     <h1 class="big" style="margin-bottom: 0px;"> <!-- We have added a class to the header called "big" which we can use to style it in the CSS -->
         <!-- This is a header, it is the largest text on the page -->
-        Paula Andrea Salamanca
+        Paula Andrea Salamanca - Portfolio Tasks
     </h1>
     <p style="margin-top: 0px; color: darkblue">
         <!-- we're setting the margin to 0px so the header and authour name are close together -->
-        Paula Salamanca | <a href="https://www.linkedin.com/in/paulasalamanca/">LinkedIn</a> | <a
+         <a href="https://www.linkedin.com/in/paulasalamanca/">LinkedIn</a> | <a
             href="https://www.github.com/YOUR_GITHUB">GitHub</a>
     </p>
     <h3 class="small"> <!-- We have added a class to the header called "small" which we can use to style it in the CSS -->
-        This is a portfolio of coding challenges for PP434: Automated Data Visualization for Public Policy
+        This is my portfolio of coding challenges for PP434: Automated Data Visualization for Public Policy
     </h3>
 
     <!-- We're organising the page into sections, with each section containing a chart, title and a description -->
     <section>
         <div class="chart-description">
-            <h2>Section 1: A basic chart</h2>
+            <h2>CC1. Hosting. Display charts in site</h2>
             <p> <!-- This is a paragraph, it's the main way to display text on a web page -->
-                We've organised the page into sections, with each section containing a chart, title and a description. Here, we can describe the chart and give some context.
-                As a first example, we're using a basic chart from our repo.
+                I have added two charts using the VegaEmbed function.
             </p>
         </div>
-        <figure id="Location1"></figure> <!-- we give it an id so we can put a vega-lite graph here with VegaEmbed -->
+        <figure id="LocationCC11"></figure> <!-- we give it an id so we can put a vega-lite graph here with VegaEmbed -->
+        <figure id="LocationCC12"></figure> <!-- we give it an id so we can put a vega-lite graph here with VegaEmbed -->
+
     </section>
+
+
+    <section>
+        <div class="chart-description">
+            <h2>CC2. Building. Create your own visualisations</h2>
+            <p> 
+                I set up an account on the Economics Observatory Data Hub and built two separate charts using the "create" tool. 
+                I pasted the json code into Visual Studio Code and saved these files in my GitHub repo. I finally embedded the two charts using the VegaEmbed function.
+            </p>
+        </div>
+        <figure id="LocationC21"></figure>
+    </section>
+            
 
     <!-- Do you want to add more sections? -->
         <!-- Try copying pasting the section above -->
@@ -65,7 +80,7 @@ x<!-- The HTML file defines the structure of the page, and the CSS files define 
    
     <section>
         <div class="chart-description">
-            <h2>Section 2: A basic chart</h2>
+            <h2>CC3. Debate. Use a visualization in policy commentary</h2>
             <p> 
                 Context of Graphic 2
             </p>
@@ -75,13 +90,12 @@ x<!-- The HTML file defines the structure of the page, and the CSS files define 
 
      <section>
         <div class="chart-description">
-            <h2>Section 2: A basic chart</h2>
+            <h2>CC4. Replication. Re-create, then improve, someone else´s chart</h2>
             <p> 
                 Context of Graphic 3
             </p>
         </div>
         <figure id="Location3"></figure> 
-        <figure id="Location4"></figure> 
     </section>
 
     
@@ -91,25 +105,20 @@ x<!-- The HTML file defines the structure of the page, and the CSS files define 
     <script>
         // This is a comment in JavaScript - it's a different language to HTML and CSS
 
-        let figure_1_spec = "https://raw.githubusercontent.com/EconomicsObservatory/courses/main/2/s2_chart2.json"
+        let figure_CC11_spec = "https://raw.githubusercontent.com/paulasalamancar/paulasalamancar.github.io/refs/heads/main/CC11"
+        let figure_CC12_spec = "https://raw.githubusercontent.com/paulasalamancar/paulasalamancar.github.io/refs/heads/main/CC12"
+        let figure_C21_spec = "C2.json"; 
+        vegaEmbed('#LocationC21', figure_C21_spec) 
+        
         let figure_3_spec = "fig2_local-authority-pay.json"; // We're storing the URL of the graph we want to display in a variable
+        let figure_4_spec = "shiller_pe_ratio_chart.json"; // 
+// You should have a spec for a graph in this same folder. Just specify its name here, e.g. let figure_1_spec = "chart1.json"
 
-        let figure_2_spec = "https://raw.githubusercontent.com/EconomicsObservatory/datavis/refs/heads/main/newsletters/2025-06-06-fixing-britain-how-can-left-behind-regions-catch-up/visualisation/fig5_productivity-itl3.json"; // We're storing the URL of the graph we want to display in a variable
-        let figure_4_spec = "ejemplovega.json"; // We're storing the URL of the graph we want to display in a variable
-                                                                                                          // You should have a spec for a graph in this same folder. Just specify its name here, e.g. let figure_1_spec = "chart1.json"
-
-        vegaEmbed('#Location1', figure_1_spec) // We're using the vegaEmbed function to put a graph in the element with id figure_1
-        vegaEmbed('#Location2', figure_2_spec) // We're using the vegaEmbed function to put a graph in the element with id figure_1
-        vegaEmbed('#Location3', figure_3_spec) // We're using the vegaEmbed function to put a graph in the element with id figure_1
-        vegaEmbed('#Location4', figure_4_spec) // We're using the vegaEmbed function to put a graph in the element with id figure_1
-
-        // Do you want to add more graphs?
-        // try defining a new variable for figure_3_spec, adding VegaEmbed for Location3, and adding a new section in the HTML
-        // e.g. 
-        // let figure_3_spec = ...
-        // vegaEmbed('#Location3', figure_3_spec)
-
-
+        vegaEmbed('#LocationCC11', figure_CC11_spec) // We're using the vegaEmbed function to put a graph in the element with id figure_1
+        vegaEmbed('#LocationCC12', figure_CC12_spec) 
+         
+        vegaEmbed('#Location3', figure_3_spec) 
+        vegaEmbed('#Location4', figure_4_spec) 
     </script>
 
 </body>
