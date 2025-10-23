@@ -1,0 +1,54 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Unemployment",
+    "anchor": "start",
+    "subtitle": "Ages 16 and over, % | Source: FRED through ECO API",
+    "fontSize": 14,
+    "subtitleFontSize": 12,
+    "color": "#2e72b2",
+    "subtitleColor": "#141b39"
+  },
+  "height": 250,
+  "width": "container",
+  "autosize": {
+    "type": "fit",
+    "contains": "padding"
+  },
+  "background": "#ffffff",
+  "view": {
+    "fill": "#f3f0ff",
+    "strokeOpacity": 0
+  },
+  "data": {
+    "url": "https://api.economicsobservatory.com/usa/unem?vega",
+    "format": {
+      "type": "json"
+    }
+  },
+  "mark": {
+    "type": "line",
+    "color": "#5351e1",
+    "strokeWidth": 2
+  },
+  "encoding": {
+    "x": {
+      "field": "date",
+      "type": "temporal",
+      "axis": {
+        "title": "",
+        "titleColor": "#122B39",
+        "grid": false
+      }
+    },
+    "y": {
+      "field": "value",
+      "type": "quantitative",
+      "axis": {
+        "title": "",
+        "titleColor": "#122B39",
+        "grid": false
+      }
+    }
+  }
+}
