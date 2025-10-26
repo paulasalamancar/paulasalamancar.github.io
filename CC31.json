@@ -1,0 +1,32 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "Riqueza neta (por edad de cabeza de familia)",
+  "title": {
+    "text": "Evolución de la riqueza neta mediana por edad del cabeza de hogar",
+    "subtitle": "España, 2000-2020 (en miles de euros)",
+    "fontSize": 16,
+    "subtitleFontSize": 12,
+    "anchor": "start"
+  },
+  "data": {"url": "https://raw.githubusercontent.com/paulasalamancar/paulasalamancar.github.io/refs/heads/main/DataCodingCha2.1.csv"},
+ "mark": {
+    "type": "line",
+    "point": {
+      "filled": false,
+      "fill": "white"
+    }
+  },
+
+  "encoding": {
+    "x": {"field": "ola", "type": "temporal", "title": "Años"},
+
+    "y": {"field": "valor", "type": "quantitative", "title":"Miles de euros"},
+
+    "color": {"field": "categoria", "type": "ordinal", "title": "Edad de cabeza de hogar"},
+    "scale": {
+        "domain": ["Menor de 35", "Entre 35 y 44", "Entre 45 y 54", "Entre 55 y 64", "Entre 65 y 74", "Mayor de 75"],
+        "range": ["#3b82f6", "#8b5cf6", "#ec4899", "#f97316", "#ef4444", "#dc2626"]
+        }
+        
+  }
+}
