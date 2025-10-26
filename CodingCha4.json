@@ -1,0 +1,53 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "data": { 
+    "url": "https://raw.githubusercontent.com/paulasalamancar/paulasalamancar.github.io/refs/heads/main/CodingCha4.csv"
+  },
+  "transform": [
+    {
+      "calculate": "toNumber(replace(datum.Porcentaje, '%', ''))",
+      "as": "porcentaje_num"
+    },
+    {
+      "calculate": "toNumber(replace(datum['IC Inferior'], '%', ''))",
+      "as": "ic_inferior_num"
+    },
+    {
+      "calculate": "toNumber(replace(datum['IC Superior'], '%', ''))",
+      "as": "ic_superior_num"
+    }
+  ],
+  "title": {
+    "text": "Madres que se sienten mentalmente sobrecargadas",
+    "subtitle": "Por país europeo (con intervalos de confianza del 95%)",
+    "fontSize": 16,
+    "subtitleFontSize": 12,
+    "anchor": "start"
+  },
+  "layer": [
+    {
+      "mark": "bar",
+      "encoding": {
+        "x": {
+          "field": "País",
+          "type": "nominal",
+          "title": "País",
+          "sort": "-y"
+        },
+        "y": {
+          "field": "porcentaje_num",
+          "type": "quantitative",
+          "title": "Porcentaje (%)"
+        }
+      }
+    },
+    {
+      "mark": {"type": "errorbar", "ticks": true},
+      "encoding": {
+        "x": {"field": "País", "type": "nominal", "sort": "-y"},
+        "y": {"field": "ic_inferior_num", "type": "quantitative"},
+        "y2": {"field": "ic_superior_num"}
+      }
+    }
+  ]
+}
