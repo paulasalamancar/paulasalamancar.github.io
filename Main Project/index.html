@@ -314,7 +314,7 @@
             
             <div class="did-chart">
                 <div id="chart-did"></div>
-                <button class="modal-trigger-btn" onclick="openModal('twfe-modal')">
+                <button class="modal-trigger-btn" data-modal="twfe">
                     <span class="modal-trigger-text">See econometric analysis</span>
                 </button>
             </div>
@@ -354,9 +354,9 @@
     </div>
 
     <!-- MODAL: TWFE ANALYSIS -->
-    <div class="modal-overlay" id="twfe-modal">
+    <div class="modal-overlay" id="modal-twfe">
         <div class="modal-box modal-wide">
-            <span class="modal-close" onclick="closeModal('twfe-modal')">&times;</span>
+            <span class="modal-close">&times;</span>
             
             <!-- Modal Header -->
             <div class="modal-header-twfe">
@@ -666,27 +666,69 @@
     </script>
 
 
+    <!-- UNIFIED MODAL SYSTEM -->
     <script>
-        // Modal functionality
+        // Single unified modal system for ALL modals
+        function openModal(modalId) {
+            const modal = document.getElementById('modal-' + modalId);
+            if (modal) {
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeModal(modal) {
+            if (typeof modal === 'string') {
+                modal = document.getElementById('modal-' + modal);
+            }
+            if (modal) {
+                modal.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+
+        function closeAllModals() {
+            document.querySelectorAll('.modal-overlay.active').forEach(modal => {
+                modal.classList.remove('active');
+            });
+            document.body.style.overflow = '';
+        }
+
+        // Handle .modal-term clicks (inline text triggers)
         document.querySelectorAll('.modal-term').forEach(term => {
             term.addEventListener('click', () => {
-                const modalId = 'modal-' + term.dataset.modal;
-                document.getElementById(modalId).classList.add('active');
+                openModal(term.dataset.modal);
             });
         });
 
+        // Handle button triggers with data-modal attribute
+        document.querySelectorAll('.modal-trigger-btn[data-modal]').forEach(btn => {
+            btn.addEventListener('click', () => {
+                openModal(btn.dataset.modal);
+            });
+        });
+
+        // Close when clicking overlay (outside modal box)
         document.querySelectorAll('.modal-overlay').forEach(overlay => {
             overlay.addEventListener('click', (e) => {
                 if (e.target === overlay) {
-                    overlay.classList.remove('active');
+                    closeModal(overlay);
                 }
             });
         });
 
+        // Close button functionality
         document.querySelectorAll('.modal-close').forEach(btn => {
             btn.addEventListener('click', () => {
-                btn.closest('.modal-overlay').classList.remove('active');
+                closeModal(btn.closest('.modal-overlay'));
             });
+        });
+
+        // ESC key closes any open modal
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeAllModals();
+            }
         });
     </script>
 
@@ -714,31 +756,6 @@
 
         window.addEventListener('scroll', updateActiveStep);
         updateActiveStep();
-    </script>
-
-    <script>
-        // Modal TWFE Functions
-        function openModal(modalId) {
-            const modal = document.getElementById(modalId);
-            modal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeModal(modalId) {
-            const modal = document.getElementById(modalId);
-            modal.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        }
-
-        document.addEventListener('keydown', function(event) {
-            if (event.key === 'Escape') {
-                const activeModal = document.querySelector('.modal-overlay.active');
-                if (activeModal) {
-                    activeModal.classList.remove('active');
-                    document.body.style.overflow = 'auto';
-                }
-            }
-        });
     </script>
 
     <!-- Footer -->
