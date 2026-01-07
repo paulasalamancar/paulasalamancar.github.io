@@ -7,6 +7,55 @@
     
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet"> 
     <link rel="stylesheet" href="index.css">
+    
+    <style>
+        /* References Section Styles */
+        .references-section {
+            background: #fafafa;
+            padding: 80px 0;
+            border-top: 1px solid #e0e0e0;
+        }
+        
+        .references-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+        
+        .references-list {
+            margin-top: 30px;
+        }
+        
+        .reference-item {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 16px;
+            padding-left: 40px;
+            text-indent: -40px;
+            color: #444;
+        }
+        
+        .reference-item .ref-number {
+            font-family: 'IBM Plex Mono', monospace;
+            font-weight: 500;
+            color: #2D5A3D;
+            margin-right: 8px;
+        }
+        
+        .reference-item a {
+            color: #2D5A3D;
+            text-decoration: none;
+            border-bottom: 1px dotted #2D5A3D;
+        }
+        
+        .reference-item a:hover {
+            border-bottom-style: solid;
+        }
+        
+        .reference-item em {
+            font-style: italic;
+        }
+    </style>
 </head>
 
 
@@ -424,7 +473,7 @@
             
             <!-- Interpretation -->
             <div class="interpretation-box-twfe">
-                <h5>Interpretation</h5>
+                <h5>🔍 Interpretation</h5>
                 <p>
                     Municipalities with <strong>high FARC presence</strong> experienced 
                     <span class="highlight-number">+123 ha/year</span> more deforestation 
@@ -595,6 +644,48 @@
                 was web-scraped from Wikipedia for per-capita normalization.
             </p>
             <p class="word-count">Word count: 774 (including modal content)</p>
+        </div>
+    </section>
+
+
+    <!-- References Section -->
+    <section class="references-section" id="references">
+        <div class="references-container">
+            <div class="section-label">References</div>
+            
+            <div class="references-list">
+                <p class="reference-item">
+                    <span class="ref-number">[1]</span> Colombia.co (2024). "Colombia: Second greatest biodiversity in the world." 
+                    <a href="https://colombia.co/en/colombia-country/geography-and-environment/colombia-second-greatest-biodiversity-in-the-world" target="_blank">https://colombia.co</a>
+                </p>
+                
+                <p class="reference-item">
+                    <span class="ref-number">[2]</span> Hansen, M. C., Potapov, P. V., Moore, R., et al. (2013). "High-Resolution Global Maps of 21st-Century Forest Cover Change." 
+                    <em>Science</em>, 342(6160), 850-853. 
+                    <a href="https://www.globalforestwatch.org/" target="_blank">Global Forest Watch</a>
+                </p>
+                
+                <p class="reference-item">
+                    <span class="ref-number">[3]</span> Centro Nacional de Memoria Histórica (2024). Sistema de Información de Eventos de Violencia del Conflicto Armado Colombiano (SIEVCAC). 
+                    <a href="https://www.datos.gov.co/" target="_blank">datos.gov.co</a>
+                </p>
+                
+                <p class="reference-item">
+                    <span class="ref-number">[4]</span> DANE - Departamento Administrativo Nacional de Estadística (2018). Censo Nacional de Población y Vivienda. 
+                    <a href="https://www.dane.gov.co/" target="_blank">dane.gov.co</a>
+                </p>
+                
+                <p class="reference-item">
+                    <span class="ref-number">[5]</span> Wikipedia (2024). "Anexo: Municipios de Colombia por población." Web scraping for municipal population data. 
+                    <a href="https://es.wikipedia.org/wiki/Anexo:Municipios_de_Colombia_por_población" target="_blank">es.wikipedia.org</a>
+                </p>
+                
+                <p class="reference-item">
+                    <span class="ref-number">[6]</span> Anthropic (2025). Claude AI Assistant. 
+                    This project used generative AI to support Python code cleaning and to resolve technical issues in Vega-Lite, HTML, and CSS. The AI assisted with error debugging and code optimization. All design choices, written content, and analytical methods are the author's own work.
+                    <a href="https://claude.ai" target="_blank">claude.ai</a>
+                </p>
+            </div>
         </div>
     </section>
 
@@ -775,4 +866,3 @@
 </body>
 
 </html>
-
