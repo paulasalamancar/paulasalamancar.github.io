@@ -1,0 +1,86 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Model Performance: R² Score",
+    "subtitle": "Predicting next-year deforestation | Test set (2019-2023)",
+    "anchor": "start",
+    "fontSize": 16,
+    "fontWeight": 600,
+    "subtitleFontSize": 12,
+    "subtitleColor": "#666"
+  },
+  "width": 400,
+  "height": 250,
+  "config": {
+    "font": "Manrope",
+    "view": {"stroke": null},
+    "axis": {
+      "labelFontSize": 12,
+      "titleFontSize": 13
+    }
+  },
+  "data": {
+    "values": [
+      {"model": "Linear Regression", "r2": 0.709, "mae": 170, "rmse": 555},
+      {"model": "Random Forest", "r2": 0.805, "mae": 101, "rmse": 454},
+      {"model": "SVM", "r2": 0.078, "mae": 180, "rmse": 988}
+    ]
+  },
+  "encoding": {
+    "y": {
+      "field": "model",
+      "type": "nominal",
+      "title": null,
+      "sort": {"field": "r2", "order": "descending"},
+      "axis": {"labelFontSize": 13, "labelFontWeight": 500}
+    },
+    "x": {
+      "field": "r2",
+      "type": "quantitative",
+      "title": "R² Score (higher is better)",
+      "scale": {"domain": [0, 1]},
+      "axis": {"format": ".0%", "grid": true, "gridDash": [3, 3]}
+    }
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "bar",
+        "cornerRadiusTopRight": 4,
+        "cornerRadiusBottomRight": 4,
+        "height": 35
+      },
+      "encoding": {
+        "color": {
+          "field": "model",
+          "type": "nominal",
+          "legend": null,
+          "scale": {
+            "domain": ["Random Forest", "Linear Regression", "SVM"],
+            "range": ["#2D5A3D", "#7BC47F", "#d4d4d4"]
+          }
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 5,
+        "fontSize": 14,
+        "fontWeight": 600
+      },
+      "encoding": {
+        "text": {"field": "r2", "format": ".1%"},
+        "color": {
+          "condition": {"test": "datum.r2 > 0.5", "value": "white"},
+          "value": "#333"
+        },
+        "x": {
+          "field": "r2",
+          "type": "quantitative"
+        }
+      }
+    }
+  ]
+}
