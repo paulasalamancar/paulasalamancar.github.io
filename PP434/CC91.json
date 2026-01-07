@@ -1,0 +1,111 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "FARC Conflict Intensity by Municipality (2001-2018)",
+    "subtitle": "Source: SIEVCAC | Cases per 100,000 inhabitants",
+    "fontSize": 14,
+    "fontWeight": 700,
+    "color": "#000000",
+    "anchor": "start",
+    "subtitleFontSize": 12,
+    "subtitleColor": "#888"
+  },
+  "width": 390,
+  "height": 430,
+  "params": [
+    {
+      "name": "year_select",
+      "value": 2005,
+      "bind": {
+        "input": "range",
+        "min": 2001,
+        "max": 2018,
+        "step": 1,
+        "name": "Year: "
+      }
+    }
+  ],
+  "data": {
+    "url": "Main Project/colombia_municipios.json",
+    "format": {
+      "type": "topojson",
+      "feature": "mpios"
+    }
+  },
+  "transform": [
+    {
+      "calculate": "datum.properties.name + '_' + year_select",
+      "as": "lookup_key"
+    },
+    {
+      "lookup": "lookup_key",
+      "from": {
+        "data": {
+          "url": "Main Project/colombia_farc_yearly_normalized.csv"
+        },
+        "key": "key",
+        "fields": [
+          "casos_per_100k",
+          "total_casos",
+          "year",
+          "municipio_norm"
+        ]
+      }
+    },
+    {
+      "calculate": "datum.casos_per_100k == null ? 0 : datum.casos_per_100k",
+      "as": "casos_clean"
+    }
+  ],
+  "projection": {
+    "type": "mercator"
+  },
+  "mark": {
+    "type": "geoshape",
+    "stroke": "#fff",
+    "strokeWidth": 0.3
+  },
+  "encoding": {
+    "color": {
+      "field": "casos_clean",
+      "type": "quantitative",
+      "title": "Cases/100k",
+      "scale": {
+        "type": "sqrt",
+        "scheme": "reds",
+        "domain": [
+          0,
+          200
+        ]
+      },
+      "legend": {
+        "titleFont": "Manrope",
+        "labelFont": "Manrope",
+        "orient": "right",
+        "direction": "vertical"
+      }
+    },
+    "tooltip": [
+      {
+        "field": "properties.name",
+        "title": "Municipality"
+      },
+      {
+        "field": "casos_clean",
+        "title": "Cases per 100k",
+        "format": ".1f"
+      },
+      {
+        "field": "total_casos",
+        "title": "Total Cases"
+      }
+    ]
+  },
+  "config": {
+    "font": "Manrope",
+    "view": {
+      "stroke": null
+    },
+    "background": "transparent"
+  }
+}

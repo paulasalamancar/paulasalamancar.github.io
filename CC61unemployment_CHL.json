@@ -1,0 +1,380 @@
+[
+    {
+        "page": 1,
+        "pages": 1,
+        "per_page": 50,
+        "total": 23,
+        "sourceid": "2",
+        "lastupdated": "2025-12-16"
+    },
+    [
+        {
+            "indicator": {
+                "id": "SL.UEM.TOTL.ZS",
+                "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+            },
+            "country": {
+                "id": "CL",
+                "value": "Chile"
+            },
+            "countryiso3code": "CHL",
+            "date": "2022",
+            "value": 8.249,
+            "unit": "",
+            "obs_status": "",
+            "decimal": 1
+        },
+        {
+            "indicator": {
+                "id": "SL.UEM.TOTL.ZS",
+                "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+            },
+            "country": {
+                "id": "CL",
+                "value": "Chile"
+            },
+            "countryiso3code": "CHL",
+            "date": "2021",
+            "value": 9.281,
+            "unit": "",
+            "obs_status": "",
+            "decimal": 1
+        },
+        {
+            "indicator": {
+                "id": "SL.UEM.TOTL.ZS",
+                "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+            },
+            "country": {
+                "id": "CL",
+                "value": "Chile"
+            },
+            "countryiso3code": "CHL",
+            "date": "2020",
+            "value": 10.934,
+            "unit": "",
+            "obs_status": "",
+            "decimal": 1
+        },
+        {
+            "indicator": {
+                "id": "SL.UEM.TOTL.ZS",
+                "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+            },
+            "country": {
+                "id": "CL",
+                "value": "Chile"
+            },
+            "countryiso3code": "CHL",
+            "date": "2019",
+            "value": 7.493,
+            "unit": "",
+            "obs_status": "",
+            "decimal": 1
+        },
+        {
+            "indicator": {
+                "id": "SL.UEM.TOTL.ZS",
+                "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+            },
+            "country": {
+                "id": "CL",
+                "value": "Chile"
+            },
+            "countryiso3code": "CHL",
+            "date": "2018",
+            "value": 7.623,
+            "unit": "",
+            "obs_status": "",
+            "decimal": 1
+        },
+        {
+            "indicator": {
+                "id": "SL.UEM.TOTL.ZS",
+                "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+            },
+            "country": {
+                "id": "CL",
+                "value": "Chile"
+            },
+            "countryiso3code": "CHL",
+            "date": "2017",
+            "value": 7.257,
+            "unit": "",
+            "obs_status": "",
+            "decimal": 1
+        },
+        {
+            "indicator": {
+                "id": "SL.UEM.TOTL.ZS",
+                "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+            },
+            "country": {
+                "id": "CL",
+                "value": "Chile"
+            },
+            "countryiso3code": "CHL",
+            "date": "2016",
+            "value": 6.673,
+            "unit": "",
+            "obs_status": "",
+            "decimal": 1
+        },
+        {
+            "indicator": {
+                "id": "SL.UEM.TOTL.ZS",
+                "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+            },
+            "country": {
+                "id": "CL",
+                "value": "Chile"
+            },
+            "countryiso3code": "CHL",
+            "date": "2015",
+            "value": 6.313,
+            "unit": "",
+            "obs_status": "",
+            "decimal": 1
+        },
+        {
+            "indicator": {
+                "id": "SL.UEM.TOTL.ZS",
+                "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+            },
+            "country": {
+                "id": "CL",
+                "value": "Chile"
+            },
+            "countryiso3code": "CHL",
+            "date": "2014",
+            "value": 6.483,
+            "unit": "",
+            "obs_status": "",
+            "decimal": 1
+        },
+        {
+            "indicator": {
+                "id": "SL.UEM.TOTL.ZS",
+                "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+            },
+            "country": {
+                "id": "CL",
+                "value": "Chile"
+            },
+            "countryiso3code": "CHL",
+            "date": "2013",
+            "value": 6.074,
+            "unit": "",
+            "obs_status": "",
+            "decimal": 1
+        },
+        {
+            "indicator": {
+                "id": "SL.UEM.TOTL.ZS",
+                "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+            },
+            "country": {
+                "id": "CL",
+                "value": "Chile"
+            },
+            "countryiso3code": "CHL",
+            "date": "2012",
+            "value": 6.562,
+            "unit": "",
+            "obs_status": "",
+            "decimal": 1
+        },
+        {
+            "indicator": {
+                "id": "SL.UEM.TOTL.ZS",
+                "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+            },
+            "country": {
+                "id": "CL",
+                "value": "Chile"
+            },
+            "countryiso3code": "CHL",
+            "date": "2011",
+            "value": 7.277,
+            "unit": "",
+            "obs_status": "",
+            "decimal": 1
+        },
+        {
+            "indicator": {
+                "id": "SL.UEM.TOTL.ZS",
+                "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+            },
+            "country": {
+                "id": "CL",
+                "value": "Chile"
+            },
+            "countryiso3code": "CHL",
+            "date": "2010",
+            "value": 8.278,
+            "unit": "",
+            "obs_status": "",
+            "decimal": 1
+        },
+        {
+            "indicator": {
+                "id": "SL.UEM.TOTL.ZS",
+                "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+            },
+            "country": {
+                "id": "CL",
+                "value": "Chile"
+            },
+            "countryiso3code": "CHL",
+            "date": "2009",
+            "value": 11.313,
+            "unit": "",
+            "obs_status": "",
+            "decimal": 1
+        },
+        {
+            "indicator": {
+                "id": "SL.UEM.TOTL.ZS",
+                "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+            },
+            "country": {
+                "id": "CL",
+                "value": "Chile"
+            },
+            "countryiso3code": "CHL",
+            "date": "2008",
+            "value": 9.285,
+            "unit": "",
+            "obs_status": "",
+            "decimal": 1
+        },
+        {
+            "indicator": {
+                "id": "SL.UEM.TOTL.ZS",
+                "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+            },
+            "country": {
+                "id": "CL",
+                "value": "Chile"
+            },
+            "countryiso3code": "CHL",
+            "date": "2007",
+            "value": 8.427,
+            "unit": "",
+            "obs_status": "",
+            "decimal": 1
+        },
+        {
+            "indicator": {
+                "id": "SL.UEM.TOTL.ZS",
+                "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+            },
+            "country": {
+                "id": "CL",
+                "value": "Chile"
+            },
+            "countryiso3code": "CHL",
+            "date": "2006",
+            "value": 9.024,
+            "unit": "",
+            "obs_status": "",
+            "decimal": 1
+        },
+        {
+            "indicator": {
+                "id": "SL.UEM.TOTL.ZS",
+                "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+            },
+            "country": {
+                "id": "CL",
+                "value": "Chile"
+            },
+            "countryiso3code": "CHL",
+            "date": "2005",
+            "value": 9.34,
+            "unit": "",
+            "obs_status": "",
+            "decimal": 1
+        },
+        {
+            "indicator": {
+                "id": "SL.UEM.TOTL.ZS",
+                "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+            },
+            "country": {
+                "id": "CL",
+                "value": "Chile"
+            },
+            "countryiso3code": "CHL",
+            "date": "2004",
+            "value": 10.162,
+            "unit": "",
+            "obs_status": "",
+            "decimal": 1
+        },
+        {
+            "indicator": {
+                "id": "SL.UEM.TOTL.ZS",
+                "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+            },
+            "country": {
+                "id": "CL",
+                "value": "Chile"
+            },
+            "countryiso3code": "CHL",
+            "date": "2003",
+            "value": 9.765,
+            "unit": "",
+            "obs_status": "",
+            "decimal": 1
+        },
+        {
+            "indicator": {
+                "id": "SL.UEM.TOTL.ZS",
+                "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+            },
+            "country": {
+                "id": "CL",
+                "value": "Chile"
+            },
+            "countryiso3code": "CHL",
+            "date": "2002",
+            "value": 10.168,
+            "unit": "",
+            "obs_status": "",
+            "decimal": 1
+        },
+        {
+            "indicator": {
+                "id": "SL.UEM.TOTL.ZS",
+                "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+            },
+            "country": {
+                "id": "CL",
+                "value": "Chile"
+            },
+            "countryiso3code": "CHL",
+            "date": "2001",
+            "value": 10.39,
+            "unit": "",
+            "obs_status": "",
+            "decimal": 1
+        },
+        {
+            "indicator": {
+                "id": "SL.UEM.TOTL.ZS",
+                "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+            },
+            "country": {
+                "id": "CL",
+                "value": "Chile"
+            },
+            "countryiso3code": "CHL",
+            "date": "2000",
+            "value": 10.491,
+            "unit": "",
+            "obs_status": "",
+            "decimal": 1
+        }
+    ]
+]

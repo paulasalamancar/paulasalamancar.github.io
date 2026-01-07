@@ -1,0 +1,59 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "title": {
+    "text": "Forest Area in Latin America",
+    "anchor": "start",
+    "font": "Manrope",
+    "fontSize": 14,
+    "subtitle": "km² | Source: Wikipedia (Scraped)",
+    "subtitleFontSize": 11,
+    "subtitleFont": "Manrope",
+    "color": "#000000",
+    "subtitleColor": "#666666"
+  },
+  "width": 460,
+  "height": 300,
+  "background": "white",
+  "view": {"fill": "white", "strokeOpacity": 0},
+  "data": {
+    "url": "CC52forest_area_latam.csv"
+  },
+  "mark": {
+    "type": "bar",
+    "cornerRadiusEnd": 4
+  },
+  "encoding": {
+    "y": {
+      "field": "country",
+      "type": "nominal",
+      "title": null,
+      "sort": "-x",
+      "axis": {
+        "labelFont": "Manrope",
+        "labelFontSize": 11
+      }
+    },
+    "x": {
+      "field": "forest_km2",
+      "type": "quantitative",
+      "title": "Forest Area (km²)",
+      "axis": {
+        "labelFont": "Manrope",
+        "titleFont": "Manrope",
+        "grid": true,
+        "gridColor": "#d7d7d7",
+        "gridOpacity": 0.4,
+        "gridDash": [2, 2]
+      }
+    },
+    "color": {
+      "field": "country",
+      "type": "nominal",
+      "scale": {
+        "domain": ["Brazil", "Peru", "Colombia", "Venezuela", "Ecuador", "Bolivia", "Paraguay", "Mexico", "Chile", "Argentina"],
+        "range": ["#2d5a4a", "#0b6380", "#FF5020", "#d4a500", "#7cc0a5", "#5a8a7a", "#3d6b5c", "#9b5de5", "#e07a5f", "#3d405b"]
+      },
+      "legend": null
+    }
+  }
+}

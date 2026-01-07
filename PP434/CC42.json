@@ -1,0 +1,97 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "title": {
+    "text": ["Colfuturo Scholarship Recipients", "by Stratum (2007-2025)"],
+    "anchor": "start",
+    "fontSize": 14,
+    "fontWeight": "bold",
+    "font": "Manrope",
+    "subtitle": "Source: COLFUTURO",
+    "subtitleFontSize": 12,
+    "subtitleFont": "Manrope",
+    "color": "#000000",
+    "subtitleColor": "#000000"
+  },
+  "width": "container",
+  "height": "container",
+  "background": "white",
+  "view": {"fill": "white", "strokeOpacity": 0},
+  "data": {
+    "values": [
+      {"stratum": "1", "value": 1},
+      {"stratum": "2", "value": 5},
+      {"stratum": "3", "value": 20},
+      {"stratum": "4", "value": 33},
+      {"stratum": "5", "value": 21},
+      {"stratum": "6", "value": 20}
+    ]
+  },
+  "encoding": {
+    "x": {
+      "field": "stratum",
+      "type": "ordinal",
+      "title": "Stratum",
+      "axis": {
+        "domain": false,
+        "labelAngle": 0,
+        "labelFontSize": 11,
+        "titleColor": "#000000",
+        "titleFontSize": 12,
+        "titleFont": "Manrope",
+        "labelFont": "Manrope",
+        "grid": true,
+        "gridColor": "#d7d7d7",
+        "gridOpacity": 0.4,
+        "gridDash": [2, 2]
+      }
+    },
+    "y": {
+      "field": "value",
+      "type": "quantitative",
+      "title": "Percentage (%)",
+      "scale": {"domain": [0, 40]},
+      "axis": {
+        "domain": false,
+        "labelFontSize": 11,
+        "titleColor": "#000000",
+        "titleFontSize": 12,
+        "titleFont": "Manrope",
+        "labelFont": "Manrope",
+        "grid": true,
+        "gridColor": "#d7d7d7",
+        "gridOpacity": 0.4,
+        "gridDash": [2, 2]
+      }
+    },
+    "color": {
+      "field": "stratum",
+      "type": "ordinal",
+      "scale": {
+        "domain": ["1", "2", "3", "4", "5", "6"],
+        "range": ["#d4eadf", "#a8d5c2", "#7cc0a5", "#5a8a7a", "#3d6b5c", "#2d5a4a"]
+      },
+      "legend": null
+    }
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "bar",
+        "cornerRadiusTopLeft": 4,
+        "cornerRadiusTopRight": 4
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "dy": -8,
+        "fontSize": 11,
+        "fontWeight": "bold"
+      },
+      "encoding": {
+        "text": {"field": "value", "type": "quantitative", "format": ".0f"},
+        "color": {"value": "#333"}
+      }
+    }
+  ]
+}

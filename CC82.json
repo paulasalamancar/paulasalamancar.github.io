@@ -1,0 +1,49 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Olive Oil Price Distribution by Store",
+    "subtitle": "Most recent price per product",
+    "font": "Manrope",
+    "fontSize": 14,
+    "fontWeight": 700,
+    "color": "#000000",
+    "anchor": "start",
+    "subtitleFont": "Manrope",
+    "subtitleFontSize": 12,
+    "subtitleColor": "#666"
+  },
+  "width": "container",
+  "height": "container",
+  "data": {
+    "url": "CC82_data.csv"
+  },
+  "mark": {
+    "type": "circle",
+    "size": 100,
+    "opacity": 0.6
+  },
+  "encoding": {
+    "y": {
+      "field": "store_name",
+      "type": "nominal",
+      "title": "",
+      "axis": {"labelFont": "Manrope"}
+    },
+    "x": {
+      "field": "price",
+      "type": "quantitative",
+      "title": "Price (£)",
+      "axis": {"labelFont": "Manrope"}
+    },
+    "yOffset": {"field": "jitter", "type": "quantitative"},
+    "color": {
+      "field": "store_name",
+      "type": "nominal",
+      "legend": null
+    }
+  },
+  "config": {
+    "font": "Manrope",
+    "background": "transparent"
+  }
+}

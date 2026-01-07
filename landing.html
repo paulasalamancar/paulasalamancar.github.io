@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paula Andrea Salamanca - Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Manrope', sans-serif;
+            background: #000;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* Navbar - Negro con texto blanco */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: #000;
+            padding: 10px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 1000;
+        }
+
+        .navbar-name {
+            font-weight: 700;
+            color: white;
+            font-size: 0.95em;
+        }
+
+        .navbar-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .navbar-links a {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.8em;
+            transition: color 0.3s ease;
+        }
+
+        .navbar-links a:hover {
+            color: white;
+        }
+
+        /* Animated Background */
+        .bg-animated {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            opacity: 0.15;
+        }
+
+        .bg-grid {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(11, 99, 128, 0.3) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(11, 99, 128, 0.3) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: gridMove 20s linear infinite;
+        }
+
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        .content {
+            position: relative;
+            z-index: 1;
+            padding-top: 60px;
+        }
+
+        /* Hero Full Screen */
+        .hero-full {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 60px;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 900px;
+        }
+
+        .hero-eyebrow {
+            font-size: 0.9rem;
+            color: #FF5020;
+            font-weight: 700;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .hero-title {
+            font-size: 6rem;
+            font-weight: 800;
+            line-height: 1;
+            margin-bottom: 30px;
+        }
+
+        .hero-title .highlight {
+            background: linear-gradient(90deg, #0b6380 0%, #FF5020 50%, #e1fc2c 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-description {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.7;
+            margin-bottom: 50px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+        }
+
+        .btn-hero {
+            padding: 18px 40px;
+            border-radius: 12px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-size: 1rem;
+            display: inline-block;
+        }
+
+        .btn-hero-primary {
+            background: white;
+            color: #000;
+        }
+
+        .btn-hero-primary:hover {
+            background: #e1fc2c;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(225, 252, 44, 0.3);
+        }
+
+        .btn-hero-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-hero-secondary:hover {
+            border-color: white;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        
+
+        /* Projects Showcase */
+        .showcase {
+            min-height: 100vh;
+            padding: 100px 60px;
+            background: linear-gradient(180deg, #000 0%, #0a1a1f 100%);
+        }
+
+        .showcase-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+        }
+
+        .showcase-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 24px;
+            padding: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s;
+            text-decoration: none;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .showcase-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #0b6380, #FF5020, #e1fc2c);
+            transform: scaleX(0);
+            transition: transform 0.4s;
+        }
+
+        .showcase-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .showcase-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(225, 252, 44, 0.2);
+        }
+
+        .card-label {
+            font-size: 0.75rem;
+            color: #e1fc2c;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .card-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .card-description {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .card-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .tag-mini {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar - IGUAL QUE TUS OTROS PROYECTOS -->
+    <nav class="navbar">
+        <a href="landing.html" class="navbar-name" style="text-decoration: none; color: white;">Paula Andrea Salamanca</a>
+        <div class="navbar-links">
+            <a href="Main Project/index.html">Main Project</a>
+            <a href="Versión2.html">Portfolio Tasks</a>
+        </div>
+    </nav>
+
+    <!-- Animated Background -->
+    <div class="bg-animated">
+        <div class="bg-grid"></div>
+    </div>
+
+    <!-- Content -->
+    <div class="content">
+        <!-- Hero -->
+        <section class="hero-full">
+            <div class="hero-content">
+                <div class="hero-eyebrow">LSE · Data Visualization</div>
+                <h1 class="hero-title">
+                    Data Visualization<br>
+                    For <span class="highlight">Policymaking</span>
+                </h1>
+                <p class="hero-description">
+                    This portfolio documents my work in PP434 - Automated Data Visualisation for Policymaking as part of the MPP programme at LSE. The projects showcase skills developed in automated reporting, interactive mapping, and statistical visualization for policy analysis.
+                </p>
+                <div class="cta-buttons">
+                    <a href="Main Project/index.html" class="btn-hero btn-hero-primary">View Main Project</a>
+<a href="https://www.linkedin.com/in/paulasalamanca/" class="btn-hero btn-hero-secondary">LinkedIn Profile</a>
+                </div>
+            </div>
+        </section>
+        
+
+        <!-- Projects Showcase -->
+        <section class="showcase" id="work">
+            <div class="showcase-grid">
+                <!-- Card 1 -->
+                <a href="Versión2.html" class="showcase-card">
+                    <div class="card-label">Technical Portfolio</div>
+                    <h3 class="card-title">Coding Challenges</h3>
+                    <p class="card-description">
+                        Ten progressive challenges showcasing API integration, web scraping, advanced analytics, and interactive mapping. Each demonstrates technical proficiency and clear communication of complex policy data.
+                    </p>
+                    <div class="card-tags">
+                        <span class="tag-mini">Vega-Lite</span>
+                        <span class="tag-mini">APIs</span>
+                        <span class="tag-mini">Python</span>
+                        <span class="tag-mini">Big Data</span>
+                    </div>
+                </a>
+
+                <!-- Card 2 -->
+                <a href="Main Project/index.html" class="showcase-card">
+                    <div class="card-label">Research Project</div>
+                    <h3 class="card-title">Colombia: Conflict & Environment</h3>
+                    <p class="card-description">
+                        Interactive spatial analysis revealing the "peace paradox" — how the 2016 FARC peace agreement correlated with increased deforestation in former conflict zones. Combines choropleth maps with diff-in-diff analysis and ML prediction.
+                    </p>
+                    <div class="card-tags">
+                        <span class="tag-mini">Diff-in-Diff</span>
+                        <span class="tag-mini">Choropleths</span>
+                        <span class="tag-mini">ML</span>
+                        <span class="tag-mini">Policy</span>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer style="background: #000; padding: 60px; text-align: center; border-top: 1px solid rgba(255,255,255,0.1);">
+            <p style="color: rgba(255,255,255,0.5); margin-bottom: 20px;">Paula Andrea Salamanca · LSE 2026</p>
+            <div style="display: flex; justify-content: center; gap: 30px;">
+                <a href="https://github.com/paulasalamancar/paulasalamancar.github.io" style="color: #0b6380; text-decoration: none; font-weight: 600;">GitHub</a>
+                <a href="https://www.linkedin.com/in/paulasalamanca/" style="color: #0b6380; text-decoration: none; font-weight: 600;">LinkedIn</a>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

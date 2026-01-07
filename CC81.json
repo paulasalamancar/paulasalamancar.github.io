@@ -1,0 +1,44 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Olive Oil Prices: Daily Average",
+    "subtitle": "Source: AutoCPI (6M+ observations)",
+    "font": "Manrope",
+    "fontSize": 14,
+    "fontWeight": 700,
+    "color": "#000000",
+    "anchor": "start",
+    "subtitleFont": "Manrope",
+    "subtitleFontSize": 12,
+    "subtitleColor": "#666"
+  },
+  "width": "container",
+  "height": "container",
+  "data": {
+    "url": "CC81_data.csv"
+  },
+  "mark": {
+    "type": "line",
+    "color": "#0b6380",
+    "strokeWidth": 2,
+    "interpolate": "monotone"
+  },
+  "encoding": {
+    "x": {
+      "field": "date",
+      "type": "temporal",
+      "title": "",
+      "axis": {"labelFont": "Manrope"}
+    },
+    "y": {
+      "field": "avg_price",
+      "type": "quantitative",
+      "title": "Price (£)",
+      "axis": {"labelFont": "Manrope"}
+    }
+  },
+  "config": {
+    "font": "Manrope",
+    "background": "transparent"
+  }
+}

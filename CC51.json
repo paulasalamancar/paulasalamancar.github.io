@@ -1,0 +1,81 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "title": {
+    "text": "Forest Area Change in Latin America",
+    "anchor": "start",
+    "font": "Manrope",
+    "fontSize": 15,
+    "subtitle": "% of land area | Source: World Bank API (Live)",
+    "subtitleFontSize": 13,
+    "subtitleFont": "Manrope",
+    "color": "#000000",
+    "subtitleColor": "#666666"
+  },
+  "width": 460,
+  "height": 300,
+  "background": "white",
+  "view": {"fill": "white", "strokeOpacity": 0},
+  "data": {
+    "url": "https://api.worldbank.org/v2/country/COL;BRA;PER;BOL/indicator/AG.LND.FRST.ZS?format=json&date=1990:2022&per_page=500",
+    "format": {
+      "type": "json",
+      "property": "1"
+    }
+  },
+  "transform": [
+    {"filter": "datum.value != null"}
+  ],
+  "mark": {
+    "type": "line",
+    "strokeWidth": 2
+  },
+  "encoding": {
+    "x": {
+      "field": "date",
+      "type": "ordinal",
+      "title": "Year",
+      "axis": {
+        "labelAngle": 0,
+        "labelExpr": "datum.value % 5 == 0 ? datum.value : ''",
+        "labelFont": "Manrope",
+        "titleFont": "Manrope",
+        "grid": true,
+        "gridColor": "#d7d7d7",
+        "gridOpacity": 0.4,
+        "gridDash": [2, 2]
+      }
+    },
+    "y": {
+      "field": "value",
+      "type": "quantitative",
+      "title": "Forest Area (% of land)",
+      "scale": {"domain": [45, 75]},
+      "axis": {
+        "labelFont": "Manrope",
+        "titleFont": "Manrope",
+        "grid": true,
+        "gridColor": "#d7d7d7",
+        "gridOpacity": 0.4,
+        "gridDash": [2, 2]
+      }
+    },
+    "color": {
+      "field": "country.value",
+      "type": "nominal",
+      "title": "Country",
+      "scale": {
+        "domain": ["Bolivia", "Brazil", "Colombia", "Peru"],
+        "range": ["#FF5020", "#0b6380", "#e1fc2c", "#2d5a4a"]
+      },
+      "legend": {
+            "orient": "none",
+            "legendX": 100,
+            "legendY": 350,
+            "direction": "horizontal",
+            "title": null,
+            "labelFont": "Manrope",
+            "labelFontSize": 12
+      }
+    }
+  }
+}

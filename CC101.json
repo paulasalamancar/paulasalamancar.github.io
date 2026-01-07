@@ -1,0 +1,109 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Deforestation by FARC Presence Level",
+    "subtitle": "Municipalities with high FARC presence saw the largest post-2016 spike",
+    "fontSize": 14,
+    "fontWeight": 700,
+    "color": "#000000",
+    "anchor": "start",
+    "subtitleFontSize": 12,
+    "subtitleColor": "#888"
+  },
+  "width": 600,
+  "height": 350,
+  "background": "white",
+  "view": {"fill": "white", "strokeOpacity": 0},
+  "data": {
+    "url": "Main Project/./Final_did_farc_ci.csv"
+  },
+  "layer": [
+    {
+      "mark": {"type": "errorband", "opacity": 0.25},
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "quantitative",
+          "title": "Year",
+          "axis": {
+            "format": "d",
+            "tickCount": 6,
+            "labelAngle": 0,
+            "titleFont": "Manrope, Arial, sans-serif",
+            "titleFontSize": 12,
+            "titleColor": "#000000",
+            "labelFont": "Manrope, Arial, sans-serif",
+            "grid": true,
+            "gridColor": "#d7d7d7",
+            "gridOpacity": 0.4,
+            "gridDash": [2, 2]
+          },
+          "scale": {"domain": [2001, 2024]}
+        },
+        "y": {
+          "field": "ci_lower",
+          "type": "quantitative",
+          "title": null
+        },
+        "y2": {"field": "ci_upper"},
+        "color": {
+          "field": "farc_category",
+          "type": "nominal",
+          "scale": {
+            "domain": ["High", "Medium", "Low", "None"],
+            "range": ["#C62828", "#ff7f0e", "#ffbb78", "#2ca02c"]
+          }
+        }
+      }
+    },
+    {
+      "mark": {"type": "line", "strokeWidth": 2.5, "point": {"size": 35}},
+      "encoding": {
+        "x": {"field": "year", "type": "quantitative"},
+        "y": {
+          "field": "mean_loss",
+          "type": "quantitative",
+          "title": "Mean Hectares Lost",
+          "axis": {
+            "titleFont": "Manrope, Arial, sans-serif",
+            "titleFontSize": 12,
+            "titleColor": "#000000",
+            "labelFont": "Manrope, Arial, sans-serif",
+            "grid": true,
+            "gridColor": "#d7d7d7",
+            "gridOpacity": 0.4,
+            "gridDash": [2, 2]
+          }
+        },
+        "color": {
+          "field": "farc_category",
+          "type": "nominal",
+          "title": "FARC Presence",
+          "legend": {
+            "titleFont": "Manrope, Arial, sans-serif",
+            "titleFontSize": 12,
+            "labelFont": "Manrope, Arial, sans-serif",
+            "labelFontSize": 11,
+            "orient": "right"
+          }
+        },
+        "tooltip": [
+          {"field": "year", "title": "Year", "format": "d"},
+          {"field": "farc_category", "title": "FARC Presence"},
+          {"field": "mean_loss", "title": "Mean Hectares", "format": ",.0f"},
+          {"field": "n_municipalities", "title": "N Municipalities"}
+        ]
+      }
+    },
+    {
+      "mark": {"type": "rule", "color": "#000000", "strokeDash": [6, 4], "strokeWidth": 2},
+      "encoding": {
+        "x": {"datum": 2016}
+      }
+    }
+  ],
+  "config": {
+    "font": "Manrope, Arial, sans-serif",
+    "view": {"stroke": null}
+  }
+}

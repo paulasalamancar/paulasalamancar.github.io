@@ -1,0 +1,380 @@
+[
+    {
+        "page": 1,
+        "pages": 1,
+        "per_page": 50,
+        "total": 23,
+        "sourceid": "2",
+        "lastupdated": "2025-12-16"
+    },
+    [
+        {
+            "indicator": {
+                "id": "SL.UEM.TOTL.ZS",
+                "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+            },
+            "country": {
+                "id": "BR",
+                "value": "Brazil"
+            },
+            "countryiso3code": "BRA",
+            "date": "2022",
+            "value": 9.231,
+            "unit": "",
+            "obs_status": "",
+            "decimal": 1
+        },
+        {
+            "indicator": {
+                "id": "SL.UEM.TOTL.ZS",
+                "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+            },
+            "country": {
+                "id": "BR",
+                "value": "Brazil"
+            },
+            "countryiso3code": "BRA",
+            "date": "2021",
+            "value": 13.158,
+            "unit": "",
+            "obs_status": "",
+            "decimal": 1
+        },
+        {
+            "indicator": {
+                "id": "SL.UEM.TOTL.ZS",
+                "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+            },
+            "country": {
+                "id": "BR",
+                "value": "Brazil"
+            },
+            "countryiso3code": "BRA",
+            "date": "2020",
+            "value": 13.697,
+            "unit": "",
+            "obs_status": "",
+            "decimal": 1
+        },
+        {
+            "indicator": {
+                "id": "SL.UEM.TOTL.ZS",
+                "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+            },
+            "country": {
+                "id": "BR",
+                "value": "Brazil"
+            },
+            "countryiso3code": "BRA",
+            "date": "2019",
+            "value": 11.936,
+            "unit": "",
+            "obs_status": "",
+            "decimal": 1
+        },
+        {
+            "indicator": {
+                "id": "SL.UEM.TOTL.ZS",
+                "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+            },
+            "country": {
+                "id": "BR",
+                "value": "Brazil"
+            },
+            "countryiso3code": "BRA",
+            "date": "2018",
+            "value": 12.329,
+            "unit": "",
+            "obs_status": "",
+            "decimal": 1
+        },
+        {
+            "indicator": {
+                "id": "SL.UEM.TOTL.ZS",
+                "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+            },
+            "country": {
+                "id": "BR",
+                "value": "Brazil"
+            },
+            "countryiso3code": "BRA",
+            "date": "2017",
+            "value": 12.792,
+            "unit": "",
+            "obs_status": "",
+            "decimal": 1
+        },
+        {
+            "indicator": {
+                "id": "SL.UEM.TOTL.ZS",
+                "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+            },
+            "country": {
+                "id": "BR",
+                "value": "Brazil"
+            },
+            "countryiso3code": "BRA",
+            "date": "2016",
+            "value": 11.58,
+            "unit": "",
+            "obs_status": "",
+            "decimal": 1
+        },
+        {
+            "indicator": {
+                "id": "SL.UEM.TOTL.ZS",
+                "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+            },
+            "country": {
+                "id": "BR",
+                "value": "Brazil"
+            },
+            "countryiso3code": "BRA",
+            "date": "2015",
+            "value": 8.538,
+            "unit": "",
+            "obs_status": "",
+            "decimal": 1
+        },
+        {
+            "indicator": {
+                "id": "SL.UEM.TOTL.ZS",
+                "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+            },
+            "country": {
+                "id": "BR",
+                "value": "Brazil"
+            },
+            "countryiso3code": "BRA",
+            "date": "2014",
+            "value": 6.755,
+            "unit": "",
+            "obs_status": "",
+            "decimal": 1
+        },
+        {
+            "indicator": {
+                "id": "SL.UEM.TOTL.ZS",
+                "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+            },
+            "country": {
+                "id": "BR",
+                "value": "Brazil"
+            },
+            "countryiso3code": "BRA",
+            "date": "2013",
+            "value": 7.071,
+            "unit": "",
+            "obs_status": "",
+            "decimal": 1
+        },
+        {
+            "indicator": {
+                "id": "SL.UEM.TOTL.ZS",
+                "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+            },
+            "country": {
+                "id": "BR",
+                "value": "Brazil"
+            },
+            "countryiso3code": "BRA",
+            "date": "2012",
+            "value": 7.251,
+            "unit": "",
+            "obs_status": "",
+            "decimal": 1
+        },
+        {
+            "indicator": {
+                "id": "SL.UEM.TOTL.ZS",
+                "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+            },
+            "country": {
+                "id": "BR",
+                "value": "Brazil"
+            },
+            "countryiso3code": "BRA",
+            "date": "2011",
+            "value": 7.578,
+            "unit": "",
+            "obs_status": "",
+            "decimal": 1
+        },
+        {
+            "indicator": {
+                "id": "SL.UEM.TOTL.ZS",
+                "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+            },
+            "country": {
+                "id": "BR",
+                "value": "Brazil"
+            },
+            "countryiso3code": "BRA",
+            "date": "2010",
+            "value": 8.422,
+            "unit": "",
+            "obs_status": "",
+            "decimal": 1
+        },
+        {
+            "indicator": {
+                "id": "SL.UEM.TOTL.ZS",
+                "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+            },
+            "country": {
+                "id": "BR",
+                "value": "Brazil"
+            },
+            "countryiso3code": "BRA",
+            "date": "2009",
+            "value": 9.419,
+            "unit": "",
+            "obs_status": "",
+            "decimal": 1
+        },
+        {
+            "indicator": {
+                "id": "SL.UEM.TOTL.ZS",
+                "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+            },
+            "country": {
+                "id": "BR",
+                "value": "Brazil"
+            },
+            "countryiso3code": "BRA",
+            "date": "2008",
+            "value": 8.268,
+            "unit": "",
+            "obs_status": "",
+            "decimal": 1
+        },
+        {
+            "indicator": {
+                "id": "SL.UEM.TOTL.ZS",
+                "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+            },
+            "country": {
+                "id": "BR",
+                "value": "Brazil"
+            },
+            "countryiso3code": "BRA",
+            "date": "2007",
+            "value": 9.28,
+            "unit": "",
+            "obs_status": "",
+            "decimal": 1
+        },
+        {
+            "indicator": {
+                "id": "SL.UEM.TOTL.ZS",
+                "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+            },
+            "country": {
+                "id": "BR",
+                "value": "Brazil"
+            },
+            "countryiso3code": "BRA",
+            "date": "2006",
+            "value": 9.692,
+            "unit": "",
+            "obs_status": "",
+            "decimal": 1
+        },
+        {
+            "indicator": {
+                "id": "SL.UEM.TOTL.ZS",
+                "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+            },
+            "country": {
+                "id": "BR",
+                "value": "Brazil"
+            },
+            "countryiso3code": "BRA",
+            "date": "2005",
+            "value": 10.551,
+            "unit": "",
+            "obs_status": "",
+            "decimal": 1
+        },
+        {
+            "indicator": {
+                "id": "SL.UEM.TOTL.ZS",
+                "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+            },
+            "country": {
+                "id": "BR",
+                "value": "Brazil"
+            },
+            "countryiso3code": "BRA",
+            "date": "2004",
+            "value": 10.072,
+            "unit": "",
+            "obs_status": "",
+            "decimal": 1
+        },
+        {
+            "indicator": {
+                "id": "SL.UEM.TOTL.ZS",
+                "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+            },
+            "country": {
+                "id": "BR",
+                "value": "Brazil"
+            },
+            "countryiso3code": "BRA",
+            "date": "2003",
+            "value": 11.168,
+            "unit": "",
+            "obs_status": "",
+            "decimal": 1
+        },
+        {
+            "indicator": {
+                "id": "SL.UEM.TOTL.ZS",
+                "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+            },
+            "country": {
+                "id": "BR",
+                "value": "Brazil"
+            },
+            "countryiso3code": "BRA",
+            "date": "2002",
+            "value": 10.641,
+            "unit": "",
+            "obs_status": "",
+            "decimal": 1
+        },
+        {
+            "indicator": {
+                "id": "SL.UEM.TOTL.ZS",
+                "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+            },
+            "country": {
+                "id": "BR",
+                "value": "Brazil"
+            },
+            "countryiso3code": "BRA",
+            "date": "2001",
+            "value": 10.649,
+            "unit": "",
+            "obs_status": "",
+            "decimal": 1
+        },
+        {
+            "indicator": {
+                "id": "SL.UEM.TOTL.ZS",
+                "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+            },
+            "country": {
+                "id": "BR",
+                "value": "Brazil"
+            },
+            "countryiso3code": "BRA",
+            "date": "2000",
+            "value": 10.889,
+            "unit": "",
+            "obs_status": "",
+            "decimal": 1
+        }
+    ]
+]

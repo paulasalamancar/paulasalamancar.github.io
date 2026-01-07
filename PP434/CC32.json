@@ -1,0 +1,80 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "width": "container",
+  "height": "container",
+
+  "title": {
+    "text": "Total population by household head education",
+    "anchor": "start",
+    "subtitle": "Spain, 2002-2020 (in millions of households)",
+    "font": "Manrope",
+    "fontSize": 14,
+    "subtitleFontSize": 12,
+    "subtitleFont": "Manrope",
+    "color": "#000000",
+    "subtitleColor": "#000000",
+    "offset": 6
+  },
+"background": "white",
+  "data": {
+    "url": "https://raw.githubusercontent.com/paulasalamancar/paulasalamancar.github.io/refs/heads/main/DataCodingCha3.2.csv"
+  },
+  "mark": {
+    "type": "line",
+    "strokeWidth": 2,
+    "point": {"filled": true, "size": 40}
+  },
+  "encoding": {
+    "x": {
+      "field": "ola",
+      "type": "temporal",
+      "timeUnit": "year",
+      "title": "Years",
+      "axis": {
+        "grid": true,
+        "gridColor": "#d7d7d7",
+        "gridOpacity": 0.5,
+        "gridDash": [2, 2],
+        "titleColor": "#000000",
+        "titleFont": "Manrope",
+        "labelFont": "Manrope",
+        "format": "%Y",
+        "labelAngle": 0
+      }
+    },
+    "y": {
+      "field": "valor",
+      "type": "quantitative",
+      "title": "Households (in millions)",
+      "axis": {
+        "grid": true,
+        "gridColor": "#d7d7d7",
+        "gridOpacity": 0.4,
+        "titleColor": "#000000",
+        "titleFont": "Manrope",
+        "labelFont": "Manrope",
+        "gridDash": [2, 3]
+      }
+    },
+    "color": {
+    "field": "categoria",
+    "type": "ordinal",
+    "title": "Nivel educativo",
+    "scale": {"range": ["#FF5020", "#f59e0b", "#e1fc2c"]},
+    "legend": {
+      "orient": "bottom",
+      "direction": "horizontal",
+      "title": null,
+      "columns": 3,
+      "labelFontSize": 10,
+      "labelFont": "Manrope",
+      "labelLimit": 180,
+      "symbolSize": 55,
+      "symbolStrokeWidth": 2,
+      "offset": 8,
+      "labelExpr": "datum.label == 'Bachillerato' ? 'High school' : datum.label == 'Estudios universitarios' ? 'University studies' : datum.label == 'Inferior a bachillerato' ? 'Below high school' : datum.label"
+  }
+}
+  },
+  "config": {"background": "#ffffff", "view": {"stroke": "transparent"}}
+}

@@ -3,9 +3,9 @@
   "width": "container",
   "height": "container",
   "title": {
-    "text": "Unemployment in the USA (1948-2025)",
+    "text": "Unemployment in France (1975-2023)",
     "anchor": "start",
-    "subtitle": "Ages 16 and over, % | Source: FRED through ECO API",
+    "subtitle": "Rate, % | Source: Insee through ECO API",
     "font": "Manrope",
     "fontSize": 14,
     "subtitleFontSize": 12,
@@ -17,45 +17,47 @@
   "background": "white",
   "view": {"fill": "white", "strokeOpacity": 0},
   "data": {
-    "url": "https://api.economicsobservatory.com/usa/unem?vega",
-    "format": {"type": "json"}
+    "url": "https://api.economicsobservatory.com/fra/unem?vega",
+    "format": {
+      "type": "json"
+    }
   },
-  "mark": 
-    {"type": "line", 
-    "color": "#0b6380", 
-    "strokeWidth": 1},
-  "encoding": 
-  {
+  "mark": {
+    "type": "line",
+    "color": "#FF5020",
+    "strokeWidth": 1
+  },
+  "encoding": {
     "x": {
       "field": "date",
       "type": "temporal",
-      "axis": 
-        {"title": "Years", 
-        "titleColor": "#000000", 
+      "axis": {
+        "title": "Years",
+        "titleColor": "#000000",
+        "grid": true,
         "titleFontSize": 12,
         "titleFont": "Manrope",
         "labelFont": "Manrope",
-        "grid": true,
         "gridColor": "#d7d7d7",
         "gridOpacity": 0.4,
         "gridDash": [2, 2]
-        }
-      
+      }
     },
     "y": {
       "field": "value",
       "type": "quantitative",
-      "axis": 
-      {"title": "% Unemployment", 
-        "titleColor": "#1a1a1a", 
+      "axis": {
+        "title": "% Unemployment",
+        "titleColor": "#000000",
+        "grid": true,
+        "titleFontSize": 12,
         "titleFont": "Manrope",
         "labelFont": "Manrope",
-        "grid": true,  
         "gridColor": "#d7d7d7",
         "gridOpacity": 0.4,
-        "gridDash": [2, 2],
-        "titleFontSize": 12
-        }
+        "gridDash": [2, 2]
+        
+      }
     }
   }
 }

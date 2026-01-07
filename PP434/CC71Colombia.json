@@ -1,0 +1,43 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "title": {
+    "text": "Displaced Students by Department",
+    "subtitle": "Colombia, 2023",
+    "fontSize": 14,
+    "subtitleFontSize": 12
+  },
+  "width": 600,
+  "height": 700,
+  "projection": {"type": "mercator"},
+  "data": {
+    "url": "https://gist.githubusercontent.com/john-guerra/43c7656821069d00dcbc/raw/be6a6e239cd5b5b803c6e7c2ec405b793a9064dd/Colombia.geo.json",
+    "format": {"type": "json", "property": "features"}
+  },
+  "transform": [
+    {
+      "lookup": "properties.NOMBRE_DPT",
+      "from": {
+        "data": {"url": "students_by_department.csv"},
+        "key": "dept_name",
+        "fields": ["total"]
+      }
+    }
+  ],
+  "mark": {
+    "type": "geoshape",
+    "stroke": "white",
+    "strokeWidth": 1
+  },
+  "encoding": {
+    "color": {
+      "field": "total",
+      "type": "quantitative",
+      "title": "Students",
+      "scale": {"scheme": "blues"}
+    },
+    "tooltip": [
+      {"field": "properties.NOMBRE_DPT", "title": "Department"},
+      {"field": "total", "title": "Students"}
+    ]
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Average Disposable Income in Wales",
+    "subtitle": "£ per year by Local Authority | Source: ONS",
+    "font": "Manrope",
+    "fontSize": 14,
+    "anchor": "start"
+  },
+  "width": "container",
+  "height": "container",
+  "data": {
+    "url": "https://open-geography-portalx-ons.hub.arcgis.com/api/download/v1/items/8b889240a1fe4f819e2ac9f3e592f001/geojson?layers=0",
+    "format": {"type": "json", "property": "features"}
+  },
+  "transform": [
+    {"filter": "slice(datum.properties.LAD24CD, 0, 1) == 'W'"},
+    {
+      "lookup": "properties.LAD24CD",
+      "from": {
+        "data": {
+          "url": "CC71wales_income_la.csv"
+        },
+        "key": "la_code",
+        "fields": ["avg_income", "la_name"]
+      }
+    }
+  ],
+  "projection": {"type": "mercator"},
+  "mark": {
+    "type": "geoshape",
+    "stroke": "white",
+    "strokeWidth": 0.5
+  },
+  "encoding": {
+    "color": {
+      "field": "avg_income",
+      "type": "quantitative",
+      "scale": {"scheme": "blues"},
+      "legend": {"title": "Income (£)"}
+    },
+    "tooltip": [
+      {"field": "la_name", "title": "Local Authority"},
+      {"field": "avg_income", "title": "Avg Income (£)", "format": ","}
+    ]
+  }
+}

@@ -1,0 +1,111 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Annual Deforestation by Municipality (2001-2024)",
+    "subtitle": "Source: Global Forest Watch (Hansen et al.)",
+    "fontSize": 14,
+    "fontWeight": 700,
+    "color": "#000000",
+    "anchor": "start",
+    "subtitleFontSize": 12,
+    "subtitleColor": "#888"
+  },
+  "width": 390,
+  "height": 430,
+  "params": [
+    {
+      "name": "year_select",
+      "value": 2017,
+      "bind": {
+        "input": "range",
+        "min": 2001,
+        "max": 2024,
+        "step": 1,
+        "name": "Year: "
+      }
+    }
+  ],
+  "data": {
+    "url": "Main Project/colombia_municipios.json",
+    "format": {
+      "type": "topojson",
+      "feature": "mpios"
+    }
+  },
+  "transform": [
+    {
+      "calculate": "datum.properties.name + '_' + year_select",
+      "as": "lookup_key"
+    },
+    {
+      "lookup": "lookup_key",
+      "from": {
+        "data": {
+          "url": "Main Project/colombia_deforestation (1).csv"
+        },
+        "key": "key",
+        "fields": [
+          "loss_ha",
+          "year",
+          "departamento",
+          "municipio"
+        ]
+      }
+    },
+    {
+      "calculate": "datum.loss_ha == null ? 0 : datum.loss_ha",
+      "as": "loss_ha_clean"
+    }
+  ],
+  "projection": {
+    "type": "mercator"
+  },
+  "mark": {
+    "type": "geoshape",
+    "stroke": "#fff",
+    "strokeWidth": 0.3
+  },
+  "encoding": {
+    "color": {
+      "field": "loss_ha_clean",
+      "type": "quantitative",
+      "title": "Hectares Lost",
+      "scale": {
+        "type": "sqrt",
+        "scheme": "greens",
+        "domain": [
+          0,
+          15000
+        ]
+      },
+      "legend": {
+        "titleFont": "Manrope",
+        "labelFont": "Manrope",
+        "orient": "right",
+        "direction": "vertical"
+      }
+    },
+    "tooltip": [
+      {
+        "field": "properties.name",
+        "title": "Municipality"
+      },
+      {
+        "field": "loss_ha_clean",
+        "title": "Hectares Lost",
+        "format": ","
+      },
+      {
+        "field": "year",
+        "title": "Year"
+      }
+    ]
+  },
+  "config": {
+    "font": "Manrope",
+    "view": {
+      "stroke": null
+    },
+    "background": "transparent"
+  }
+}

@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Metadatos básicos -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coding Challenges - Portfolio</title>
+    
+    <!-- Link al archivo CSS -->
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="Versión2.css">
+</head>
+<body>
+    <!-- Barra de navegación superior -->
+    <nav class="navbar">
+        <a href="landing.html" class="navbar-name" style="text-decoration: none; color: rgb(50, 50, 50);">Paula Andrea Salamanca</a>
+        <div class="navbar-links">
+            <a href="Main Project/index.html">Main Project</a>
+            <a href="#">Portfolio Tasks</a>
+        </div>
+    </nav>
+        
+
+    <!-- Navegación lateral de challenges -->
+    <nav class="challenge-nav">
+        <a href="#challenge-1" class="nav-dot active" title="Challenge 1">
+            <span class="nav-label">01</span>
+        </a>
+        <a href="#challenge-2" class="nav-dot" title="Challenge 2">
+            <span class="nav-label">02</span>
+        </a>
+        <a href="#challenge-3" class="nav-dot" title="Challenge 3">
+            <span class="nav-label">03</span>
+        </a>
+        <a href="#challenge-4" class="nav-dot" title="Challenge 4">
+            <span class="nav-label">04</span>
+        </a>
+        <a href="#challenge-5" class="nav-dot" title="Challenge 5">
+            <span class="nav-label">05</span>
+        </a>
+        <a href="#challenge-6" class="nav-dot" title="Challenge 6">
+            <span class="nav-label">06</span>
+        </a>
+        <a href="#challenge-7" class="nav-dot" title="Challenge 7">
+            <span class="nav-label">07</span>
+        </a>
+        <a href="#challenge-8" class="nav-dot" title="Challenge 8">
+            <span class="nav-label">08</span>
+        </a>
+        <a href="#challenge-9" class="nav-dot" title="Challenge 9">
+            <span class="nav-label">09</span>
+        </a>
+        <a href="#challenge-10" class="nav-dot" title="Challenge 10">
+            <span class="nav-label">10</span>
+        </a>
+    </nav>
+
+    <!-- Sección principal del héroe (título grande centrado) -->
+    <div class="hero">
+        <div class="top-label">
+            <span class="red-dot"></span>
+            Data Visualization Portfolio · LSE · 2025
+        </div>
+        
+        
+        <h1>
+            <!-- Primera línea del título (negro) -->
+            <div class="line1">Coding</div>
+            <!-- Segunda línea del título (con gradiente) -->
+            <div class="line2">Challenges</div>
+        </h1>
+    </div>
+    
+    <p class="intro-text">
+        Ten coding challenges for PP434: Automated Data Visualization for Policymaking. Each demonstrates technical skills and the ability to communicate complex policy through clear, interactive graphics.
+    </p>
+
+    <!-- ========================================
+     SECCIÓN DE CHALLENGES
+     ======================================== -->
+    <section class="challenges-section">
+
+        <!-- CHALLENGE 1 - Texto izquierda, gráficas derecha -->
+        <div class="challenge challenge-left" id="challenge-1">
+            
+            <!-- Columna de texto -->
+            <div class="challenge-text">
+                <!-- Número y dificultad -->
+                <div class="challenge-header">
+                    <span class="challenge-number">#01. Hosting. Display charts in site</span>
+                </div>
+                
+                <!-- Título del challenge -->
+                <h2 class="challenge-title">Embedding Charts</h2>
+
+                <!-- Descripción -->
+                <p class="challenge-description">
+                    The two charts embedded here use the vegaEmbed function to display real-time data visualizations. The first chart shows declining population trends across major developed nations, while the second tracks inflation rates for four G7 countries since 2000.
+                </p>
+                
+                <!-- Tags/etiquetas -->
+                <div class="challenge-tags">
+                    <span class="tag">Vega-Lite</span>
+                    <span class="tag">vegaEmbed</span>
+                </div>
+            </div>
+            
+            <!-- Columna de gráficas -->
+            <div class="challenge-charts">
+                <div class="chart-box">
+                    <figure id="LocationCC11"></figure>
+                </div>
+                
+                <div class="chart-box">
+                    <figure id="LocationCC12"></figure>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- CHALLENGE 2 - Texto derecha, gráficas izquierda -->
+        <div class="challenge challenge-right" id="challenge-2">
+            
+            <!-- Columna de texto -->
+            <div class="challenge-text">
+                <div class="challenge-header">
+                    <span class="challenge-number">#02. Building. Creating my own visualisations</span>
+                </div>
+                
+                <h2 class="challenge-title">Unemployment Trends: USA vs France</h2>
+                
+                <p class="challenge-description">
+                    I created two unemployment charts comparing the USA (1948-2025) and France (1975-2023) using the ECO Data Hub. Both visualizations pull real-time data from the ECO API and show how unemployment rates have evolved over decades, highlighting key economic events.
+                </p>
+                
+                <div class="challenge-tags">
+                    <span class="tag">ECO API</span>
+                    <span class="tag">Vega-Lite</span>
+                    <span class="tag">Time Series</span>
+                </div>
+            </div>
+            
+            <!-- Columna de gráficas -->
+            <div class="challenge-charts">
+                <div class="chart-box">
+                    <figure id="LocationCC21"></figure>
+                </div>
+                
+                <div class="chart-box">
+                    <figure id="LocationCC22"></figure>
+                </div>
+            </div>
+        </div>
+        
+        <!-- CHALLENGE 3 - Texto izquierda, gráficas derecha -->
+        <div class="challenge challenge-left" id="challenge-3">
+            
+            <!-- Columna de texto -->
+            <div class="challenge-text">
+                <!-- Número y dificultad -->
+                <div class="challenge-header">
+                    <span class="challenge-number">#03. Debate. Use a visualization in policy commentary</span>
+                </div>
+                
+                <!-- Título del challenge -->
+                <h2 class="challenge-title">Wealth Inequality in Spain</h2>
+                
+                <!-- Descripción -->
+                <p class="challenge-description">
+                    <strong>Policy topic:</strong> Younger Spaniards accumulate less wealth than previous generations did at the same age.
+                    <br><br>
+                    <strong>Finding:</strong> Wealth declines for young households despite rising university education—suggesting education alone no longer guarantees wealth.
+                </p>
+                
+                <!-- Tags/etiquetas -->
+                <div class="challenge-tags">
+                    <span class="tag">Policy Debate</span>
+                    <span class="tag">Inequality</span>
+                </div>
+            </div>
+            
+            <!-- Columna de gráficas -->
+            <div class="challenge-charts">
+                <div class="chart-box">
+                    <figure id="LocationCC31"></figure>
+                </div>
+                
+                <div class="chart-box">
+                    <figure id="LocationCC32"></figure>
+                </div>
+            </div>
+        </div>
+
+        <!-- CHALLENGE 4 - Texto derecha, gráficas izquierda -->
+        <div class="challenge challenge-vertical" id="challenge-4">
+            
+            <!-- Columna de texto -->
+            <div class="challenge-text">
+                <div class="challenge-header">
+                    <span class="challenge-number">#04. Replication & Improvement</span>
+                </div>
+                
+                <h2 class="challenge-title">Redesigning a Misleading Chart</h2>
+
+                <!-- Descripción -->
+                <p class="challenge-description">
+                    <strong>Context:</strong> In December 2025, Colombia's government cut funding to Colfuturo—a credit-scholarship program for graduate studies abroad. The Ministry of Science published a <a href="https://x.com/MincienciasCo/status/2003988046736417070/photo/1" target="_blank" class="source-link">controversial pie chart</a> to justify the decision.
+                    <br><br>
+                    <strong>What I did:</strong> Redesigned the misleading pie chart that grouped strata unfairly (4,5,6 as 70%). My bar chart separates all six strata, revealing Stratum 4 as the largest beneficiary (33%), not "high-income groups" as suggested.
+                    <br><br>
+                    <strong>Limitation:</strong> A fairer comparison would show Colfuturo recipients vs. university graduates by stratum—but this data wasn't publicly available.
+                </p>
+                
+                <div class="challenge-tags">
+                    <span class="tag">Vega-Lite</span>
+                    <span class="tag">Data Ethics</span>
+                    <span class="tag">Redesign</span>
+                </div>
+            </div>
+            
+            <!-- Columna de gráficas -->
+            <div class="challenge-charts three-charts">
+                <div class="chart-box">
+                    <div class="chart-label">Original (Ministry)</div>
+                    <img src="CC41image.jpeg" alt="Original misleading chart" style="width: 100%; height: auto;">
+                </div>
+                <div class="chart-box">
+                    <div class="chart-label">Replication</div>
+                    <figure id="LocationCC41"></figure>
+                </div>
+                <div class="chart-box">
+                    <div class="chart-label">Redesign</div>
+                    <figure id="LocationCC42"></figure>
+                </div>
+            </div>
+        </div>
+        
+        <!-- CHALLENGE 5A - Texto derecha, gráficas izquierda -->
+        <div class="challenge challenge-right" id="challenge-5">
+            
+            <!-- Columna de texto -->
+            <div class="challenge-text">
+                <div class="challenge-header">
+                    <span class="challenge-number">#05.A Accessing data: API</span>
+                </div>
+                
+                <h2 class="challenge-title">Forest Loss in Latin America (Live API)</h2>
+                
+                <p class="challenge-description">
+                    <strong>API Chart:</strong> This chart uses a live connection to the World Bank API. The base URL is https://api.worldbank.org/v2/, followed by: the country codes (COL, BRA, PER, BOL), the indicator code AG.LND.FRST.ZS (forest area as a percentage of land), format=json for the response format, date=1990:2022 for the year range, and per_page=500 to retrieve all records.</a>
+                    <br><br>
+                    <a href="https://api.worldbank.org/v2/country/COL;BRA;PER;BOL/indicator/AG.LND.FRST.ZS?format=json&date=1990:2022&per_page=500" class="colab-link">View full URL used →</a>
+                </p>
+                
+                <div class="challenge-tags">
+                    <span class="tag">World Bank API</span>
+                    <span class="tag">Live Data</span>
+                </div>
+            </div>
+            
+            <!-- Columna de gráficas -->
+            <div class="challenge-charts">
+                <div class="chart-box">
+                    <figure id="LocationCC51"></figure>
+                </div>
+            </div>
+        </div>        
+
+        <!-- CHALLENGE 5B - Texto derecha, gráficas izquierda -->
+        <div class="challenge challenge-right" id="challenge-5">
+            
+            <!-- Columna de texto -->
+            <div class="challenge-text">
+                <div class="challenge-header">
+                    <span class="challenge-number">#05.B Accessing data: Scraper</span>
+                </div>
+                
+                <h2 class="challenge-title">Scraping</h2>
+                
+                <p class="challenge-description">
+                    <strong>Scraping:</strong> Scraped Wikipedia's forest area table using pandas.read_html(). Filtered Latin American countries and exported to CSV. Challenge: handling multi-level column headers.</a>
+                    <br><br> 
+                    <a href= "https://colab.research.google.com/drive/1yrQwol5eCot7IOpLQyRxunMgL27hbkgy?usp=sharing" class="colab-link">View Colab Notebook →</a>
+                </p>
+                
+                <div class="challenge-tags">
+                    <span class="tag">Python</span>
+                    <span class="tag">Web Scraping</span>
+                </div>
+            </div>
+            
+            <!-- Columna de gráficas -->
+            <div class="challenge-charts">
+                <div class="chart-box">
+                    <figure id="LocationCC52"></figure>
+                </div>
+            </div>
+        </div>           
+        
+        <!-- CHALLENGE 6 - Texto derecha, gráficas izquierda -->
+        <div class="challenge challenge-left challenge-six" id="challenge-6">
+            
+            <!-- Columna de texto -->
+            <div class="challenge-text">
+                <div class="challenge-header">
+                    <span class="challenge-number">#06. Unemployment in Latin America</span>
+                </div>
+                
+                <h2 class="challenge-title">Unemployment Trends: Latin America</h2>
+                
+                <p class="challenge-description">
+                    Using a <strong>Python loop</strong>, I batch downloaded unemployment data for 6 Latin American countries from the World Bank API.
+                    <br><br>
+                    <a href="https://colab.research.google.com/drive/1o9jnnEH0TRJ2fn1chL9Ka--QIeyzPZlr#scrollTo=ambt9Xa7IZKN" class="colab-link">View Colab Notebook →</a>
+                </p>
+                
+                <div class="challenge-tags">
+                    <span class="tag">Python</span>
+                    <span class="tag">World Bank API</span>
+                    <span class="tag">Loop</span>
+                </div>
+            </div>
+            
+            <!-- Columna de 6 gráficas -->
+            <div class="challenge-charts charts-grid-small">
+                <figure id="chart1"></figure>
+                <figure id="chart2"></figure>
+                <figure id="chart3"></figure>
+                <figure id="chart4"></figure>
+                <figure id="chart5"></figure>
+                <figure id="chart6"></figure>
+            </div>
+        </div>
+
+        <!-- CHALLENGE 7 - Texto derecha, gráficas izquierda -->
+        <div class="challenge challenge-right" id="challenge-7">
+            
+            <!-- Columna de texto -->
+            <div class="challenge-text">
+                <div class="challenge-header">
+                    <span class="challenge-number">#07. Maps. Base maps and choropleths</span>
+                </div>
+                
+                <h2 class="challenge-title">Wales & Scotland Maps</h2>
+                
+                <p class="challenge-description">
+                     I created two maps of the UK: a choropleth showing average disposable income by Local Authority in Wales using ONS data, and a coordinate map displaying waste disposal sites across Scotland with status indicators (Open, Closed, Disused) from UK Government data.
+                </p>
+                
+                <div class="challenge-tags">
+                    <span class="tag">Choropleth</span>
+                    <span class="tag">Coordinate Map</span>
+                    <span class="tag">Vega-Lite</span>
+                </div>
+            </div>
+            
+            <!-- Columna de gráficas -->
+            <div class="challenge-charts">
+                <div class="chart-box">
+                    <figure id="LocationCC71"></figure>
+                </div>
+                
+                <div class="chart-box">
+                    <figure id="LocationCC72"></figure>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- CHALLENGE 8 - Texto izquierda, gráficas derecha -->
+        <div class="challenge challenge-left" id="challenge-8">
+            
+            <!-- Columna de texto -->
+            <div class="challenge-text">
+                <!-- Número y dificultad -->
+                <div class="challenge-header">
+                    <span class="challenge-number">#08. Big Data</span>
+                </div>
+                
+                <!-- Título del challenge -->
+                <h2 class="challenge-title">Extracting Stories from Millions of Prices</h2>
+                
+                <!-- Descripción -->
+                <p class="challenge-description">
+                    Using the AutoCPI database (6M+ observations), I analyzed olive oil prices across UK supermarkets. Chart 1 shows daily average prices trending upward from 2023-2025. Chart 2 reveals significant price variation between stores, with discount chains (Store 5) offering lower prices than premium retailers.
+                </p>
+                
+                <!-- Tags/etiquetas -->
+                <div class="challenge-tags">
+                    <span class="tag">Big Data</span>
+                    <span class="tag">AutoCPI</span>
+                    <span class="tag">Pandas</span>
+                </div>
+            </div>
+            
+            <!-- Columna de gráficas -->
+            <div class="challenge-charts">
+                <div class="chart-box">
+                    <figure id="LocationCC81"></figure>
+                </div>
+                
+                <div class="chart-box">
+                    <figure id="LocationCC82"></figure>
+                </div>
+            </div>
+        </div>
+
+
+
+         <!-- CHALLENGE 9 - Layout vertical (texto arriba, mapas abajo) -->
+<div class="challenge challenge-vertical" id="challenge-9">
+    
+    <!-- Columna de texto -->
+    <div class="challenge-text">
+        <div class="challenge-header">
+            <span class="challenge-number">#09. Maps. Colombian Conflict & Deforestation</span>
+        </div>
+        
+        <h2 class="challenge-title">Mapping Violence and Environmental Impact</h2>
+        
+        <p class="challenge-description">
+            <strong>Context:</strong> Two interactive choropleth maps exploring the spatial relationship between armed conflict and environmental destruction in Colombia.
+            <br><br>
+            <strong>Left map:</strong> FARC conflict intensity (2001-2018) normalized by population, showing cases per 100,000 inhabitants. Data from SIEVCAC.
+            <br><br>
+            <strong>Right map:</strong> Annual deforestation patterns (2001-2024) at municipality level, measured in hectares lost. Data from Global Forest Watch.
+            <br><br>
+            Both maps include interactive year sliders to explore temporal changes and reveal patterns between conflict zones and forest loss.
+        </p>
+        
+        <div class="challenge-tags">
+            <span class="tag">Choropleth</span>
+            <span class="tag">TopoJSON</span>
+            <span class="tag">Interactive</span>
+        </div>
+    </div>
+    
+    <!-- Columna de mapas (lado a lado) -->
+    <div class="challenge-charts">
+        <div class="chart-box">
+            <figure id="LocationCC91"></figure>
+        </div>
+        
+        <div class="chart-box">
+            <figure id="LocationCC92"></figure>
+        </div>
+    </div>
+</div>
+
+
+        <!-- CHALLENGE 10 - Layout vertical con gráficas apiladas -->
+<div class="challenge challenge-vertical challenge-ten" id="challenge-10">
+    
+    <!-- Texto principal -->
+    <div class="challenge-text">
+        <div class="challenge-header">
+            <span class="challenge-number">#10. Advanced Analytics & Machine Learning</span>
+        </div>
+        
+        <h2 class="challenge-title">Predicting Conflict & Deforestation Patterns</h2>
+        
+        <p class="challenge-description">
+            This challenge combines advanced visualization techniques with machine learning to analyze Colombian conflict and environmental data.
+        </p>
+    </div>
+    
+    <!-- PARTE 1: ADVANCED ANALYTICS -->
+    <div class="challenge-subsection-stacked">
+        <div class="subsection-header-inline">
+            <div class="subsection-left">
+                <h3 class="subsection-title">Part 1: Advanced Analytics - Diff-in-Diff Analysis</h3>
+                <p class="challenge-description">
+                    <strong>Analysis:</strong> Difference-in-differences comparing deforestation trends in high vs. low FARC presence municipalities before/after the 2016 peace agreement.
+                    <br><br>
+                    <strong>Finding:</strong> Municipalities with high FARC presence saw the largest post-2016 spike in deforestation, suggesting peace paradox.
+                    <br><br>
+                </p>
+            </div>
+        </div>
+        
+        <div class="chart-box-full">
+            <figure id="LocationCC101"></figure>
+        </div>
+    </div>
+    
+    <!-- PARTE 2: MACHINE LEARNING -->
+    <div class="challenge-subsection-stacked">
+        <div class="subsection-header-inline">
+            <div class="subsection-left">
+                <h3 class="subsection-title">Part 2: Machine Learning - Random Forest Prediction</h3>
+                <p class="challenge-description">
+                    <strong>Hypothesis:</strong> Conflict intensity predicts future deforestation rates in Colombian municipalities.
+                    <br><br>
+                    <strong>Method:</strong> Random Forest Regression (sklearn). Features: conflict cases, coca cultivation, population density. Target: next-year deforestation.
+                    <br><br>
+                    <strong>Finding:</strong> Model R² = 0.68. Conflict intensity strongest predictor, confirming hypothesis.
+                    <br><br>
+                    <a href="YOUR_COLAB_LINK_HERE" class="colab-link" target="_blank">View Colab Notebook →</a>
+                </p>
+            </div>
+        </div>
+        
+        <div class="chart-box-full">
+            <figure id="LocationCC102"></figure>
+        </div>
+    </div>
+    
+    <!-- Tags -->
+    <div class="challenge-tags">
+        <span class="tag">Diff-in-Diff</span>
+        <span class="tag">Random Forest</span>
+        <span class="tag">sklearn</span>
+        <span class="tag">Python</span>
+    </div>
+</div>
+
+    </section>
+    <!-- Librerías de Vega-Lite (necesarias para las gráficas) -->
+    <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+
+
+    <script>
+        // Gráficas del Challenge 1
+        let figure_CC11_spec = "CC11.json";
+        let figure_CC12_spec = "CC12.json";
+        vegaEmbed('#LocationCC11', figure_CC11_spec);
+        vegaEmbed('#LocationCC12', figure_CC12_spec);
+        
+        
+        // Gráficas del Challenge 2
+        let figure_CC21_spec = "CC21.json";
+        let figure_CC22_spec = "CC22.json";
+        vegaEmbed('#LocationCC21', figure_CC21_spec);
+        vegaEmbed('#LocationCC22', figure_CC22_spec);
+
+        // Gráficas del Challenge 3
+        let figure_CC31_spec = "CC31.json";
+        let figure_CC32_spec = "CC32.json";
+        vegaEmbed('#LocationCC31', figure_CC31_spec);
+        vegaEmbed('#LocationCC32', figure_CC32_spec);
+
+        // Gráficas del Challenge 4
+        let figure_CC41_spec = "CC41.json";
+        let figure_CC42_spec = "CC42.json";
+        vegaEmbed('#LocationCC41', figure_CC41_spec);
+        vegaEmbed('#LocationCC42', figure_CC42_spec);
+
+        // Gráficas del Challenge 5
+        let figure_CC51_spec = "CC51.json";
+        let figure_CC52_spec = "CC52.json";
+        vegaEmbed('#LocationCC51', figure_CC51_spec);
+        vegaEmbed('#LocationCC52', figure_CC52_spec);
+
+        // Gráficas del Challenge 7
+        let figure_CC71_spec = "CC71.json";
+        let figure_CC72_spec = "CC72.json";
+        vegaEmbed('#LocationCC71', figure_CC71_spec);
+        vegaEmbed('#LocationCC72', figure_CC72_spec);
+
+        // Gráficas del Challenge 7
+        let figure_CC81_spec = "CC81.json";
+        let figure_CC82_spec = "CC82.json";
+        vegaEmbed('#LocationCC81', figure_CC81_spec);
+        vegaEmbed('#LocationCC82', figure_CC82_spec);
+
+        // Gráficas del Challenge 9
+        let figure_CC91_spec = "CC91.json";
+        let figure_CC92_spec = "CC92.json";
+        vegaEmbed('#LocationCC91', figure_CC91_spec);
+        vegaEmbed('#LocationCC92', figure_CC92_spec);
+
+        // Gráficas del Challenge 10
+        let figure_CC101_spec = "CC101.json";
+        let figure_CC102_spec = "CC102.json";
+        vegaEmbed('#LocationCC101', figure_CC101_spec);
+        vegaEmbed('#LocationCC102', figure_CC102_spec);
+
+    </script>
+
+    <script>
+        // Cambiar punto activo según el scroll
+        window.addEventListener('scroll', function() {
+            const challenges = document.querySelectorAll('.challenge');
+            const navDots = document.querySelectorAll('.nav-dot');
+            
+            let currentChallenge = 0;
+            
+            challenges.forEach((challenge, index) => {
+                const rect = challenge.getBoundingClientRect();
+                // Si el challenge está visible en la pantalla
+                if (rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2) {
+                    currentChallenge = index;
+                }
+            });
+            
+            // Quitar clase active de todos
+            navDots.forEach(dot => dot.classList.remove('active'));
+            
+            // Añadir clase active al punto actual
+            if (navDots[currentChallenge]) {
+                navDots[currentChallenge].classList.add('active');
+            }
+        });
+    </script>
+
+
+    <script>
+    // Template del gráfico para CC6
+        let templateSpec = {
+            "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+            "title": {
+                "text": "",
+                "subtitle": "Unemployment rate (%)",
+                "anchor": "start",
+                "font": "Manrope",
+                "fontSize": 14,
+                "fontWeight": 700,
+                "color": "#000000",
+                "subtitleFont": "Manrope",
+                "subtitleFontSize": 12,
+                "subtitleColor": "#000000"
+            },
+            "width": "container",
+            "height": 190,
+            "autosize": {"type": "fit", "contains": "padding"},
+            "data": {
+                "url": "",
+                "format": {"type": "json", "property": "1"}
+            },
+            "transform": [{"filter": "datum.value != null"}],
+            "mark": {"type": "line", "color": "#0b6380", "strokeWidth": 2},
+            "encoding": {
+                "x": {
+                    "field": "date", 
+                    "type": "ordinal", 
+                    "title": null,
+                    "axis": {
+                        "labelExpr": "datum.value % 5 == 0 ? datum.value : ''",
+                        "labelAngle": 0,
+                        "labelFont": "Manrope",
+                        "labelFontSize": 9,
+                        "grid": true,
+                        "gridColor": "#d7d7d7",
+                        "gridOpacity": 0.4,
+                        "gridDash": [2, 2]
+                    }
+                },
+                "y": {
+                    "field": "value", 
+                    "type": "quantitative", 
+                    "title": "Rate (%)",
+                    "title": null,
+                    "axis": {
+                        "labelFont": "Manrope",
+                        "labelFontSize": 9, 
+                        "grid": true,
+                        "gridColor": "#d7d7d7",
+                        "gridOpacity": 0.4,
+                        "gridDash": [2, 2]
+                    }
+                }
+            },
+            "config": {
+                "background": "#ffffff",
+                "view": {"stroke": "transparent"}
+            }
+        };
+
+        // Lista de archivos JSON
+        let chartFiles = [
+            "CC61unemployment_COL.json",
+            "CC61unemployment_MEX.json",
+            "CC61unemployment_CHL.json",
+            "CC61unemployment_ARG.json",
+            "CC61unemployment_BRA.json",
+            "CC61unemployment_PER.json"
+        ];
+
+        // Nombres de países
+        let countryNames = ['Colombia', 'Mexico', 'Chile', 'Argentina', 'Brazil', 'Peru'];
+
+        // URL base (déjalo vacío si los JSON están en la misma carpeta)
+        let baseUrl = "";
+
+        // Loop para crear 6 gráficos
+        for(let i = 0; i < 6; i++) {
+            let spec = JSON.parse(JSON.stringify(templateSpec));
+            spec.data.url = baseUrl + chartFiles[i];
+            spec.title.text = countryNames[i];
+            
+            vegaEmbed(`#chart${i+1}`, spec, {actions: false});
+        }
+    </script>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <span>Paula Andrea Salamanca</span>
+            <span class="footer-divider">·</span>
+            <span>LSE 2026</span>
+            <span class="footer-divider">·</span>
+            <a href="https://www.linkedin.com/in/paulasalamanca/" target="_blank">LinkedIn</a>
+            <span class="footer-divider">·</span>
+            <a href="https://github.com/paulasalamancar/paulasalamancar.github.io" target="_blank">GitHub</a>
+            <span class="footer-divider">·</span>
+        </div>
+    </footer>
+
+</body>
+</html>

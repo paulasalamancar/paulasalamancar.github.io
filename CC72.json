@@ -1,0 +1,59 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Waste Disposal Sites in Scotland",
+    "subtitle": "Source: UK Government",
+    "font": "Manrope",
+    "fontSize": 14,
+    "anchor": "start"
+  },
+  "width": "container",
+  "height": "container",
+  "layer": [
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/jhellingsdata/RADataHub/main/MappingWorkshop/geo_data/LAD_SCT_2025_05.topojson",
+        "format": {"type": "topojson", "feature": "object_name"}
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "lightgray",
+        "stroke": "white",
+        "strokeWidth": 0.5
+      },
+      "projection": {"type": "mercator"}
+    },
+    {
+      "data": {
+        "url": "CC72scotland_disposal_sites.csv"
+      },
+      "mark": {
+        "type": "circle",
+        "opacity": 0.7
+      },
+      "projection": {"type": "mercator"},
+      "encoding": {
+        "longitude": {"field": "Longitude", "type": "quantitative"},
+        "latitude": {"field": "Latitude", "type": "quantitative"},
+        "color": {
+          "field": "STATUS_",
+          "type": "nominal",
+          "scale": {
+            "domain": ["Open", "Closed", "Disused"],
+            "range": ["#2ecc71", "#e74c3c", "#95a5a6"]
+          },
+          "legend": {"title": "Status"}
+        },
+        "size": {"value": 20},
+        "tooltip": [
+          {"field": "STATUS_", "title": "Status"},
+          {"field": "Latitude", "title": "Lat"},
+          {"field": "Longitude", "title": "Long"}
+        ]
+      }
+    }
+  ],
+  "config": {
+    "view": {"stroke": "transparent"}
+  }
+}
