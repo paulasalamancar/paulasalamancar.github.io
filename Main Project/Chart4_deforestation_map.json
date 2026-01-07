@@ -1,0 +1,159 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Spatial Distribution: Conflict vs. Deforestation",
+    "subtitle": "FARC cases drop to zero after 2016 Peace Agreement, while deforestation spikes in the same regions",
+    "fontSize": 16,
+    "fontWeight": 700,
+    "color": "#247D7E",
+    "anchor": "middle",
+    "subtitleFontSize": 11,
+    "subtitleColor": "#666"
+  },
+  "params": [
+    {
+      "name": "year_select",
+      "value": 2005,
+      "bind": {
+        "input": "range",
+        "min": 2001,
+        "max": 2024,
+        "step": 1,
+        "name": "Year: "
+      }
+    }
+  ],
+  "hconcat": [
+    {
+      "title": {
+        "text": "FARC Conflict Intensity",
+        "subtitle": "Cases per 100,000 inhabitants",
+        "color": "#C62828",
+        "subtitleColor": "#888",
+        "fontSize": 13
+      },
+      "width": 280,
+      "height": 380,
+      "data": {
+        "url": "colombia_municipios.json",
+        "format": {
+          "type": "topojson",
+          "feature": "mpios"
+        }
+      },
+      "transform": [
+        {
+          "calculate": "upper(datum.properties.name) + '_' + year_select",
+          "as": "lookup_key"
+        },
+        {
+          "lookup": "lookup_key",
+          "from": {
+            "data": {
+              "url": "colombia_farc_yearly_normalized.csv"
+            },
+            "key": "key",
+            "fields": ["casos_per_100k", "total_casos", "year", "municipio_norm"]
+          }
+        },
+        {
+          "calculate": "datum.casos_per_100k == null ? 0 : datum.casos_per_100k",
+          "as": "casos_clean"
+        }
+      ],
+      "projection": {
+        "type": "mercator"
+      },
+      "mark": {
+        "type": "geoshape",
+        "stroke": "#fff",
+        "strokeWidth": 0.3
+      },
+      "encoding": {
+        "color": {
+          "field": "casos_clean",
+          "type": "quantitative",
+          "scale": {
+            "type": "sqrt",
+            "scheme": "reds",
+            "domain": [0, 200]
+          },
+          "legend": null
+        },
+        "tooltip": [
+          {"field": "properties.name", "title": "Municipality"},
+          {"field": "casos_clean", "title": "Cases per 100k", "format": ".1f"},
+          {"field": "total_casos", "title": "Total Cases"}
+        ]
+      }
+    },
+    {
+      "title": {
+        "text": "Deforestation",
+        "subtitle": "Hectares lost per municipality",
+        "color": "#215100",
+        "subtitleColor": "#888",
+        "fontSize": 13
+      },
+      "width": 280,
+      "height": 380,
+      "data": {
+        "url": "colombia_municipios.json",
+        "format": {
+          "type": "topojson",
+          "feature": "mpios"
+        }
+      },
+      "transform": [
+        {
+          "calculate": "datum.properties.name + '_' + year_select",
+          "as": "lookup_key"
+        },
+        {
+          "lookup": "lookup_key",
+          "from": {
+            "data": {
+              "url": "colombia_deforestation (1).csv"
+            },
+            "key": "key",
+            "fields": ["loss_ha", "year", "municipio"]
+          }
+        },
+        {
+          "calculate": "datum.loss_ha == null ? 0 : datum.loss_ha",
+          "as": "loss_clean"
+        }
+      ],
+      "projection": {
+        "type": "mercator"
+      },
+      "mark": {
+        "type": "geoshape",
+        "stroke": "#fff",
+        "strokeWidth": 0.3
+      },
+      "encoding": {
+        "color": {
+          "field": "loss_clean",
+          "type": "quantitative",
+          "scale": {
+            "type": "sqrt",
+            "scheme": "greens",
+            "domain": [0, 15000]
+          },
+          "legend": null
+        },
+        "tooltip": [
+          {"field": "properties.name", "title": "Municipality"},
+          {"field": "loss_clean", "title": "Hectares Lost", "format": ","}
+        ]
+      }
+    }
+  ],
+  "config": {
+    "font": "Manrope",
+    "view": {"stroke": null},
+    "concat": {"spacing": 30},
+    "background": "transparent"
+  }
+}

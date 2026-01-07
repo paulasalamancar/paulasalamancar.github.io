@@ -1,0 +1,96 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "What predicts deforestation change after the Peace Agreement?",
+    "subtitle": "OLS regression coefficients (standardized)",
+    "anchor": "start",
+    "fontSize": 14,
+    "fontWeight": 600,
+    "subtitleFontSize": 12,
+    "subtitleColor": "#666"
+  },
+  "width": "container",
+  "height": 200,
+  "config": {
+    "view": {"stroke": null},
+    "font": "Manrope"
+  },
+  "data": {
+    "url": "ols_coefficients.csv"
+  },
+  "transform": [
+    {"calculate": "toNumber(datum.coef)", "as": "coef_num"},
+    {"calculate": "toNumber(datum.ci_lower)", "as": "ci_lower_num"},
+    {"calculate": "toNumber(datum.ci_upper)", "as": "ci_upper_num"},
+    {"calculate": "datum.significant == 'yes' ? 'yes' : 'no'", "as": "is_sig"},
+    {
+      "calculate": "datum.label == 'FARC histórico (pre-2016)' ? 'Historical FARC (pre-2016)' : datum.label == 'Disidencias FARC (post-2016)' ? 'FARC Dissidents (post-2016)' : datum.label == 'Gaitanistas (post-2016)' ? 'Gaitanistas (post-2016)' : datum.label == 'ELN (post-2016)' ? 'ELN (post-2016)' : datum.label",
+      "as": "label_en"
+    }
+  ],
+  "layer": [
+    {
+      "mark": {"type": "rule", "color": "#e0e0e0", "strokeWidth": 1},
+      "encoding": {
+        "x": {"datum": 0}
+      }
+    },
+    {
+      "mark": {"type": "rule", "strokeWidth": 3, "strokeCap": "round"},
+      "encoding": {
+        "y": {
+          "field": "label",
+          "type": "nominal",
+          "sort": {"field": "coef_num", "order": "descending"},
+          "axis": {"title": null, "labelLimit": 250, "labelFontSize": 12, "labelColor": "#333"}
+        },
+        "x": {
+          "field": "ci_lower_num",
+          "type": "quantitative",
+          "scale": {"domain": [-250, 350]},
+          "axis": {"title": "Effect on deforestation change (ha/year)", "gridColor": "#f0f0f0"}
+        },
+        "x2": {"field": "ci_upper_num"},
+        "color": {
+          "field": "is_sig",
+          "type": "nominal",
+          "scale": {"domain": ["yes", "no"], "range": ["#2d5a3d", "#ccc"]},
+          "legend": null
+        }
+      }
+    },
+    {
+      "mark": {"type": "circle", "size": 100},
+      "encoding": {
+        "y": {"field": "label", "type": "nominal", "sort": {"field": "coef_num", "order": "descending"}},
+        "x": {"field": "coef_num", "type": "quantitative"},
+        "color": {
+          "field": "is_sig",
+          "type": "nominal",
+          "scale": {"domain": ["yes", "no"], "range": ["#2d5a3d", "#ccc"]},
+          "legend": null
+        },
+        "tooltip": [
+          {"field": "label", "title": "Group"},
+          {"field": "coef_num", "title": "Coefficient", "format": ".1f"},
+          {"field": "ci_lower_num", "title": "CI Lower", "format": ".1f"},
+          {"field": "ci_upper_num", "title": "CI Upper", "format": ".1f"}
+        ]
+      }
+    },
+    {
+      "mark": {"type": "text", "align": "left", "dx": 8, "fontSize": 11, "fontWeight": 600},
+      "encoding": {
+        "y": {"field": "label", "type": "nominal", "sort": {"field": "coef_num", "order": "descending"}},
+        "x": {"field": "ci_upper_num", "type": "quantitative"},
+        "text": {"field": "coef_num", "type": "quantitative", "format": "+.0f"},
+        "color": {
+          "field": "is_sig",
+          "type": "nominal",
+          "scale": {"domain": ["yes", "no"], "range": ["#2d5a3d", "#999"]},
+          "legend": null
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,91 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Conflict Events in Colombia (1985–2024)",
+    "subtitle": "Source: SIEVCAC (datos.gov.co) | Dashed line: 2016 Peace Agreement",
+    "fontSize": 14,
+    "fontWeight": 700,
+    "color": "#000000",
+    "anchor": "start",
+    "subtitleFontSize": 12,
+    "subtitleColor": "#888"
+  },
+  "width": 400,
+  "height": 280,
+  "background": "white",
+  "view": {"fill": "white", "strokeOpacity": 0},
+  "data": {
+    "url": "Final_timeline.csv"
+  },
+  "transform": [
+    {"filter": "datum.año >= 1985"}
+  ],
+  "layer": [
+    {
+      "mark": {
+        "type": "area",
+        "color": "#E57373",
+        "opacity": 0.3,
+        "line": {
+          "color": "#C62828",
+          "strokeWidth": 2
+        },
+        "point": {"color": "#C62828", "size": 30}
+      },
+      "encoding": {
+        "x": {
+          "field": "año",
+          "type": "quantitative",
+          "title": "Year",
+          "axis": {
+            "format": "d",
+            "tickCount": 8,
+            "titleFont": "Manrope",
+            "titleFontSize": 12,
+            "titleColor": "#000000",
+            "labelFont": "Manrope",
+            "grid": true,
+            "gridColor": "#d7d7d7",
+            "gridOpacity": 0.4,
+            "gridDash": [2, 2]
+          },
+          "scale": {"domain": [1985, 2024]}
+        },
+        "y": {
+          "field": "casos",
+          "type": "quantitative",
+          "title": "Conflict Events",
+          "axis": {
+            "titleFont": "Manrope",
+            "titleFontSize": 12,
+            "titleColor": "#C62828",
+            "labelFont": "Manrope",
+            "grid": true,
+            "gridColor": "#d7d7d7",
+            "gridOpacity": 0.4,
+            "gridDash": [2, 2]
+          }
+        },
+        "tooltip": [
+          {"field": "año", "title": "Year", "format": "d"},
+          {"field": "casos", "title": "Conflict Events", "format": ","}
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "rule",
+        "color": "#000000",
+        "strokeWidth": 2,
+        "strokeDash": [6, 4]
+      },
+      "encoding": {
+        "x": {"datum": 2016}
+      }
+    }
+  ],
+  "config": {
+    "font": "Manrope",
+    "view": {"stroke": null}
+  }
+}

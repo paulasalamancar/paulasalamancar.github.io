@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colombia: Conflict & Deforestation</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="index.css">
+</head>
+
+
+<body>
+    <!-- Barra de navegación superior -->
+    <nav class="navbar">
+        <div class="navbar-name">Paula Andrea Salamanca</div>
+        <div class="navbar-links">
+            <a href="#">Main Project</a>
+            <a href="#">Portfolio Tasks</a>
+        </div>
+    </nav>
+
+    <!-- Navegación lateral -->
+    <nav class="section-nav">
+        <a href="#context" class="nav-dot active" title="Context">
+        <span class="nav-label">Context</span>
+        </a>
+        <a href="#paradox" class="nav-dot" title="The Paradox">
+            <span class="nav-label">Paradox</span>
+        </a>
+        <a href="#did" class="nav-dot" title="The Evidence">
+            <span class="nav-label">Evidence</span>
+        </a>
+        <a href="#spatial" class="nav-dot" title="Where">
+            <span class="nav-label">Where</span>
+        </a>
+        <a href="#territorial" class="nav-dot" title="Who">
+            <span class="nav-label">Who</span>
+        </a>
+        <a href="#predictors" class="nav-dot" title="Predictors">
+            <span class="nav-label">Predictors</span>
+        </a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <p class="hero-tag">Data Visualization Project · LSE · 2026</p>
+            <h1>No One's Land</h1>
+            <p class="hero-subtitle">Power vacuums, armed groups and deforestation before and after Colombia's 2016 Peace Agreement</p>
+        </div>
+        <span class="hero-credit">Image: Renaldo Matamoro in Unsplash</a>
+      </span>
+    </section>
+
+    <!-- Contexto 1 -->
+        <section class="context-section" id="context">
+        <div class="context-content">
+            <div class="section-label">Context & Research Question</div>
+            
+            <p>
+                Colombia ranks among the world's most biodiverse nations, harboring approximately <span class="stat-bold">10%</span> of global species<a href="https://colombia.co/en/colombia-country/geography-and-environment/colombia-second-greatest-biodiversity-in-the-world" target="_blank" class="citation"><sup>[1]</sup></a>
+                across its Amazon rainforest, Andean ecosystems, and Pacific Chocó region. This environmental wealth, however, has coexisted with over 
+                <span class="stat-bold">52 years</span> of internal armed conflict, the longest in Latin American history.
+            </p>
+            
+            <p>
+                The Revolutionary Armed Forces of Colombia (FARC), at their peak, maintained presence in roughly <span class="stat-bold modal-term" data-modal="farc-peak">71%</span> of municipalities, predominantly in remote, forested territories where state institutions remained historically weak.
+
+                In November <span class="stat-bold">2016</span>, the Colombian government and FARC signed a comprehensive peace agreement, ending five decades of hostilities.
+            </p>
+            
+            <p>
+                The accord has been widely celebrated as a humanitarian success. Yet emerging evidence suggests an unintended consequence: a significant surge in deforestation following the agreement.
+            </p>
+            
+            <div class="research-question">
+                <div class="rq-label">Research Question</div>
+                <p>
+                    How has the relationship between territorial control, armed actors, and deforestation reconfigured following Colombia's 2016 Peace Agreement, and what are the implications for conservation policy in post-conflict settings?
+                </p>
+            </div>
+            
+            <!-- DATA SOURCES SECTION -->
+            <div class="data-sources">
+            <h3 class="section-label">Data Sources & Methodology</h3>
+                <ul class="sources-list">
+                    <li>
+                        <div class="source-header">
+                            <strong>Deforestation</strong>
+                            <span class="badge badge-api">API</span>
+                        </div>
+                        <p class="source-desc">Global Forest Watch (Hansen et al., University of Maryland)</p>
+                        <p class="source-meta">Tree cover loss 2001-2024, 30m resolution via Google Earth Engine — <a href="https://www.globalforestwatch.org/" target="_blank">globalforestwatch.org</a></p>
+                    </li>
+                    <li>
+                        <div class="source-header">
+                            <strong>Conflict Events</strong>
+                            <span class="badge badge-api">11 APIs</span>
+                            <span class="badge badge-records">241,118 records</span>
+                        </div>
+                        <p class="source-desc">SIEVCAC (Sistema de Información de Eventos de Violencia del Conflicto Armado)</p>
+                        <p class="source-meta">Batch download via Socrata API loop: massacres, kidnappings, forced displacement, sexual violence, landmines, terrorist attacks, and more — <a href="https://www.datos.gov.co/" target="_blank">datos.gov.co</a></p>
+                    </li>
+                    <li>
+                        <div class="source-header">
+                            <strong>Population</strong>
+                            <span class="badge badge-scraping">SCRAPING</span>
+                            <span class="badge badge-records">1,122 municipalities</span>
+                        </div>
+                        <p class="source-desc">DANE Census 2018 via Wikipedia</p>
+                        <p class="source-meta">Web scraping for per-capita normalization of conflict data — <a href="https://www.dane.gov.co/" target="_blank">dane.gov.co</a></p>
+                    </li>
+                    <li>
+                        <div class="source-header">
+                            <strong>Geographic Boundaries</strong>
+                            <span class="badge badge-geojson">TopoJSON</span>
+                        </div>
+                        <p class="source-desc">Colombia Municipalities (1,031 geometries)</p>
+                        <p class="source-meta">Name standardization achieved 94% match rate across datasets</p>
+                    </li>
+                </ul>
+            
+                <p class="colab-link"><a href="TU_LINK_DE_COLAB" target="_blank">View Colab Notebook →</a></p>
+            </div>
+
+
+        </div>
+
+        <!-- MODAL: FARC PEAK PRESENCE -->
+        <div class="modal-overlay" id="modal-farc-peak">
+            <div class="modal-box">
+                <span class="modal-close">&times;</span>
+                <h4>FARC Territorial Presence (2000-2010)</h4>
+                <p>Author's calculations based on SIEVCAC conflict data during FARC's peak operational period.</p>
+                
+                <div class="modal-meta">
+                    <div class="modal-meta-item">
+                        <span class="label">Municipalities with FARC cases</span>
+                        <span class="value">796</span>
+                    </div>
+                    <div class="modal-meta-item">
+                        <span class="label">Total municipalities</span>
+                        <span class="value">1,122</span>
+                    </div>
+                    <div class="modal-meta-item">
+                        <span class="label">Percentage</span>
+                        <span class="value">70.9%</span>
+                    </div>
+                    <div class="modal-meta-item">
+                        <span class="label">Period analyzed</span>
+                        <span class="value">2000-2010</span>
+                    </div>
+                </div>
+                
+                <div class="modal-caveat">
+                    <strong>Methodological note:</strong> Presence defined as at least one FARC-attributed violent event registered in SIEVCAC database. Does not measure territorial control, only documented violent activity.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <!-- PARADOX SECTION - SCROLLYTELLING -->
+        <section class="paradox-section" id="paradox">
+            
+            <div class="scrolly-container">
+                
+                <!-- Text side (scrolls) -->
+                <div class="scrolly-text">
+                    <div class="section-label">The Paradox</div>
+                    
+                    <!-- Step 1 -->
+                    <div class="text-step" data-step="0">
+                        <p>
+                            The Peace Agreement achieved its primary humanitarian objective: 
+                        <span class="stat-bold modal-term" data-modal="conflict">conflict-related events</span>—including 
+                        homicides and kidnappings—dropped by over 
+                        <span class="stat-bold">90%</span> between 2016 and 2024, 
+                        representing a historic success.
+                        </p>
+                    </div>
+                    
+                    <!-- Step 2 -->
+                    <div class="text-step" data-step="1">
+                        <p>
+                        However, the post-conflict period revealed an unexpected environmental consequence. 
+                        Before 2016, deforestation fluctuated between 122,000-270,000 hectares annually but in 2017, Colombia registered a 
+                        <span class="stat-bold">46%</span> increase in 
+                        <span class="stat-bold modal-term" data-modal="deforestation">deforestation</span>—the highest 
+                        in two decades—coinciding precisely with FARC's territorial withdrawal.
+                        </p>
+                    </div>
+                    
+                    <!-- Step 3 -->
+                    <div class="text-step" data-step="2">
+                        <p>
+                            This inverse correlation suggests that armed conflict had inadvertently functioned as a barrier to forest exploitation.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Chart side (sticky) -->
+                <div class="scrolly-chart">
+                    <div class="chart-container">
+                        
+                        <!-- Chart 1: Conflict -->
+                        <div class="chart-wrapper active" data-step="0">
+                            
+                            <div id="chart-conflict"></div>
+                        </div>
+
+                        <!-- Chart 2: Deforestation -->
+                        <div class="chart-wrapper" data-step="1">
+                            
+                            <div id="chart-deforestation"></div>
+                        </div>
+
+                        <!-- Chart 3: Combined -->
+                        <div class="chart-wrapper" data-step="2">
+                            
+                            <div id="chart-combined"></div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+            
+        </section>
+    
+    
+    <!-- MODALS -->
+    <div class="modal-overlay" id="modal-conflict">
+        <div class="modal-box">
+            <span class="modal-close">&times;</span>
+            <h4>Conflict Events</h4>
+            <p>Documented cases of violence from Colombia's official conflict registry, obtained through automated API downloads.</p>
+            <div class="modal-meta">
+                <div class="modal-meta-item">
+                    <span class="label">Source</span>
+                    <span class="value">SIEVCAC</span>
+                </div>
+                <div class="modal-meta-item">
+                    <span class="label">Unit</span>
+                    <span class="value">Documented cases (eventos)</span>
+                </div>
+                <div class="modal-meta-item">
+                    <span class="label">Coverage</span>
+                    <span class="value">1985-2024, national</span>
+                </div>
+                <div class="modal-meta-item">
+                    <span class="label">Access</span>
+                    <span class="value">datos.gov.co Socrata API (11 batch downloads)</span>
+                </div>
+                <div class="modal-meta-item">
+                    <span class="label">Processing</span>
+                    <span class="value">241,118 raw → 67,797 filtered</span>
+                </div>
+            </div>
+            <div class="modal-caveat">
+                <strong>Caveat:</strong> Measures documented violent events, not individual victims or 
+    territorial control. Records filtered to include only non-state armed groups 
+    (excluding unidentified perpetrators and state forces). 
+    241,118 raw → 67,797 retained.
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="modal-deforestation">
+        <div class="modal-box">
+            <span class="modal-close">&times;</span>
+            <h4>Deforestation</h4>
+            <p>Annual tree cover loss measured at high resolution, capturing stand-replacement disturbance or complete removal of tree canopy cover.</p>
+            <div class="modal-meta">
+                <div class="modal-meta-item">
+                    <span class="label">Source</span>
+                    <span class="value">Global Forest Watch (Hansen et al.)</span>
+                </div>
+                <div class="modal-meta-item">
+                    <span class="label">Unit</span>
+                    <span class="value">Hectares of tree cover loss/year</span>
+                </div>
+                <div class="modal-meta-item">
+                    <span class="label">Resolution</span>
+                    <span class="value">30 meters</span>
+                </div>
+                <div class="modal-meta-item">
+                    <span class="label">Coverage</span>
+                    <span class="value">2001-2024, 1,032 municipalities</span>
+                </div>
+                <div class="modal-meta-item">
+                    <span class="label">Access</span>
+                    <span class="value">Google Earth Engine API / Direct download</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sección 3 DiD -->
+    <section class="did-section" id="did">
+        <div class="did-content">
+            <div class="did-text">
+                <div class="section-label">The Governance Vacuum</div>
+                
+                <p>
+                    To test whether FARC presence functioned as a deforestation barrier, 
+                    we compare municipalities by their pre-2016 
+                    <span class="stat-bold modal-term" data-modal="farc-presence">FARC presence</span> levels.
+                </p>
+                
+                <p>
+                    The pattern is striking: municipalities with high FARC presence 
+                    experienced the largest deforestation spikes after 2016, while 
+                    areas without FARC presence showed minimal change.
+                </p>
+            </div>
+            
+            <div class="did-chart">
+                <div id="chart-did"></div>
+                <button class="modal-trigger-btn" onclick="openModal('twfe-modal')">
+                    
+                    <span class="modal-trigger-text">See econometric analysis</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- MODAL: FARC PRESENCE -->
+    <div class="modal-overlay" id="modal-farc-presence">
+        <div class="modal-box">
+            <span class="modal-close">&times;</span>
+            <h4>FARC Presence Categories</h4>
+            <p>Municipalities classified by documented FARC-attributed violent events before 2016.</p>
+            
+            <div class="modal-meta">
+                <div class="modal-meta-item">
+                    <span class="label">High (>22 cases)</span>
+                    <span class="value">268 municipalities</span>
+                </div>
+                <div class="modal-meta-item">
+                    <span class="label">Medium (7-22 cases)</span>
+                    <span class="value">263 municipalities</span>
+                </div>
+                <div class="modal-meta-item">
+                    <span class="label">Low (1-6 cases)</span>
+                    <span class="value">296 municipalities</span>
+                </div>
+                <div class="modal-meta-item">
+                    <span class="label">None (0 cases)</span>
+                    <span class="value">205 municipalities</span>
+                </div>
+            </div>
+            
+            <div class="modal-caveat">
+                <strong>Methodological caveat:</strong> FARC presence is proxied by violent events, not territorial control. High violence may indicate contested zones rather than consolidated governance.
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL: TWFE ANALYSIS -->
+    <div class="modal-overlay" id="twfe-modal">
+        <div class="modal-box modal-wide">
+            <span class="modal-close" onclick="closeModal('twfe-modal')">&times;</span>
+            
+            <!-- Modal Header -->
+            <div class="modal-header-twfe">
+                <h4>Difference-in-Differences Analysis</h4>
+                <p class="modal-subtitle-twfe">Two-Way Fixed Effects Estimation</p>
+            </div>
+            
+            <!-- Methodology -->
+            <div class="modal-section-twfe">
+                <h5>Methodology</h5>
+                <p>
+                    To estimate the <strong>causal effect</strong> of FARC's territorial withdrawal on deforestation, 
+                    we employ a difference-in-differences design with two-way fixed effects:
+                </p>
+                <div class="equation-box">
+                    <code>Deforestation<sub>it</sub> = α<sub>i</sub> + γ<sub>t</sub> + β(Post<sub>t</sub> × FARC<sub>i</sub>) + ε<sub>it</sub></code>
+                </div>
+                <ul class="method-list">
+                    <li><strong>α<sub>i</sub></strong> = Municipality fixed effects (1,032 municipalities)</li>
+                    <li><strong>γ<sub>t</sub></strong> = Year fixed effects (2001-2024)</li>
+                    <li><strong>Post<sub>t</sub></strong> = 1 if year > 2016, 0 otherwise</li>
+                    <li><strong>FARC<sub>i</sub></strong> = Historical FARC presence intensity (Low/Medium/High)</li>
+                </ul>
+            </div>
+            
+            <!-- Results Table -->
+            <div class="modal-section-twfe">
+                <h5>Results</h5>
+                <table class="results-table-twfe">
+                    <thead>
+                        <tr>
+                            <th>Variable</th>
+                            <th>Coefficient</th>
+                            <th>Std. Error</th>
+                            <th>95% CI</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Post × FARC Low</td>
+                            <td>-33.28</td>
+                            <td>20.32</td>
+                            <td>[-73.1, 6.5]</td>
+                            <td class="not-sig">n.s.</td>
+                        </tr>
+                        <tr>
+                            <td>Post × FARC Medium</td>
+                            <td>-20.57</td>
+                            <td>20.88</td>
+                            <td>[-61.5, 20.4]</td>
+                            <td class="not-sig">n.s.</td>
+                        </tr>
+                        <tr class="highlight-row">
+                            <td><strong>Post × FARC High</strong></td>
+                            <td><strong>+123.44</strong></td>
+                            <td>17.76</td>
+                            <td>[88.6, 158.2]</td>
+                            <td class="sig">***</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="model-stats-twfe">
+                    <span>N = 26,856</span>
+                    <span>R² (within) = 0.005</span>
+                    <span>Municipalities = 1,032</span>
+                    <span>Years = 24</span>
+                </div>
+                <p class="table-note-twfe">*** p < 0.01. Robust standard errors.</p>
+            </div>
+            
+            
+            
+            <!-- Interpretation -->
+            <div class="interpretation-box-twfe">
+                <h5>🔍 Interpretation</h5>
+                <p>
+                    Municipalities with <strong>high historical FARC presence</strong> experienced 
+                    <span class="highlight-number">+123 hectares/year</span> more deforestation 
+                    after the 2016 Peace Agreement, compared to municipalities without FARC presence.
+                </p>
+                <p class="key-insight">
+                    <strong>Key insight:</strong> The effect is concentrated in high-intensity FARC territories. 
+                    Low and medium presence areas show no significant change, suggesting that 
+                    <em>territorial control intensity</em> matters for the deforestation barrier hypothesis.
+                </p>
+            </div>
+            
+            <div class="modal-footer-twfe">
+                Data: Global Forest Watch (2001-2024) & SIEVCAC Conflict Database
+            </div>
+        </div>
+    </div>
+
+    
+    <!-- Sección Spatial Distribution - Two Maps -->
+<section class="spatial-section" id="spatial">
+    <div class="spatial-header">
+        <div class="section-label">Spatial Distribution</div>
+        <p class="spatial-intro">
+        Where exactly were these high-FARC municipalities? 
+        The maps below show the geographic concentration: 
+        the Amazon region —<strong>Caquetá, Guaviare, Meta, Putumayo</strong>— and 
+        the Pacific coast. These regions share common characteristics: 
+        high forest cover, weak historical state presence, limited infrastructure, 
+        and economies linked to coca cultivation and cattle ranching.
+    </p>
+    <p class="spatial-instruction">
+        <em>Use the sliders to observe the transition. FARC data ends in 2018 (post-demobilization), 
+        while deforestation data extends to 2024, showing the lasting environmental impact produced by governance vacuums.</em>
+    </p>
+        <p class="spatial-note">
+            Note: Color scales use square root transformation to better visualize the wide range of values.
+        </p>
+
+    </div>
+    
+    <div class="spatial-maps-grid">
+        <!-- Map 1: FARC Conflict -->
+        <div class="map-container">
+            <div id="chart-farc-map"></div>
+        </div>
+        
+        <!-- Map 2: Deforestation -->
+        <div class="map-container">
+            <div id="chart-deforestation-map"></div>
+        </div>
+    </div>
+
+    <!-- MODAL: TREE COVER LOSS -->
+    <div class="modal-overlay" id="modal-tree-cover-loss">
+        <div class="modal-box">
+            <span class="modal-close">&times;</span>
+            <h4>Tree Cover Loss</h4>
+            <p>Stand-replacement disturbance or complete removal of tree canopy cover at 30m resolution.</p>
+            
+            <div class="modal-meta">
+                <div class="modal-meta-item">
+                    <span class="label">Source</span>
+                    <span class="value">Global Forest Watch (Hansen et al.)</span>
+                </div>
+                <div class="modal-meta-item">
+                    <span class="label">Unit</span>
+                    <span class="value">Hectares (ha)</span>
+                </div>
+                <div class="modal-meta-item">
+                    <span class="label">Resolution</span>
+                    <span class="value">30 meters</span>
+                </div>
+                <div class="modal-meta-item">
+                    <span class="label">Year range</span>
+                    <span class="value">2001-2024</span>
+                </div>
+            </div>
+            
+            <div class="modal-caveat">
+                <strong>Note:</strong> Measures tree canopy removal, not cause. Loss may result from deforestation, fire, logging, or natural disturbance.
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+<!-- Territorial Reconfiguration -->
+    
+
+<section class="territorial-section" id="territorial">
+    <div class="territorial-container">
+        <!-- Text left -->
+        <div class="territorial-text">
+            <div class="section-label">Territorial Reconfiguration</div>
+            
+            <p class="territorial-intro">
+                FARC's withdrawal did not create empty territory—it triggered a violent 
+                competition for control. <strong>Dissident FARC factions</strong>, the 
+                <strong>ELN guerrilla</strong>, and criminal organizations like the 
+                <strong>Clan del Golfo</strong> rapidly moved into former FARC strongholds, 
+                seeking access to coca cultivation routes, illegal mining, and extortion networks.
+            </p>
+            
+            <p class="territorial-detail">
+                Unlike FARC's relatively stable territorial governance, these new actors 
+                operate with shorter time horizons and less interest in forest preservation. 
+                The result: accelerated deforestation as land is cleared for cattle ranching 
+                (land laundering) and coca expansion.
+            </p>
+            
+            <p class="territorial-instruction">
+                <em>Select an armed group and use the slider to track their geographic presence over time.</em>
+            </p>
+        </div>
+        
+        <!-- Chart right -->
+        <div class="territorial-chart">
+            <div id="chart-perpetrators"></div>
+        </div>
+    </div>
+</section>
+
+
+
+<!-- Predictors Section -->
+<section class="predictors-section" id="predictors">
+    <div class="predictors-container">
+        <!-- Text left -->
+        <div class="predictors-text">
+            <div class="section-label">Predictors of Deforestation</div>
+            
+            <p>
+                To quantify the relationship between armed group presence and forest loss, 
+                we estimated an OLS regression model predicting the <strong>change in deforestation</strong> 
+                (post-2016 minus pre-2016) for each municipality.
+            </p>
+            
+            <p>
+                Municipalities with higher <strong>historical FARC presence</strong> (+180 ha) 
+                and active <strong>FARC dissident factions</strong> (+91 ha) experienced 
+                significantly greater increases in deforestation after the Peace Agreement.
+            </p>
+            
+            <p>
+                Interestingly, <strong>ELN presence</strong> is associated with <em>less</em> 
+                deforestation change (-44 ha). This may reflect that ELN operates primarily 
+                in mountainous and border regions with lower forest cover, rather than in 
+                the Amazon and Orinoquía where deforestation is concentrated.
+            </p>
+        </div>
+        
+        <!-- Chart right -->
+        <div class="predictors-chart">
+            <div id="chart-coefficients"></div>
+            <div class="chart-legend">
+                <span class="legend-item"><span class="dot sig"></span> Significant (p&lt;0.05)</span>
+                <span class="legend-item"><span class="dot nosig"></span> Not significant</span>
+            </div>
+            <div class="chart-stats">R² = 17.3% | n = 1,032 municipalities</div>
+        </div>
+    </div>
+</section>
+
+    <!-- Conclusion Section -->
+ 
+
+    <section class="chart-section" id="conclusion">
+        <div class="section-content">
+            <h2>Conclusion</h2>
+            <p>Content coming soon...</p>
+            <figure id="chart_farc_deforestation"></figure>
+        </div>
+    </section>
+
+    <section class="chart-section" id="limitations">
+        <div class="section-content">
+            <h2>Limitations</h2>
+            <p>Content coming soon...</p>
+        </div>
+    </section>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/vega@5.25.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.16.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.22.0"></script>
+
+    <script>
+        // Cambiar punto activo según el scroll
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section[id]');
+            const navDots = document.querySelectorAll('.nav-dot');
+            
+            let currentSection = 0;
+            
+            sections.forEach((section, index) => {
+                const rect = section.getBoundingClientRect();
+                if (rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2) {
+                    currentSection = index;
+                }
+            });
+            
+            navDots.forEach(dot => dot.classList.remove('active'));
+            
+            if (navDots[currentSection]) {
+                navDots[currentSection].classList.add('active');
+            }
+        });
+    </script>
+
+    <script>
+        // Ocultar navbar al hacer scroll
+        let lastScroll = 0;
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 100) {
+                navbar.classList.add('hidden');
+            } else {
+                navbar.classList.remove('hidden');
+            }
+            
+            lastScroll = currentScroll;
+        });
+    </script>
+
+    <!-- Script gráficas -->
+
+    <script>
+       // Gráfica 1.1Final
+        vegaEmbed('#chart-conflict', 'Chart1.1timeline.json', {actions: false, renderer: 'svg'});
+        vegaEmbed('#chart-deforestation', 'Chart1.2timeline.json', {actions: false});
+        vegaEmbed('#chart-combined', 'Chart1.3timeline.json', {actions: false});
+       
+
+        // Gráfica 2 Final
+        vegaEmbed('#chart-did', 'Chart2_did_farc.json');
+
+        // Spatial Distribution Maps
+        vegaEmbed('#chart-farc-map', 'Chart4_farc_map.json', {actions: false});
+        vegaEmbed('#chart-deforestation-map', 'Chart3_deforestation_map.json', {actions: false});
+
+        
+        // Territorial Reconfiguration
+        vegaEmbed('#chart-perpetrators', 'Chart5_perpetrators_bubble.json', {actions: false});
+        // OLS Coefficients
+        vegaEmbed('#chart-coefficients', 'Chart6_coefficients.json', {actions: false});
+
+        
+
+        // Gráfica 4 Final
+        vegaEmbed('#chart-conflict-map', 'Chart4_conflict_map.json');
+
+        
+
+
+        // Gráfica 2
+        let figure_C2_spec = "V2_CC2.json";
+        vegaEmbed('#C2Location', figure_C2_spec);
+
+    
+
+        
+</script>
+
+
+    <script>
+        // Modal functionality
+        document.querySelectorAll('.modal-term').forEach(term => {
+            term.addEventListener('click', () => {
+                const modalId = 'modal-' + term.dataset.modal;
+                document.getElementById(modalId).classList.add('active');
+            });
+        });
+
+        document.querySelectorAll('.modal-overlay').forEach(overlay => {
+            overlay.addEventListener('click', (e) => {
+                if (e.target === overlay) {
+                    overlay.classList.remove('active');
+                }
+            });
+        });
+
+        document.querySelectorAll('.modal-close').forEach(btn => {
+            btn.addEventListener('click', () => {
+                btn.closest('.modal-overlay').classList.remove('active');
+            });
+        });
+    </script>
+
+
+
+    <script>
+    // Cargar gráficas
+    vegaEmbed('#chart-conflict', 'Chart1.1timeline.json', {actions: false});
+    vegaEmbed('#chart-deforestation', 'Chart1.2timeline.json', {actions: false});
+
+    // Scrollytelling logic - SOLO para la sección paradox
+const textSteps = document.querySelectorAll('.paradox-section .text-step');
+const chartWrappers = document.querySelectorAll('.paradox-section .chart-wrapper');
+
+function updateActiveStep() {
+    const viewportCenter = window.scrollY + window.innerHeight * 0.5;
+
+    textSteps.forEach((step, index) => {
+        const rect = step.getBoundingClientRect();
+        const stepTop = window.scrollY + rect.top;
+        const stepBottom = stepTop + rect.height;
+
+        if (viewportCenter >= stepTop && viewportCenter < stepBottom) {
+            chartWrappers.forEach(c => c.classList.remove('active'));
+            const targetChart = document.querySelector(`.paradox-section .chart-wrapper[data-step="${index}"]`);
+            if (targetChart) targetChart.classList.add('active');
+        }
+    });
+}
+
+window.addEventListener('scroll', updateActiveStep);
+updateActiveStep();
+
+   
+</script>
+
+<script>
+// Modal TWFE Functions
+function openModal(modalId) {
+    const modal = document.getElementById(modalId);
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    
+    if (modalId === 'twfe-modal') {
+        renderTWFECoefPlot();
+    }
+}
+
+function closeModal(modalId) {
+    const modal = document.getElementById(modalId);
+    modal.classList.remove('active');
+    document.body.style.overflow = 'auto';
+}
+
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+        const activeModal = document.querySelector('.modal-overlay.active');
+        if (activeModal) {
+            activeModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+    }
+});
+
+function renderTWFECoefPlot() {
+    const spec = {
+        "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+        "width": 500,
+        "height": 140,
+        "background": "transparent",
+        "data": {
+            "values": [
+                {"variable": "Post × FARC High", "coef": 123.44, "ci_low": 88.6, "ci_high": 158.2, "significant": true, "order": 0},
+                {"variable": "Post × FARC Medium", "coef": -20.57, "ci_low": -61.5, "ci_high": 20.4, "significant": false, "order": 1},
+                {"variable": "Post × FARC Low", "coef": -33.28, "ci_low": -73.1, "ci_high": 6.5, "significant": false, "order": 2}
+            ]
+        },
+        "layer": [
+            {
+                "mark": {"type": "rule", "strokeWidth": 3, "strokeCap": "round"},
+                "encoding": {
+                    "y": {"field": "variable", "type": "nominal", "sort": {"field": "order"}, "axis": {"title": null, "labelFontSize": 12, "labelFont": "Manrope"}},
+                    "x": {"field": "ci_low", "type": "quantitative"},
+                    "x2": {"field": "ci_high"},
+                    "color": {"condition": {"test": "datum.significant", "value": "#2D5A3D"}, "value": "#b0b0b0"}
+                }
+            },
+            {
+                "mark": {"type": "point", "size": 180, "filled": true},
+                "encoding": {
+                    "y": {"field": "variable", "type": "nominal", "sort": {"field": "order"}},
+                    "x": {"field": "coef", "type": "quantitative", "axis": {"title": "Effect on deforestation (ha/year)", "grid": true, "gridDash": [2,2]}, "scale": {"domain": [-100, 180] }},
+                    "color": {"condition": {"test": "datum.significant", "value": "#2D5A3D"}, "value": "#b0b0b0"}
+                }
+            },
+            {
+                "mark": {"type": "text", "align": "right", "dx": -15, "fontSize": 11, "fontWeight": "bold"},
+                "encoding": {
+                    "y": {"field": "variable", "type": "nominal", "sort": {"field": "order"}},
+                    "x": {"field": "coef", "type": "quantitative"},
+                    "text": {"field": "coef", "type": "quantitative", "format": "+.0f"},
+                    "color": {"condition": {"test": "datum.significant", "value": "#2D5A3D"}, "value": "#999"}
+                }
+            },
+            {
+                "mark": {"type": "rule", "strokeDash": [4, 4], "strokeWidth": 1.5},
+                "encoding": {"x": {"datum": 0}, "color": {"value": "#666"}}
+            }
+        ],
+        "config": {"view": {"stroke": "transparent"}}
+    };
+    
+    vegaEmbed('#twfe-coef-plot', spec, {actions: false, renderer: 'svg'});
+}
+</script>
+
+
+</body>
+</html>

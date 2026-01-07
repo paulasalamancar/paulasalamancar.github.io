@@ -1,0 +1,77 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 500,
+  "height": 600,
+  "background": "white",
+  "params": [
+    {
+      "name": "year_select",
+      "value": 2010,
+      "bind": {
+        "input": "range",
+        "min": 1985,
+        "max": 2024,
+        "step": 1,
+        "name": "Year: "
+      }
+    }
+  ],
+  "data": {
+    "url": "colombia_municipios.json",
+    "format": {
+      "type": "topojson",
+      "feature": "mpios"
+    }
+  },
+  "transform": [
+    {
+      "calculate": "datum.properties.name + '_' + year_select",
+      "as": "lookup_key"
+    },
+    {
+      "lookup": "lookup_key",
+      "from": {
+        "data": {
+          "url": "Final_conflict_map.csv"
+        },
+        "key": "key",
+        "fields": ["casos", "casos_per_100k", "municipio", "año", "poblacion"]
+      }
+    },
+    {
+      "calculate": "datum.casos_per_100k == null ? 0 : datum.casos_per_100k",
+      "as": "casos_clean"
+    }
+  ],
+  "projection": {
+    "type": "mercator"
+  },
+  "mark": {
+    "type": "geoshape",
+    "stroke": "#fff",
+    "strokeWidth": 0.2
+  },
+  "encoding": {
+    "color": {
+      "field": "casos_clean",
+      "type": "quantitative",
+      "title": "Cases per 100k",
+      "scale": {
+        "type": "sqrt",
+        "scheme": "teals",
+        "domain": [0, 500]
+      },
+      "legend": {
+        "titleFont": "Manrope",
+        "labelFont": "Manrope"
+      }
+    },
+    "tooltip": [
+      {"field": "properties.name", "title": "Municipality"},
+      {"field": "casos", "title": "Conflict Cases"},
+      {"field": "casos_clean", "title": "Cases per 100k", "format": ".1f"},
+      {"field": "poblacion", "title": "Population", "format": ","},
+      {"field": "año", "title": "Year"}
+    ]
+  }
+}

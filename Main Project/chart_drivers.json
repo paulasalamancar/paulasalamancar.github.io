@@ -1,0 +1,69 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Deforestation by Driver in Colombia",
+    "subtitle": "Hectares lost per year by driver type (2001-2024)",
+    "fontSize": 18,
+    "subtitleFontSize": 12
+  },
+  "width": 600,
+  "height": 400,
+  "data": {
+    "url": "colombia_drivers_absolute.csv"
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "line",
+        "strokeWidth": 2,
+        "point": true
+      },
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "ordinal",
+          "title": "Year"
+        },
+        "y": {
+          "field": "hectares",
+          "type": "quantitative",
+          "title": "Hectares Lost"
+        },
+        "color": {
+          "field": "driver",
+          "type": "nominal",
+          "title": "Driver"
+        },
+        "tooltip": [
+          {"field": "year", "title": "Year"},
+          {"field": "driver", "title": "Driver"},
+          {"field": "hectares", "title": "Hectares", "format": ",.0f"}
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "rule",
+        "color": "black",
+        "strokeDash": [4, 4],
+        "strokeWidth": 2
+      },
+      "encoding": {
+        "x": {"datum": "2016"}
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 5,
+        "dy": -180,
+        "fontSize": 11
+      },
+      "encoding": {
+        "x": {"datum": "2016"},
+        "text": {"value": "Peace Agreement"}
+      }
+    }
+  ]
+}

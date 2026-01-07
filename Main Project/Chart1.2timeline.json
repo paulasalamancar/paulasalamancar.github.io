@@ -1,0 +1,120 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Annual Deforestation in Colombia (2001–2024)",
+    "subtitle": "Source: Global Forest Watch (Hansen et al.) | Dashed line: 2016 Peace Agreement",
+    "fontSize": 14,
+    "fontWeight": 700,
+    "color": "#000000",
+    "anchor": "start",
+    "subtitleFontSize": 12,
+    "subtitleColor": "#888"
+  },
+  "width": 400,
+  "height": 280,
+  "background": "white",
+  "view": {"fill": "white", "strokeOpacity": 0},
+  "data": {
+    "url": "Final_timeline.csv"
+  },
+  "transform": [
+    {"filter": "datum.año >= 2001 && datum.hectareas_perdidas > 0"}
+  ],
+  "layer": [
+    {
+      "mark": {
+        "type": "area",
+        "color": "#8BC34A",
+        "opacity": 0.3,
+        "line": {
+          "color": "#215100",
+          "strokeWidth": 2
+        },
+        "point": {"color": "#215100", "size": 30}
+      },
+      "encoding": {
+        "x": {
+          "field": "año",
+          "type": "quantitative",
+          "title": "Year",
+          "axis": {
+            "format": "d",
+            "tickCount": 8,
+            "titleFont": "Manrope",
+            "titleFontSize": 12,
+            "titleColor": "#000000",
+            "labelFont": "Manrope",
+            "grid": true,
+            "gridColor": "#d7d7d7",
+            "gridOpacity": 0.4,
+            "gridDash": [2, 2]
+          },
+          "scale": {"domain": [2001, 2024], "nice": false}
+        },
+        "y": {
+          "field": "hectareas_perdidas",
+          "type": "quantitative",
+          "title": "Hectares Lost",
+          "axis": {
+            "titleFont": "Manrope",
+            "titleFontSize": 12,
+            "titleColor": "#215100",
+            "labelFont": "Manrope",
+            "grid": true,
+            "gridColor": "#d7d7d7",
+            "gridOpacity": 0.4,
+            "gridDash": [2, 2],
+            "format": "~s"
+          },
+          "scale": {"domain": [0, 450000]}
+        },
+        "tooltip": [
+          {"field": "año", "title": "Year", "format": "d"},
+          {"field": "hectareas_perdidas", "title": "Hectares Lost", "format": ","}
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "rule",
+        "color": "#000000",
+        "strokeWidth": 2,
+        "strokeDash": [6, 4]
+      },
+      "encoding": {
+        "x": {"datum": 2016}
+      }
+    },
+    {
+      "mark": {
+        "type": "point",
+        "color": "#C62828",
+        "size": 80,
+        "filled": true
+      },
+      "encoding": {
+        "x": {"datum": 2017},
+        "y": {"datum": 424632}
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "dy": -15,
+        "fontSize": 11,
+        "fontWeight": 700,
+        "color": "#C62828"
+      },
+      "encoding": {
+        "x": {"datum": 2017},
+        "y": {"datum": 424632},
+        "text": {"value": "+46%"}
+      }
+    }
+  ],
+  "config": {
+    "font": "Manrope",
+    "view": {"stroke": null}
+  }
+}

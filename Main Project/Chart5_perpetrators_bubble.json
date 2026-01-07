@@ -1,0 +1,171 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Armed Group Activity by Location",
+    "subtitle": "Source: SIEVCAC | Bubble size = number of victims per event",
+    "fontSize": 14,
+    "fontWeight": 700,
+    "color": "#333",
+    "anchor": "start",
+    "subtitleFontSize": 12,
+    "subtitleColor": "#888"
+  },
+  "width": 350,
+  "height": 420,
+  "params": [
+    {
+      "name": "group_select",
+      "value": "FARC",
+      "bind": {
+        "input": "select",
+        "options": [
+          "FARC",
+          "ELN",
+          "DISIDENCIA FARC",
+          "URABEÑOS/AUTODEFENSAS GAITANISTAS DE COLOMBIA/ÁGUILAS NEGRAS/CLAN ÚSUGA",
+          "AUTODEFENSAS UNIDAS DE COLOMBIA AUC",
+          "PRESENCIA GAO SIN ATRIBUCIÓN"
+        ],
+        "labels": [
+          "FARC",
+          "ELN",
+          "FARC Dissidents",
+          "Clan del Golfo",
+          "AUC (Paramilitaries)",
+          "Unattributed Armed Group"
+        ],
+        "name": "Armed Group: "
+      }
+    },
+    {
+      "name": "year_select",
+      "value": 2010,
+      "bind": {
+        "input": "range",
+        "min": 1990,
+        "max": 2024,
+        "step": 1,
+        "name": "Year: "
+      }
+    }
+  ],
+  "layer": [
+    {
+      "data": {
+        "url": "Colombia_departamentos_municipios_poblacion-topov2.json",
+        "format": {
+          "type": "topojson",
+          "feature": "MGN_ANM_MPIOS"
+        }
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "#f0f0f0",
+        "stroke": "#ccc",
+        "strokeWidth": 0.3
+      },
+      "projection": {
+        "type": "mercator"
+      }
+    },
+    {
+      "data": {
+        "url": "colombia_perpetrators_map.csv"
+      },
+      "transform": [
+        {
+          "filter": "datum.perpetrador == group_select"
+        },
+        {
+          "filter": "datum.año == year_select"
+        },
+        {
+          "filter": "datum.lat != null && datum.lon != null && datum.lat > -5 && datum.lat < 15 && datum.lon > -82 && datum.lon < -66"
+        },
+        {
+          "calculate": "datum.victimas == 0 ? 0.3 : datum.victimas",
+          "as": "victimas_adj"
+        },
+        {
+          "calculate": "datum.tipo_violencia == 'CMA_Masacres' ? 'Massacre' : datum.tipo_violencia == 'CMI_Minas_Antipersonal' ? 'Landmine' : datum.tipo_violencia == 'CAS_Asesinatos_Selectivos' ? 'Selective Killing' : datum.tipo_violencia == 'CSE_Secuestro' ? 'Kidnapping' : datum.tipo_violencia == 'CAT_Atentados_Terroristas' ? 'Terrorist Attack' : datum.tipo_violencia == 'CDF_Desaparicion_Forzada' ? 'Forced Disappearance' : datum.tipo_violencia == 'CVS_Violencia_Sexual' ? 'Sexual Violence' : datum.tipo_violencia == 'CDB_Dano_Bienes_Civiles' ? 'Property Damage' : datum.tipo_violencia == 'CRU_Reclutamiento' ? 'Forced Recruitment' : datum.tipo_violencia == 'CAP_Ataques_Poblados' ? 'Attack on Town' : datum.tipo_violencia == 'CAB_Acciones_Belicas' ? 'Combat Action' : datum.tipo_violencia",
+          "as": "violence_type_en"
+        }
+      ],
+      "projection": {
+        "type": "mercator"
+      },
+      "mark": {
+        "type": "circle",
+        "opacity": 0.6
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+        "size": {
+          "field": "victimas_adj",
+          "type": "quantitative",
+          "title": "Victims",
+          "scale": {
+            "type": "sqrt",
+            "domain": [
+              0,
+              30
+            ],
+            "range": [
+              5,
+              400
+            ]
+          },
+          "legend": {
+            "titleFont": "Manrope",
+            "labelFont": "Manrope",
+            "orient": "right",
+            "symbolFillColor": "#ccc"
+          }
+        },
+        "color": {
+          "condition": {
+            "test": "group_select == 'FARC' || group_select == 'DISIDENCIA FARC'",
+            "value": "#C62828"
+          },
+          "value": "#1565C0"
+        },
+        "tooltip": [
+          {
+            "field": "municipio",
+            "title": "Municipality"
+          },
+          {
+            "field": "departamento",
+            "title": "Department"
+          },
+          {
+            "field": "victimas",
+            "title": "Victims"
+          },
+          {
+            "field": "violence_type_en",
+            "title": "Type of Violence"
+          },
+          {
+            "field": "año",
+            "title": "Year"
+          }
+        ]
+      }
+    }
+  ],
+  "config": {
+    "font": "Manrope",
+    "view": {
+      "stroke": null
+    },
+    "background": "transparent"
+  }
+}

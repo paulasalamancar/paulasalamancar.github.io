@@ -1,0 +1,139 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "The Paradox: Conflict vs. Deforestation (Index 2001 = 100)",
+    "subtitle": "Sources: SIEVCAC, Global Forest Watch | Dashed line: 2016 Peace Agreement",
+    "fontSize": 14,
+    "fontWeight": 700,
+    "color": "#000000",
+    "anchor": "start",
+    "subtitleFontSize": 12,
+    "subtitleColor": "#888"
+  },
+  "width": 400,
+  "height": 280,
+  "background": "white",
+  "view": {"fill": "white", "strokeOpacity": 0},
+  "data": {
+    "url": "Final_timeline.csv"
+  },
+  "transform": [
+    {"filter": "datum.año >= 2001 && datum.hectareas_perdidas > 0"},
+    {"calculate": "(datum.casos / 5755) * 100", "as": "index_conflict"},
+    {"calculate": "(datum.hectareas_perdidas / 229963) * 100", "as": "index_deforestation"}
+  ],
+  "layer": [
+    {
+      "mark": {
+        "type": "line",
+        "color": "#C62828",
+        "strokeWidth": 2.5,
+        "point": {"color": "#C62828", "size": 40}
+      },
+      "encoding": {
+        "x": {
+          "field": "año",
+          "type": "quantitative",
+          "title": "Year",
+          "axis": {
+            "format": "d",
+            "tickCount": 8,
+            "titleFont": "Manrope",
+            "titleFontSize": 12,
+            "titleColor": "#000000",
+            "labelFont": "Manrope",
+            "grid": true,
+            "gridColor": "#d7d7d7",
+            "gridOpacity": 0.4,
+            "gridDash": [2, 2]
+          },
+          "scale": {"domain": [2001, 2024], "nice": false}
+        },
+        "y": {
+          "field": "index_conflict",
+          "type": "quantitative",
+          "title": "Index (2001 = 100)",
+          "axis": {
+            "titleFont": "Manrope",
+            "titleFontSize": 12,
+            "titleColor": "#000000",
+            "labelFont": "Manrope",
+            "grid": true,
+            "gridColor": "#d7d7d7",
+            "gridOpacity": 0.4,
+            "gridDash": [2, 2]
+          }
+        },
+        "tooltip": [
+          {"field": "año", "title": "Year", "format": "d"},
+          {"field": "index_conflict", "title": "Conflict Index", "format": ".1f"},
+          {"field": "casos", "title": "Conflict Events", "format": ","}
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "line",
+        "color": "#215100",
+        "strokeWidth": 2.5,
+        "point": {"color": "#215100", "size": 40}
+      },
+      "encoding": {
+        "x": {"field": "año", "type": "quantitative"},
+        "y": {"field": "index_deforestation", "type": "quantitative"},
+        "tooltip": [
+          {"field": "año", "title": "Year", "format": "d"},
+          {"field": "index_deforestation", "title": "Deforestation Index", "format": ".1f"},
+          {"field": "hectareas_perdidas", "title": "Hectares Lost", "format": ","}
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "rule",
+        "color": "#000000",
+        "strokeWidth": 2,
+        "strokeDash": [6, 4]
+      },
+      "encoding": {
+        "x": {"datum": 2016}
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "dx": -10,
+        "dy": -25,
+        "fontSize": 11,
+        "fontWeight": 600,
+        "color": "#C62828"
+      },
+      "encoding": {
+        "x": {"datum": 2024},
+        "y": {"field": "index_conflict", "aggregate": "min"},
+        "text": {"value": "Conflict ↓"}
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "dx": -10,
+        "dy": -10,
+        "fontSize": 11,
+        "fontWeight": 600,
+        "color": "#215100"
+      },
+      "encoding": {
+        "x": {"datum": 2024},
+        "y": {"field": "index_deforestation", "aggregate": "max"},
+        "text": {"value": "Deforestation ↑"}
+      }
+    }
+  ],
+  "config": {
+    "font": "Manrope",
+    "view": {"stroke": null}
+  }
+}
