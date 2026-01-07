@@ -1,132 +1,759 @@
-<!-- This HTML file provides a simple example of a portfolio page. It contains a header, a few sections, and a few charts. -->
-<!-- The HTML file defines the structure of the page, and the CSS files define how it looks. -->
-
-
-
 <!DOCTYPE html>
-<html> 
-    <!-- HTML is heirarchial: tags like this define elements on the page. 
-    Each tag does something different. For example:
-        - The <html> tag defines the whole document.
-        - The <h1> tag defines a large heading
-        - The <p> tag defines a paragraph
-        - Tags appear as an opening <div> and closing </div> pair
-    -->
-
-<head>    
-    <!-- The head tag links to resources our page needs and defines information about it. Tags in the <head> aren't displayed on the page. -->
-    <!-- This is a link to a stylesheet which contains rules about how each element on the page should be defined-->
-    <link rel="stylesheet" type="text/css" href="index.css">
-    <title>PP434 Portfolio Paula Salamanca</title> <!-- The title displayed in the browser tab, not on the page itself -->
-
-    <!-- This is a link to the vega-lite which we're using to make graphs -->
-    <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
-
-    <style>
-        #chartGrid {
-            display: flex;
-        }
-        
-    </style>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colombia: Conflict & Deforestation</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="index.css">
 </head>
 
-<body> 
-<!-- The body tag contains the elements that visitors to our page will see. -->
-    <h1 class="big" style="margin-bottom: 0px;"> <!-- We have added a class to the header called "big" which we can use to style it in the CSS -->
-        <!-- This is a header, it is the largest text on the page -->
-        Paula Andrea Salamanca - Portfolio Tasks
-    </h1>
-    <p style="margin-top: 0px; color: darkblue">
-        <!-- we're setting the margin to 0px so the header and authour name are close together -->
-         <a href="https://www.linkedin.com/in/paulasalamanca/">LinkedIn</a> | <a
-            href="https://www.github.com/YOUR_GITHUB">GitHub</a>
-    </p>
-    <h3 class="small"> <!-- We have added a class to the header called "small" which we can use to style it in the CSS -->
-        This is my portfolio of coding challenges for PP434: Automated Data Visualization for Public Policy
-    </h3>
 
-    <!-- We're organising the page into sections, with each section containing a chart, title and a description -->
-    <section>
-        <div class="chart-description">
-            <h2>CC1. Hosting. Display charts in site</h2>
-            <p> <!-- This is a paragraph, it's the main way to display text on a web page -->
-                I have added two charts using the VegaEmbed function.
-            </p>
+<body>
+    <!-- Barra de navegación superior -->
+    <nav class="navbar">
+        <a href="../landing.html" class="navbar-name" style="text-decoration: none; color: white;">Paula Andrea Salamanca</a>
+        <div class="navbar-links">
+            <a href="#">Main Project</a>
+            <a href="../Versión2.html">Portfolio Tasks</a>
         </div>
-        <figure id="LocationCC11"></figure> <!-- we give it an id so we can put a vega-lite graph here with VegaEmbed -->
-        <figure id="LocationCC12"></figure> <!-- we give it an id so we can put a vega-lite graph here with VegaEmbed -->
+    </nav>
 
+    <!-- Navegación lateral -->
+    <nav class="section-nav">
+        <a href="#context" class="nav-dot active" title="Context">
+        <span class="nav-label">Context</span>
+        </a>
+        <a href="#paradox" class="nav-dot" title="The Paradox">
+            <span class="nav-label">Paradox</span>
+        </a>
+        <a href="#did" class="nav-dot" title="The Evidence">
+            <span class="nav-label">Evidence</span>
+        </a>
+        <a href="#spatial" class="nav-dot" title="Where">
+            <span class="nav-label">Where</span>
+        </a>
+        <a href="#territorial" class="nav-dot" title="Who">
+            <span class="nav-label">Who</span>
+        </a>
+        <a href="#predictors" class="nav-dot" title="Predictors">
+            <span class="nav-label">Predictors</span>
+        </a>
+        <a href="#conclusion" class="nav-dot" title="Conclusion">
+            <span class="nav-label">Conclusion</span>
+        </a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <p class="hero-tag">Data Visualization Project · LSE · 2026</p>
+            <h1>No One's Land</h1>
+            <p class="hero-subtitle">Power vacuums, armed groups and deforestation before and after Colombia's 2016 Peace Agreement</p>
+        </div>
+        <span class="hero-credit">Image: Renaldo Matamoro in Unsplash</span>
     </section>
 
-
-    <section>
-        <div class="chart-description">
-            <h2>CC2. Building. Create your own visualisations</h2>
-            <p> 
-                I set up an account on the Economics Observatory Data Hub and built two separate charts using the "create" tool. 
-                I pasted the json code into Visual Studio Code and saved these files in my GitHub repo. I finally embedded the two charts using the VegaEmbed function.
-            </p>
-        </div>
-        <figure id="LocationCC21"></figure>
-    </section>
+    <!-- Contexto 1 -->
+    <section class="context-section" id="context">
+        <div class="context-content">
+            <div class="section-label">Context & Research Question</div>
             
-
-    <!-- Do you want to add more sections? -->
-        <!-- Try copying pasting the section above -->
-        <!-- You'll need to change the id of the figure "<figure id="Location3"... -->
-        <!-- ... and add a new variable for the graph spec in the script at the bottom of the page -->
-   
-    <section>
-        <div class="chart-description">
-            <h2>CC3. Debate. Use a visualization in policy commentary</h2>
-            <p> 
-                Context of Graphic 3
+            <p>
+                Colombia ranks among the world's most biodiverse nations, harboring approximately <span class="stat-bold">10%</span> of global species<a href="https://colombia.co/en/colombia-country/geography-and-environment/colombia-second-greatest-biodiversity-in-the-world" target="_blank" class="citation"><sup>[1]</sup></a>
+                across its Amazon rainforest, Andean ecosystems, and Pacific Chocó region. This environmental wealth, however, has coexisted with over 
+                <span class="stat-bold">52 years</span> of internal armed conflict, the longest in Latin American history.
             </p>
+            
+            <p>
+                The Revolutionary Armed Forces of Colombia (FARC), at their peak, maintained presence in roughly <span class="stat-bold modal-term" data-modal="farc-peak">71%</span> of municipalities, predominantly in remote, forested territories where state institutions remained historically weak.
+                In November <span class="stat-bold">2016</span>, the Colombian government and FARC signed a comprehensive peace agreement, ending five decades of hostilities.
+            </p>
+            
+            <p>
+                The accord has been widely celebrated as a humanitarian success. Yet emerging evidence suggests an unintended consequence: a significant surge in deforestation following the agreement.
+            </p>
+            
+            <div class="research-question">
+                <div class="rq-label">Research Question</div>
+                <p>
+                    How has the relationship between territorial control, armed actors, and deforestation reconfigured following Colombia's 2016 Peace Agreement, and what are the implications for conservation policy in post-conflict settings?
+                </p>
+            </div>
+            
+            <!-- DATA SOURCES SECTION -->
+            <div class="data-sources">
+            <h3 class="section-label">Data Sources & Methodology</h3>
+                <ul class="sources-list">
+                    <li>
+                        <div class="source-header">
+                            <strong>Deforestation</strong>
+                            <span class="badge badge-api">API</span>
+                        </div>
+                        <p class="source-desc">Global Forest Watch (Hansen et al., University of Maryland)</p>
+                        <p class="source-meta">Tree cover loss 2001-2024, 30m resolution via Google Earth Engine — <a href="https://www.globalforestwatch.org/" target="_blank">globalforestwatch.org</a></p>
+                    </li>
+                    <li>
+                        <div class="source-header">
+                            <strong>Conflict Events</strong>
+                            <span class="badge badge-api">11 APIs</span>
+                            <span class="badge badge-records">241,118 records</span>
+                        </div>
+                        <p class="source-desc">SIEVCAC (Sistema de Información de Eventos de Violencia del Conflicto Armado)</p>
+                        <p class="source-meta">Batch download via Socrata API loop: massacres, kidnappings, forced displacement, sexual violence, landmines, terrorist attacks, and more — <a href="https://www.datos.gov.co/" target="_blank">datos.gov.co</a></p>
+                    </li>
+                    <li>
+                        <div class="source-header">
+                            <strong>Population</strong>
+                            <span class="badge badge-scraping">SCRAPING</span>
+                            <span class="badge badge-records">1,122 municipalities</span>
+                        </div>
+                        <p class="source-desc">DANE Census 2018 via Wikipedia</p>
+                        <p class="source-meta">Web scraping for per-capita normalization of conflict data — <a href="https://www.dane.gov.co/" target="_blank">dane.gov.co</a></p>
+                    </li>
+                    <li>
+                        <div class="source-header">
+                            <strong>Geographic Boundaries</strong>
+                            <span class="badge badge-geojson">TopoJSON</span>
+                        </div>
+                        <p class="source-desc">Colombia Municipalities (1,031 geometries)</p>
+                        <p class="source-meta">Name standardization achieved 94% match rate across datasets</p>
+                    </li>
+                </ul>
+            
+                <p class="colab-link"><a href="https://colab.research.google.com/drive/1hPjttOn-xDqZTFORjoKpH_dMtVbnUJU3?usp=sharing" target="_blank">View Colab Notebook →</a></p>
+            </div>
+
         </div>
-         <figure id="LocationCC31"></figure>
-         <figure id="LocationCC32"></figure>
+
+        <!-- MODAL: FARC PEAK PRESENCE -->
+        <div class="modal-overlay" id="modal-farc-peak">
+            <div class="modal-box">
+                <span class="modal-close">&times;</span>
+                <h4>FARC Territorial Presence (2000-2010)</h4>
+                <p>Author's calculations based on SIEVCAC conflict data during FARC's peak operational period.</p>
+                
+                <div class="modal-meta">
+                    <div class="modal-meta-item">
+                        <span class="label">Municipalities with FARC cases</span>
+                        <span class="value">796</span>
+                    </div>
+                    <div class="modal-meta-item">
+                        <span class="label">Total municipalities</span>
+                        <span class="value">1,122</span>
+                    </div>
+                    <div class="modal-meta-item">
+                        <span class="label">Percentage</span>
+                        <span class="value">70.9%</span>
+                    </div>
+                    <div class="modal-meta-item">
+                        <span class="label">Period analyzed</span>
+                        <span class="value">2000-2010</span>
+                    </div>
+                </div>
+                
+                <div class="modal-caveat">
+                    <strong>Methodological note:</strong> Presence defined as at least one FARC-attributed violent event registered in SIEVCAC database. Does not measure territorial control, only documented violent activity.
+                </div>
+            </div>
+        </div>
     </section>
-
-     <section>
-        <div class="chart-description">
-            <h2>CC4. Replication. Re-create, then improve, someone else´s chart</h2>
-            <p> 
-                Context of Graphic 4, decir que la saqué de una encuesta a madres
-            </p>
-        </div>
-         <img src="https://raw.githubusercontent.com/paulasalamancar/paulasalamancar.github.io/main/CodingCha4.1.PNG" alt="Original chart" style="max-width: 100%; height: auto;">
-         <figure id="LocationCC41"></figure>
-
-     </section>
 
     
+    <!-- PARADOX SECTION - SCROLLYTELLING -->
+    <section class="paradox-section" id="paradox">
+        
+        <div class="scrolly-container">
+            
+            <!-- Text side (scrolls) -->
+            <div class="scrolly-text">
+                <div class="section-label">The Paradox</div>
+                
+                <!-- Step 1 -->
+                <div class="text-step" data-step="0">
+                    <p>
+                        The Peace Agreement achieved its primary humanitarian objective: 
+                    <span class="stat-bold modal-term" data-modal="conflict">conflict-related events</span>—including 
+                    homicides and kidnappings—dropped by over 
+                    <span class="stat-bold">90%</span> between 2016 and 2024, 
+                    representing a historic success.
+                    </p>
+                </div>
+                
+                <!-- Step 2 -->
+                <div class="text-step" data-step="1">
+                    <p>
+                    However, the post-conflict period revealed an unexpected environmental consequence. 
+                    Before 2016, deforestation fluctuated between 122,000-270,000 hectares annually but in 2017, Colombia registered a 
+                    <span class="stat-bold">46%</span> increase in 
+                    <span class="stat-bold modal-term" data-modal="deforestation">deforestation</span>—the highest 
+                    in two decades—coinciding precisely with FARC's territorial withdrawal.
+                    </p>
+                </div>
+                
+                <!-- Step 3 -->
+                <div class="text-step" data-step="2">
+                    <p>
+                        This inverse correlation suggests that armed conflict had inadvertently functioned as a barrier to forest exploitation.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Chart side (sticky) -->
+            <div class="scrolly-chart">
+                <div class="chart-container">
+                    
+                    <!-- Chart 1: Conflict -->
+                    <div class="chart-wrapper active" data-step="0">
+                        <div id="chart-conflict"></div>
+                    </div>
+
+                    <!-- Chart 2: Deforestation -->
+                    <div class="chart-wrapper" data-step="1">
+                        <div id="chart-deforestation"></div>
+                    </div>
+
+                    <!-- Chart 3: Combined -->
+                    <div class="chart-wrapper" data-step="2">
+                        <div id="chart-combined"></div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+        
+    </section>
+    
+    
+    <!-- MODALS -->
+    <div class="modal-overlay" id="modal-conflict">
+        <div class="modal-box">
+            <span class="modal-close">&times;</span>
+            <h4>Conflict Events</h4>
+            <p>Documented cases of violence from Colombia's official conflict registry, obtained through automated API downloads.</p>
+            <div class="modal-meta">
+                <div class="modal-meta-item">
+                    <span class="label">Source</span>
+                    <span class="value">SIEVCAC</span>
+                </div>
+                <div class="modal-meta-item">
+                    <span class="label">Unit</span>
+                    <span class="value">Documented cases (eventos)</span>
+                </div>
+                <div class="modal-meta-item">
+                    <span class="label">Coverage</span>
+                    <span class="value">1985-2024, national</span>
+                </div>
+                <div class="modal-meta-item">
+                    <span class="label">Access</span>
+                    <span class="value">datos.gov.co Socrata API (11 batch downloads)</span>
+                </div>
+                <div class="modal-meta-item">
+                    <span class="label">Processing</span>
+                    <span class="value">241,118 raw → 67,797 filtered</span>
+                </div>
+            </div>
+            <div class="modal-caveat">
+                <strong>Caveat:</strong> Measures documented violent events, not individual victims or 
+                territorial control. Records filtered to include only non-state armed groups 
+                (excluding unidentified perpetrators and state forces).
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="modal-deforestation">
+        <div class="modal-box">
+            <span class="modal-close">&times;</span>
+            <h4>Deforestation</h4>
+            <p>Annual tree cover loss measured at high resolution, capturing stand-replacement disturbance or complete removal of tree canopy cover.</p>
+            <div class="modal-meta">
+                <div class="modal-meta-item">
+                    <span class="label">Source</span>
+                    <span class="value">Global Forest Watch (Hansen et al.)</span>
+                </div>
+                <div class="modal-meta-item">
+                    <span class="label">Unit</span>
+                    <span class="value">Hectares of tree cover loss/year</span>
+                </div>
+                <div class="modal-meta-item">
+                    <span class="label">Resolution</span>
+                    <span class="value">30 meters</span>
+                </div>
+                <div class="modal-meta-item">
+                    <span class="label">Coverage</span>
+                    <span class="value">2001-2024, 1,032 municipalities</span>
+                </div>
+                <div class="modal-meta-item">
+                    <span class="label">Access</span>
+                    <span class="value">Google Earth Engine API / Direct download</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sección 3 DiD -->
+    <section class="did-section" id="did">
+        <div class="did-content">
+            <div class="did-text">
+                <div class="section-label">The Governance Vacuum</div>
+                
+                <p>
+                    To test whether FARC presence functioned as a deforestation barrier, 
+                    we compare municipalities by their pre-2016 
+                    <span class="stat-bold modal-term" data-modal="farc-presence">FARC presence</span> levels.
+                </p>
+                
+                <p>
+                    The pattern is striking: municipalities with high FARC presence 
+                    experienced the largest deforestation spikes after 2016, while 
+                    areas without FARC presence showed minimal change.
+                </p>
+            </div>
+            
+            <div class="did-chart">
+                <div id="chart-did"></div>
+                <button class="modal-trigger-btn" onclick="openModal('twfe-modal')">
+                    <span class="modal-trigger-text">See econometric analysis</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- MODAL: FARC PRESENCE -->
+    <div class="modal-overlay" id="modal-farc-presence">
+        <div class="modal-box">
+            <span class="modal-close">&times;</span>
+            <h4>FARC Presence Categories</h4>
+            <p>Municipalities classified by documented FARC-attributed violent events before 2016.</p>
+            
+            <div class="modal-meta">
+                <div class="modal-meta-item">
+                    <span class="label">High (>22 cases)</span>
+                    <span class="value">268 municipalities</span>
+                </div>
+                <div class="modal-meta-item">
+                    <span class="label">Medium (7-22 cases)</span>
+                    <span class="value">263 municipalities</span>
+                </div>
+                <div class="modal-meta-item">
+                    <span class="label">Low (1-6 cases)</span>
+                    <span class="value">296 municipalities</span>
+                </div>
+                <div class="modal-meta-item">
+                    <span class="label">None (0 cases)</span>
+                    <span class="value">205 municipalities</span>
+                </div>
+            </div>
+            
+            <div class="modal-caveat">
+                <strong>Methodological caveat:</strong> FARC presence is proxied by violent events, not territorial control. High violence may indicate contested zones rather than consolidated governance.
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL: TWFE ANALYSIS -->
+    <div class="modal-overlay" id="twfe-modal">
+        <div class="modal-box modal-wide">
+            <span class="modal-close" onclick="closeModal('twfe-modal')">&times;</span>
+            
+            <!-- Modal Header -->
+            <div class="modal-header-twfe">
+                <h4>Difference-in-Differences Analysis</h4>
+                <p class="modal-subtitle-twfe">Two-Way Fixed Effects Estimation</p>
+            </div>
+            
+            <!-- Methodology -->
+            <div class="modal-section-twfe">
+                <h5>Methodology</h5>
+                <p>
+                    We employ a two-way fixed effects design with municipality and year fixed effects.
+                </p>
+                <div class="equation-box">
+                    <code>Deforestation<sub>it</sub> = α<sub>i</sub> + γ<sub>t</sub> + β(Post<sub>t</sub> × FARC<sub>i</sub>) + ε<sub>it</sub></code>
+                </div>
+            </div>
+            
+            <!-- Results Table -->
+            <div class="modal-section-twfe">
+                <h5>Results</h5>
+                <table class="results-table-twfe">
+                    <thead>
+                        <tr>
+                            <th>Variable</th>
+                            <th>Coefficient</th>
+                            <th>Std. Error</th>
+                            <th>95% CI</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Post × FARC Low</td>
+                            <td>-33.28</td>
+                            <td>20.32</td>
+                            <td>[-73.1, 6.5]</td>
+                            <td class="not-sig">n.s.</td>
+                        </tr>
+                        <tr>
+                            <td>Post × FARC Medium</td>
+                            <td>-20.57</td>
+                            <td>20.88</td>
+                            <td>[-61.5, 20.4]</td>
+                            <td class="not-sig">n.s.</td>
+                        </tr>
+                        <tr class="highlight-row">
+                            <td><strong>Post × FARC High</strong></td>
+                            <td><strong>+123.44</strong></td>
+                            <td>17.76</td>
+                            <td>[88.6, 158.2]</td>
+                            <td class="sig">***</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="model-stats-twfe">
+                    <span>N = 26,856</span>
+                    <span>R² (within) = 0.005</span>
+                    <span>Municipalities = 1,032</span>
+                    <span>Years = 24</span>
+                </div>
+                <p class="table-note-twfe">*** p < 0.01. Robust standard errors.</p>
+            </div>
+            
+            <!-- Interpretation -->
+            <div class="interpretation-box-twfe">
+                <h5>🔍 Interpretation</h5>
+                <p>
+                    Municipalities with <strong>high FARC presence</strong> experienced 
+                    <span class="highlight-number">+123 ha/year</span> more deforestation 
+                    post-2016, compared to those without FARC. The effect concentrates in 
+                    high-intensity territories; low and medium presence areas show no significant change.
+                </p>
+            </div>
+            
+            <div class="modal-footer-twfe">
+                Data: Global Forest Watch (2001-2024) & SIEVCAC Conflict Database
+            </div>
+        </div>
+    </div>
+
+    
+    <!-- Sección Spatial Distribution - Two Maps -->
+    <section class="spatial-section" id="spatial">
+        <div class="spatial-header">
+            <div class="section-label">Spatial Distribution</div>
+            <p class="spatial-intro">
+                Where were these high-FARC municipalities? The maps show the geographic concentration: 
+                the Amazon —<strong>Caquetá, Guaviare, Meta, Putumayo</strong>— and Pacific coast. 
+                These regions share high forest cover, weak state presence, and economies linked to coca and cattle.
+            </p>
+            <p class="spatial-instruction">
+                <em>Use the sliders to explore. FARC data ends in 2018; deforestation extends to 2024.</em>
+            </p>
+        </div>
+        
+        <div class="spatial-maps-grid">
+            <!-- Map 1: FARC Conflict -->
+            <div class="map-container">
+                <div id="chart-farc-map"></div>
+            </div>
+            
+            <!-- Map 2: Deforestation -->
+            <div class="map-container">
+                <div id="chart-deforestation-map"></div>
+            </div>
+        </div>
+
+        <!-- MODAL: TREE COVER LOSS -->
+        <div class="modal-overlay" id="modal-tree-cover-loss">
+            <div class="modal-box">
+                <span class="modal-close">&times;</span>
+                <h4>Tree Cover Loss</h4>
+                <p>Stand-replacement disturbance or complete removal of tree canopy cover at 30m resolution.</p>
+                
+                <div class="modal-meta">
+                    <div class="modal-meta-item">
+                        <span class="label">Source</span>
+                        <span class="value">Global Forest Watch (Hansen et al.)</span>
+                    </div>
+                    <div class="modal-meta-item">
+                        <span class="label">Unit</span>
+                        <span class="value">Hectares (ha)</span>
+                    </div>
+                    <div class="modal-meta-item">
+                        <span class="label">Resolution</span>
+                        <span class="value">30 meters</span>
+                    </div>
+                    <div class="modal-meta-item">
+                        <span class="label">Year range</span>
+                        <span class="value">2001-2024</span>
+                    </div>
+                </div>
+                
+                <div class="modal-caveat">
+                    <strong>Note:</strong> Measures tree canopy removal, not cause. Loss may result from deforestation, fire, logging, or natural disturbance.
+                </div>
+            </div>
+        </div>
+    </section>
 
 
-    <!-- This is a script, it's a way to run JavaScript code on the page -->
+    <!-- Territorial Reconfiguration -->
+    <section class="territorial-section" id="territorial">
+        <div class="territorial-container">
+            <!-- Text left -->
+            <div class="territorial-text">
+                <div class="section-label">Territorial Reconfiguration</div>
+                
+                <p class="territorial-intro">
+                    FARC's withdrawal triggered violent competition for control. 
+                    <strong>Dissident FARC factions</strong>, <strong>ELN</strong>, and criminal organizations 
+                    like <strong>Clan del Golfo</strong> moved into former strongholds, 
+                    seeking coca routes, illegal mining, and extortion networks.
+                </p>
+                
+                <p class="territorial-detail">
+                    Unlike FARC's stable governance, these actors operate with shorter time horizons. 
+                    The result: accelerated deforestation for cattle ranching and coca expansion.
+                </p>
+            </div>
+            
+            <!-- Chart right -->
+            <div class="territorial-chart">
+                <div id="chart-perpetrators"></div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Predictors Section -->
+    <section class="predictors-section" id="predictors">
+        <div class="predictors-container">
+            <!-- Text left -->
+            <div class="predictors-text">
+                <div class="section-label">Predictors of Deforestation</div>
+                
+                <p>
+                    To quantify the relationship between armed group presence and forest loss, 
+                    we estimated an OLS regression model predicting the <strong>change in deforestation</strong> 
+                    (post-2016 minus pre-2016) for each municipality.
+                </p>
+                
+                <p>
+                    Municipalities with higher <strong>historical FARC presence</strong> (+180 ha) 
+                    and active <strong>FARC dissident factions</strong> (+91 ha) experienced 
+                    significantly greater increases in deforestation after the Peace Agreement.
+                </p>
+                
+                <p>
+                    Interestingly, <strong>ELN presence</strong> shows less deforestation change (-44 ha), 
+                    likely because ELN operates in mountainous regions with lower forest cover.
+                </p>
+            </div>
+            
+            <!-- Chart right -->
+            <div class="predictors-chart">
+                <div id="chart-coefficients"></div>
+                <div class="chart-legend">
+                    <span class="legend-item"><span class="dot sig"></span> Significant (p&lt;0.05)</span>
+                    <span class="legend-item"><span class="dot nosig"></span> Not significant</span>
+                </div>
+                <div class="chart-stats">R² = 17.3% | n = 1,032 municipalities</div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Conclusion Section -->
+    <section class="conclusion-section" id="conclusion">
+        <div class="conclusion-container">
+            <div class="section-label">Conclusion</div>
+            
+            <p>
+                This analysis reveals a paradox of peace: FARC's territorial control inadvertently 
+                protected Colombia's forests. The 2016 agreement, while a humanitarian triumph, 
+                created governance vacuums that accelerated deforestation—particularly in high-FARC 
+                municipalities (+123 ha/year).
+            </p>
+            
+            <p>
+                These findings suggest that post-conflict conservation requires rapid state presence 
+                in former armed group territories. Peace agreements must anticipate environmental 
+                consequences and integrate forest governance into transition planning.
+            </p>
+            
+            <div class="section-label" style="margin-top: 40px;">Analytical Challenges</div>
+            
+            <p>
+                Data integration posed significant challenges. Conflict data from 11 SIEVCAC APIs 
+                (241,118 records) required filtering to 67,797 cases with identified perpetrators. 
+                Municipality name standardization across datasets achieved 94% match rate. 
+                FARC presence was proxied through violent events—a limitation, as high violence 
+                may indicate contested zones rather than consolidated control. Population data 
+                was web-scraped from Wikipedia for per-capita normalization.
+            </p>
+            <p class="word-count">Word count: 774 (including modal content)</p>
+        </div>
+    </section>
+
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/vega@5.25.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.16.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.22.0"></script>
+
     <script>
-        // This is a comment in JavaScript - it's a different language to HTML and CSS
-
-        let figure_CC11_spec = "https://raw.githubusercontent.com/paulasalamancar/paulasalamancar.github.io/refs/heads/main/CC11"
-        let figure_CC12_spec = "https://raw.githubusercontent.com/paulasalamancar/paulasalamancar.github.io/refs/heads/main/CC12"
-        vegaEmbed('#LocationCC11', figure_CC11_spec) // We're using the vegaEmbed function to put a graph in the element with id figure_1
-        vegaEmbed('#LocationCC12', figure_CC12_spec)
-        
-        let figure_CC21_spec = "CC21.json";
-        vegaEmbed('#LocationCC21', figure_CC21_spec);
-        
-        let figure_CC31_spec = "CC31.json";
-        vegaEmbed('#LocationCC31', figure_CC31_spec);
-        let figure_CC32_spec = "CodingCha3.2.json";
-        vegaEmbed('#LocationCC32', figure_CC32_spec);
-
-        let figure_CC41_spec = "CodingCha4.json";
-        vegaEmbed('#LocationCC41', figure_CC41_spec);
- 
- 
+        // Cambiar punto activo según el scroll
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section[id]');
+            const navDots = document.querySelectorAll('.nav-dot');
+            
+            let currentSection = 0;
+            
+            sections.forEach((section, index) => {
+                const rect = section.getBoundingClientRect();
+                if (rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2) {
+                    currentSection = index;
+                }
+            });
+            
+            navDots.forEach(dot => dot.classList.remove('active'));
+            
+            if (navDots[currentSection]) {
+                navDots[currentSection].classList.add('active');
+            }
+        });
     </script>
 
+    <script>
+        // Ocultar navbar al hacer scroll
+        let lastScroll = 0;
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 100) {
+                navbar.classList.add('hidden');
+            } else {
+                navbar.classList.remove('hidden');
+            }
+            
+            lastScroll = currentScroll;
+        });
+    </script>
+
+    <!-- Script gráficas -->
+    <script>
+        // Gráfica 1.1Final
+        vegaEmbed('#chart-conflict', 'Chart1.1timeline.json', {actions: false, renderer: 'svg'});
+        vegaEmbed('#chart-deforestation', 'Chart1.2timeline.json', {actions: false});
+        vegaEmbed('#chart-combined', 'Chart1.3timeline.json', {actions: false});
+       
+        // Gráfica 2 Final
+        vegaEmbed('#chart-did', 'Chart2_did_farc.json');
+
+        // Spatial Distribution Maps
+        vegaEmbed('#chart-farc-map', 'Chart4_farc_map.json', {actions: false});
+        vegaEmbed('#chart-deforestation-map', 'Chart3_deforestation_map.json', {actions: false});
+
+        // Territorial Reconfiguration
+        vegaEmbed('#chart-perpetrators', 'Chart5_perpetrators_bubble.json', {actions: false});
+        
+        // OLS Coefficients
+        vegaEmbed('#chart-coefficients', 'Chart6_coefficients.json', {actions: false});
+    </script>
+
+
+    <script>
+        // Modal functionality
+        document.querySelectorAll('.modal-term').forEach(term => {
+            term.addEventListener('click', () => {
+                const modalId = 'modal-' + term.dataset.modal;
+                document.getElementById(modalId).classList.add('active');
+            });
+        });
+
+        document.querySelectorAll('.modal-overlay').forEach(overlay => {
+            overlay.addEventListener('click', (e) => {
+                if (e.target === overlay) {
+                    overlay.classList.remove('active');
+                }
+            });
+        });
+
+        document.querySelectorAll('.modal-close').forEach(btn => {
+            btn.addEventListener('click', () => {
+                btn.closest('.modal-overlay').classList.remove('active');
+            });
+        });
+    </script>
+
+
+    <script>
+        // Scrollytelling logic - SOLO para la sección paradox
+        const textSteps = document.querySelectorAll('.paradox-section .text-step');
+        const chartWrappers = document.querySelectorAll('.paradox-section .chart-wrapper');
+
+        function updateActiveStep() {
+            const viewportCenter = window.scrollY + window.innerHeight * 0.5;
+
+            textSteps.forEach((step, index) => {
+                const rect = step.getBoundingClientRect();
+                const stepTop = window.scrollY + rect.top;
+                const stepBottom = stepTop + rect.height;
+
+                if (viewportCenter >= stepTop && viewportCenter < stepBottom) {
+                    chartWrappers.forEach(c => c.classList.remove('active'));
+                    const targetChart = document.querySelector(`.paradox-section .chart-wrapper[data-step="${index}"]`);
+                    if (targetChart) targetChart.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', updateActiveStep);
+        updateActiveStep();
+    </script>
+
+    <script>
+        // Modal TWFE Functions
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                const activeModal = document.querySelector('.modal-overlay.active');
+                if (activeModal) {
+                    activeModal.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }
+            }
+        });
+    </script>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <span>Paula Andrea Salamanca</span>
+            <span class="footer-divider">·</span>
+            <span>LSE 2026</span>
+            <span class="footer-divider">·</span>
+            <a href="https://www.linkedin.com/in/paulasalamanca/" target="_blank">LinkedIn</a>
+            <span class="footer-divider">·</span>
+            <a href="https://github.com/paulasalamancar/paulasalamancar.github.io" target="_blank">GitHub</a>
+            <span class="footer-divider">·</span>
+        </div>
+    </footer>
+
 </body>
-    
 </html>

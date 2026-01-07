@@ -1,78 +1,1260 @@
-/* This is an example CSS file. If you include it in your portfolio, it'll provide some clean and basic styling */
-/* for your page. Feel free to experiment with the values, or copy them into a new file and use that instead. */
-/* These are comments in CSS. Comments don't do anything except explain your working to make code easier to understand. */
+/* ========================================
+   BASE
+   ======================================== */
 
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+    font-family: 'Manrope', -apple-system, sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
 
-body { /* We can style any HTML element by using its name - here we're styling the body */
-  /* We want text that uses a clean sans-serif font, is usually 16px big and close to black */
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-size: 16px;
-  color: #222;
-  line-height: 1.7;
-  /* we want a white page, that's centered and not too wide */
-  background-color: #f8f9fa;
-  margin:0 auto;
-  max-width: 900px;
-  padding-top: 60px 20px;
+/* Degradé fijo que sigue el scroll */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(ellipse 600px 400px at 10% 20%, rgba(36, 125, 126, 0.15) 0%, transparent 50%),
+        radial-gradient(ellipse 500px 500px at 90% 80%, rgba(36, 125, 126, 0.15) 0%, transparent 50%),
+        radial-gradient(ellipse 400px 300px at 70% 10%, rgba(139, 195, 74, 0.2) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* ========================================
+   NAVBAR
+   ======================================== */
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, transparent 100%);
+    padding: 10px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.navbar.hidden {
+    opacity: 0;
+    transform: translateY(-100%);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.navbar-name {
+    font-weight: 700;
+    color: white;
+    font-size: 0.95em;
+}
+
+.navbar-links {
+    display: flex;
+    gap: 30px;
+}
+
+.navbar-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.8em;
+    transition: color 0.3s ease;
+}
+
+.navbar-links a:hover {
+    color: white;
+}
+
+/* ========================================
+   NAVEGACIÓN LATERAL (DOTS)
+   ======================================== */
+
+.section-nav {
+    position: fixed;
+    right: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    z-index: 999;
+}
+
+.nav-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    border: 1.5px solid #ccc;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    text-decoration: none;
+}
+
+.nav-dot.active {
+    background: #247D7E;
+    border-color: #247D7E;
+}
+
+.nav-dot:hover {
+    border-color: #247D7E;
+}
+
+.nav-label {
+    position: absolute;
+    right: 24px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #666;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    white-space: nowrap;
+    font-family: 'Manrope', sans-serif;
+}
+
+.nav-dot:hover .nav-label {
+    opacity: 1;
+}
+
+/* ========================================
+   HERO SECTION
+   ======================================== */
+
+  .hero {
+    height: 100vh;
+    background-image: url('hero-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+}
+
+.hero-content {
+    padding-left: 10%;
+    max-width: 600px;
+}
+
+.hero-tag {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 10px 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #fff;
+    margin-bottom: 15px;
+    backdrop-filter: blur(5px);
+    border-radius: 15px;
+}
+
+.hero-tag::before {
+    content: '';
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background: #fff;
+    border-radius: 50%;
+    margin-right: 12px;
+}
+
+.hero h1 {
+    font-size: 5.5rem;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.1;
+    margin-top: 10px;
+    margin-bottom: 0px;
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    color: #fff;
+    line-height: 1.6;
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+.hero-credit {
+    position: absolute;
+    bottom: 20px;
+    right: 7.5%;
+    font-size: 0.8rem;
+    font-style: italic;
+    color: #ffffff;
+}
+
+/* ========================================
+   CONTEXT SECTION
+   ======================================== */
+.context-section {
+    min-height: 100vh;
+    padding: 60px 1%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 80px; 
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.context-content {
+    max-width: 1100px;
+}
+
+.section-label {
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #247D7E;
+    margin-bottom: 30px;
+}
+
+.context-content p {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #000;
+    margin-bottom: 20px;
+    font-weight: 300;
+}
+
+.stat-bold {
+    font-weight: 800;
+    color: #215100;
+}
+
+.research-question {
+    margin-top: 60px;
+    padding: 40px;
+    background: rgba(36, 125, 126, 0.05);
+    border: 1px solid rgba(36, 125, 126, 0.2);
+    border-radius: 15px;
+}
+
+.rq-label {
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #247D7E;
+    margin-bottom: 15px;
+}
+
+.research-question p {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #000;
+    font-weight: 300;
+    margin: 0;
+}
+
+/* ========================================
+   DATA SOURCES SECTION
+   ======================================== */
+
+.data-sources {
+    margin-top: 50px;
+    padding: 30px 35px;
+    border-left: 3px solid #247D7E;
+    background: rgba(36, 125, 126, 0.02);
+}
+
+.sources-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 5px 0;
+}
+
+.sources-list li {
+    padding: 20px 0;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.sources-list li:last-child {
+    border-bottom: none;
+}
+
+.source-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+}
+
+.source-header strong {
+    color: #215100;
+    font-size: 1rem;
+}
+
+.source-desc {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #333;
+    margin-bottom: 0.5px;
+    font-weight: 400;  
+}
+
+.source-meta {
+    font-size: 0.8rem;
+    color: #666;
+    font-weight: 300;
+    line-height: 1.6;
+}
+
+.source-meta a {
+    color: #247D7E;
+    text-decoration: none;
+}
+
+.source-meta a:hover {
+    text-decoration: underline;
+}
+
+/* Badges */
+.badge {
+    display: inline-block;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 4px;
+}
+
+.badge-api {
+    background: rgba(36, 125, 126, 0.15);
+    color: #247D7E;
+}
+
+.badge-scraping {
+    background: rgba(139, 195, 74, 0.2);
+    color: #215100;
+}
+
+.badge-geojson {
+    background: rgba(229, 115, 115, 0.15);
+    color: #C62828;
+}
+
+.badge-records {
+    background: #e8e8e8;
+    color: #666;
+}
+
+.colab-link {
+    margin-top: 0px;
+    font-size: 1rem;
+    font-weight: 300;
+}
+
+.colab-link a {
+    color: #0b6380;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.colab-link a:hover {
+    color: #247D7E;
+}
+
+/* ========================================
+   PARADOX SECTION - SCROLLYTELLING
+   ======================================== */
+
+.paradox-section {
+    position: relative;
+}
+
+.scrolly-container {
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    position: relative;
+    padding-left: 5%;
+}
+
+/* Text side - scrolls */
+.scrolly-text {
+    padding: 0 60px 0 10%;
+}
+
+.scrolly-text .section-label {
+    padding-top: 100px;
+    margin-bottom: 2px;
+}
+
+.text-step {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 40px 0;
+}
+
+.text-step:first-of-type {
+    padding-top: 0;
+    min-height: calc(100vh - 150px);
+}
+
+.text-step p {
+    font-size: 1.05rem;
+    line-height: 1.9;
+    color: #000;
+    font-weight: 300;
+    max-width: 450px;
+}
+
+.stat-negative {
+    font-weight: 800;
+    color: #E57373;
+}
+
+/* Chart side - sticky */
+.scrolly-chart {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+}
+
+.chart-container {
+    width: 100%;
+    max-width: 520px;
+    position: relative;
+    height: 420px;
+}
+
+.scrolly-chart .chart-wrapper {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    padding: 25px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    transform: scale(0.95);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    pointer-events: none;
+}
+
+.scrolly-chart .chart-wrapper.active {
+    opacity: 1;
+    transform: scale(1);
+    pointer-events: auto;
+}
+
+.step-label {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #999;
 }
 
 
-/* Headings */
-h1, h2, h3, h4, h5, h6 {
-  color: #111;
-  margin-top: 24px;
-  margin-bottom: 12px;
-  font-weight: 600;
-  line-height: 1.3;
+#chart-did {
+    width: 100%;
+    min-height: 400px;
 }
 
-/* We want the headings to be a little bigger than the paragraph text */
-.big { /* This is the class we created in the HTML file, you can use it to style any element */
-  font-size: 2.5em;
-  color: #2563eb; 
+/* ========================================
+   MODAL CLICKABLES
+   ======================================== */
+.modal-term {
+    color: #215100;
+    cursor: pointer;
+    position: relative;
 }
 
-h2 {
-  font-size: 1.75em;
-  color: #1e3a8a;
+.modal-term::after {
+    content: '↗';
+    font-size: 0.6em;
+    margin-left: 3px;
+    color: #215100;
+    vertical-align: super;
 }
 
-.small {
-  font-size: 1.25em;
+.modal-term:hover {
+    text-decoration: underline;
 }
 
-/* Paragraph */
-p {
-  margin-top: 16px;
-  margin-bottom: 1em;
-  font-weight: 300;
-  color: #374151;
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.5);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
 }
 
-section {
-  margin-bottom: 2.5em;  /* We want a little more space between sections */
-  background: #ffffff;
+.modal-overlay.active {
+    display: flex;
 }
 
-/* Links */
-/* We want the links to be a little more visible  and a different color */
-a {
-  color: #2563eb;
-  text-decoration: none;
-  font-weight: 500;
+.modal-box {
+    background: white;
+    border-radius: 15px;
+    padding: 35px;
+    max-width: 500px;
+    width: 90%;
+    position: relative;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+    max-height: 80vh;
+    overflow-y: auto;
 }
 
-a:hover {
-  color: #1d4ed8;
-  text-decoration: underline;
+.modal-close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 1.5rem;
+    color: #999;
+    cursor: pointer;
+    line-height: 1;
 }
-  
-/* Images */
-img {
- display: block;
-  margin: 20px auto;
-  max-width: 100%;
-  height: auto;
-  border-radius: 8px;
-  margin-top: 10px;
+
+.modal-close:hover {
+    color: #333;
 }
+
+.modal-box h4 {
+    font-size: 1.2rem;
+    color: #215100;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.modal-box > p {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: #444;
+    margin-bottom: 15px;
+    font-weight: 400;
+}
+
+.modal-meta {
+    background: #f5f5f5;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+.modal-meta-item {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    padding: 8px 0;
+    border-bottom: 1px solid #e8e8e8;
+}
+
+.modal-meta-item:last-child {
+    border-bottom: none;
+}
+
+.modal-meta-item .label {
+    color: #666;
+    font-weight: 500;
+}
+
+.modal-meta-item .value {
+    color: #215100;
+    font-weight: 600;
+    text-align: right;
+    max-width: 60%;
+}
+
+.modal-caveat {
+    background: rgba(229, 115, 115, 0.1);
+    border-left: 3px solid #E57373;
+    padding: 12px 15px;
+    margin-top: 15px;
+    border-radius: 0 8px 8px 0;
+    font-size: 0.85rem;
+    color: #666;
+}
+
+.modal-caveat strong {
+    color: #C62828;
+}
+
+/* ========================================
+   DID Section
+   ======================================== */
+
+.did-section {
+    padding: 80px 1%;
+    border-top: 1px solid #e0e0e0;
+    position: relative;
+    z-index: 1;
+}
+
+.did-content {
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    gap: 60px;
+    align-items: center;
+    max-width: 1400px;      /* Añade esto para limitar el ancho */
+    margin: 0 auto;          /* Centra el contenido */
+    padding: 0 7% 0 7.5%;   /* Mismo padding en ambos lados */
+}
+
+.did-text .section-label {
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #247D7E;
+    margin-bottom: 20px;
+}
+
+.did-text p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #000;
+    margin-bottom: 20px;
+    font-weight: 300;
+}
+
+.did-chart {
+    width: 100%;
+    max-width: 650px;
+    background: white;
+    border-radius: 8px;
+    padding: 25px;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+    border: 1px solid #e0e0e0;
+    min-height: 400px;
+}
+
+
+/* SPATIAL DISTRIBUTION - TWO MAPS */
+.spatial-section {
+    padding: 80px 5%;
+    border-top: 1px solid #e0e0e0;
+    position: relative;
+    z-index: 1;
+}
+
+.spatial-header {
+    max-width: 1050px;
+    margin: 0 auto 40px;
+    text-align: left;
+}
+
+.spatial-header .section-label {
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #247D7E;
+    margin-bottom: 20px;
+}
+
+.spatial-intro {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #000000;
+    margin-bottom: 15px;
+    font-weight: 300;
+}
+
+.spatial-instruction {
+    font-size: 1rem;
+    color: #666;
+}
+
+.spatial-maps-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.spatial-note {
+    font-size: 0.9rem;
+    color: #888;
+    margin-top: 10px;
+}
+
+.map-container {
+    background: white;
+    border-radius: 12px;
+    padding: 11px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    border: 1px solid #e8e8e8;
+    flex: 0 0 auto;
+    max-width: 500px;
+}
+
+.map-container form {
+    display: flex;
+    justify-content: center;
+}
+
+/* Responsive */
+@media (max-width: 1000px) {
+    .spatial-maps-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ========================================
+   TERRITORIAL RECONFIGURATION
+   ======================================== */
+.territorial-section {
+    padding: 80px 5%;
+    border-top: 1px solid #e0e0e0;
+}
+
+.territorial-container {
+    display: flex;
+    gap: 60px;
+    max-width: 1050px;
+    margin: 0 auto;
+    align-items: center;
+}
+
+.territorial-text {
+    flex: 1;
+    max-width: 500px;
+}
+
+.territorial-text .section-label {
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #247D7E;
+    margin-bottom: 20px;
+}
+
+.territorial-intro {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #000000;
+    margin-bottom: 20px;
+    font-weight: 300;
+}
+
+.territorial-intro strong {
+    font-weight: 600;
+    color: #1a1a1a;
+}
+
+.territorial-detail {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #000000;
+    margin-bottom: 20px;
+    font-weight: 300;
+}
+
+.territorial-instruction {
+    font-size: 1rem;
+    color: #666;
+    margin-top: 30px;
+}
+
+.territorial-chart {
+    flex: 1;
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    border: 1px solid #e8e8e8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Center the controls */
+
+.territorial-chart form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Responsive */
+@media (max-width: 1000px) {
+    .territorial-container {
+        flex-direction: column;
+    }
+    
+    .territorial-text {
+        max-width: 100%;
+    }
+}
+
+
+/* Predictors Section */
+.predictors-section {
+    min-height: 100vh;
+    padding: 5rem 8%;
+    background: transparent;  /* Quitar el fondo gris */
+    border-top: 1px solid #e0e0e0;
+}
+
+.predictors-container {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 4rem;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.predictors-text p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: #333;
+    margin-bottom: 1.25rem;
+}
+
+.predictors-chart {
+    background: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.chart-legend {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 1rem;
+    font-size: 0.8rem;
+    color: #666;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.legend-item .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.legend-item .dot.sig {
+    background: #2d5a3d;
+}
+
+.legend-item .dot.nosig {
+    background: #ccc;
+}
+
+.chart-stats {
+    margin-top: 0.75rem;
+    font-size: 0.8rem;
+    color: #888;
+}
+
+#chart-coefficients {
+    min-height: 250px;
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+    .predictors-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* ========================================
+   MODAL TWFE - Econometric Analysis
+   ======================================== */
+
+.modal-trigger-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    background: linear-gradient(135deg, #2D5A3D 0%, #3d7a52 100%);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(45, 90, 61, 0.3);
+    margin-top: 20px;
+}
+
+.modal-trigger-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(45, 90, 61, 0.4);
+}
+
+.modal-wide {
+    max-width: 650px !important;
+    padding: 0 !important;
+    overflow: hidden;
+}
+
+.modal-header-twfe {
+    background: linear-gradient(135deg, #1a3d29 0%, #2D5A3D 100%);
+    color: white;
+    padding: 25px 30px;
+}
+
+.modal-header-twfe h4 {
+    margin: 0;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: white;
+}
+
+.modal-subtitle-twfe {
+    margin: 5px 0 0 0;
+    opacity: 0.85;
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.85) !important;
+}
+
+.modal-section-twfe {
+    padding: 20px 30px;
+    border-bottom: 1px solid #eee;
+}
+
+.modal-section-twfe h5 {
+    color: #1a3d29;
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin: 0 0 12px 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.modal-section-twfe p {
+    color: #444;
+    line-height: 1.6;
+    margin: 0 0 10px 0;
+    font-size: 0.9rem;
+}
+
+.equation-box {
+    background: #f8faf9;
+    border: 1px solid #d4e5db;
+    border-left: 4px solid #2D5A3D;
+    padding: 15px 20px;
+    border-radius: 0 8px 8px 0;
+    margin: 15px 0;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.9rem;
+    color: #1a3d29;
+}
+
+.method-list {
+    list-style: none;
+    padding: 0;
+    margin: 15px 0 0 0;
+}
+
+.method-list li {
+    padding: 5px 0 5px 20px;
+    position: relative;
+    font-size: 0.85rem;
+    color: #555;
+}
+
+.method-list li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: #2D5A3D;
+}
+
+.results-table-twfe {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+}
+
+.results-table-twfe th {
+    background: #f0f5f2;
+    color: #1a3d29;
+    font-weight: 600;
+    text-align: left;
+    padding: 10px 12px;
+    border-bottom: 2px solid #d4e5db;
+}
+
+.results-table-twfe td {
+    padding: 10px 12px;
+    border-bottom: 1px solid #eee;
+    color: #444;
+}
+
+.highlight-row {
+    background: #e8f5ed !important;
+}
+
+.highlight-row td {
+    color: #1a3d29;
+}
+
+.sig {
+    color: #2D5A3D;
+    font-weight: 700;
+}
+
+.not-sig {
+    color: #999;
+    font-style: italic;
+}
+
+.model-stats-twfe {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin: 12px 0;
+    padding: 10px 12px;
+    background: #f8f8f8;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    color: #666;
+    font-family: 'IBM Plex Mono', monospace;
+}
+
+.table-note-twfe {
+    font-size: 0.75rem !important;
+    color: #888 !important;
+    font-style: italic;
+}
+
+.modal-chart-twfe {
+    min-height: 160px;
+    background: #fafafa;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+.interpretation-box-twfe {
+    background: linear-gradient(135deg, #f0f7f3 0%, #e8f0eb 100%);
+    padding: 20px 30px;
+}
+
+.interpretation-box-twfe h5 {
+    color: #1a3d29;
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin: 0 0 12px 0;
+}
+
+.interpretation-box-twfe p {
+    color: #444;
+    line-height: 1.6;
+    font-size: 0.9rem;
+}
+
+.highlight-number {
+    background: #2D5A3D;
+    color: white;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+}
+
+.key-insight {
+    background: white;
+    padding: 12px 15px;
+    border-radius: 8px;
+    border-left: 3px solid #2D5A3D;
+    margin-top: 15px !important;
+}
+
+.modal-footer-twfe {
+    padding: 12px 30px;
+    background: #f5f5f5;
+    font-size: 0.75rem;
+    color: #888;
+    text-align: center;
+}
+
+.modal-wide .modal-close {
+    color: white;
+}
+
+/* Fix para scroll del modal */
+.modal-wide {
+    max-width: 650px !important;
+    padding: 0 !important;
+    overflow: hidden;
+    max-height: 85vh;          /* Altura máxima */
+    overflow-y: auto;          /* Permitir scroll vertical */
+}
+
+/* ========================================
+   CONCLUSION SECTION
+   ======================================== */
+
+.conclusion-section {
+    padding: 80px 10%;
+    border-top: 1px solid #e0e0e0;
+    background: transparent;
+}
+
+.conclusion-container {
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+.conclusion-container .section-label {
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #247D7E;
+    margin-bottom: 20px;
+}
+
+.conclusion-container p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: #333;
+    margin-bottom: 20px;
+    font-weight: 300;
+}
+
+/* ========================================
+   FOOTER
+   ======================================== */
+
+.site-footer {
+    border-top: 1px solid #e0e0e0;
+    padding: 40px 5%;
+    background-color: #f5f5f5;
+    background-image: radial-gradient(#ccc 1px, transparent 1px);
+    background-size: 20px 20px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.footer-divider {
+    color: #aaa;
+}
+
+.footer-content a {
+    color: #247D7E;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.footer-content a:hover {
+    color: #1a5a5b;
+    text-decoration: underline;
+}
+
+.word-count {
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.85rem;
+    color: #247D7E !important;
+    margin-top: 30px;
+    font-weight: 700 !important;
+}
+
+/* ========================================
+   SECCIONES DE CONTENIDO
+   ======================================== */
+
+.chart-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 100px 40px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.section-content {
+    max-width: 1200px;
+    width: 100%;
+}
+
+.section-content h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.section-content p {
+    font-size: 1.1rem;
+    color: #666;
+    line-height: 1.6;
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 3rem;
+    }
+    
+    .navbar {
+        padding: 15px 20px;
+    }
+    
+    .section-nav {
+        right: 15px;
+    }
+    
+    .nav-label {
+        display: none;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.4em;
+        line-height: 1.6;
+        color: rgba(255,255,255,0.85);
+        text-align: left;
+        max-width: 550px;
+        margin: 15px 0 0 0;
+        font-weight: 400;
+    }
+}
+
+
