@@ -1,0 +1,80 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Armed Conflict Victims in Colombia",
+    "subtitle": "By type of violence (1946-2025)",
+    "fontSize": 18,
+    "subtitleFontSize": 12
+  },
+  "width": 500,
+  "height": 650,
+  "projection": {
+    "type": "mercator",
+    "scale": 1300,
+    "center": [-74, 4.5]
+  },
+  "params": [
+    {
+      "name": "year_select",
+      "value": 2000,
+      "bind": {
+        "input": "range",
+        "min": 1946,
+        "max": 2025,
+        "step": 1,
+        "name": "Year: "
+      }
+    }
+  ],
+  "layer": [
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/johan/world.geo.json/master/countries/COL.geo.json",
+        "format": {
+          "type": "json",
+          "property": "features"
+        }
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "#e8e8e8",
+        "stroke": "#999",
+        "strokeWidth": 0.5
+      }
+    },
+    {
+      "data": {
+        "url": "V2_CC2_colombia_conflict.csv"
+      },
+      "transform": [
+        {
+          "filter": "datum.Año == year_select || datum.Año == 0"
+        }
+      ],
+      "mark": {
+        "type": "circle",
+        "opacity": 0.6
+      },
+      "encoding": {
+        "longitude": {"field": "Longitud", "type": "quantitative"},
+        "latitude": {"field": "Latitud", "type": "quantitative"},
+        "color": {
+          "field": "tipo_violencia",
+          "type": "nominal",
+          "title": "Type of Violence",
+          "scale": {
+            "domain": ["Masacres", "Secuestros", "Reclutamiento", "Violencia Sexual"],
+            "range": ["#d62728", "#1f77b4", "#ff7f0e", "#9467bd"]
+          }
+        },
+        "size": {"value": 15},
+        "tooltip": [
+          {"field": "Municipio", "title": "Municipality"},
+          {"field": "Departamento", "title": "Department"},
+          {"field": "tipo_violencia", "title": "Type"},
+          {"field": "Año", "title": "Year"}
+        ]
+      }
+    }
+  ]
+}

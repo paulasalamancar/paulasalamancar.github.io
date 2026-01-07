@@ -1,0 +1,170 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Fire Activity and Forest Cover",
+    "subtitle": "Choropleth: Forest area (% of land, World Bank 2022) | Points: Active fires (NASA VIIRS, last 10 days)",
+    "fontSize": 18,
+    "subtitleFontSize": 12,
+    "subtitleColor": "#666",
+    "anchor": "start"
+  },
+  "width": 900,
+  "height": 500,
+  "background": "#f9f9f9",
+  "config": {
+    "view": {
+      "stroke": null
+    }
+  },
+  "projection": {
+    "type": "equalEarth"
+  },
+  "layer": [
+    {
+      "data": {
+        "url": "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json",
+        "format": {
+          "type": "topojson",
+          "feature": "countries"
+        }
+      },
+      "transform": [
+        {
+          "lookup": "id",
+          "from": {
+            "data": {
+              "url": "forest_cover_2022_numeric.csv",
+              "format": {
+                "type": "csv"
+              }
+            },
+            "key": "id",
+            "fields": [
+              "forest_pct",
+              "country"
+            ]
+          }
+        },
+        {
+          "calculate": "toNumber(datum.forest_pct)",
+          "as": "forest_num"
+        }
+      ],
+      "mark": {
+        "type": "geoshape",
+        "stroke": "#fff",
+        "strokeWidth": 0.3
+      },
+      "encoding": {
+        "color": {
+          "field": "forest_num",
+          "type": "quantitative",
+          "title": "Forest Cover (%)",
+          "scale": {
+            "scheme": "greens",
+            "domain": [
+              0,
+              100
+            ]
+          },
+          "legend": {
+            "orient": "bottom-left",
+            "direction": "horizontal",
+            "titleFontSize": 11,
+            "labelFontSize": 10,
+            "gradientLength": 150
+          }
+        },
+        "tooltip": [
+          {
+            "field": "country",
+            "title": "Country"
+          },
+          {
+            "field": "forest_pct",
+            "title": "Forest Cover (%)",
+            "format": ".1f"
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "url": "https://firms.modaps.eosdis.nasa.gov/api/area/csv/c1b3103f0545e52422812203f4ca642e/VIIRS_SNPP_NRT/world/10",
+        "format": {
+          "type": "csv"
+        }
+      },
+      "mark": {
+        "type": "circle",
+        "opacity": 0.6
+      },
+      "encoding": {
+        "longitude": {
+          "field": "longitude",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "latitude",
+          "type": "quantitative"
+        },
+        "size": {
+          "field": "frp",
+          "type": "quantitative",
+          "scale": {
+            "type": "sqrt",
+            "domain": [
+              0,
+              500
+            ],
+            "range": [
+              2,
+              40
+            ]
+          },
+          "legend": null
+        },
+        "color": {
+          "field": "frp",
+          "type": "quantitative",
+          "title": "Fire Intensity (MW)",
+          "scale": {
+            "scheme": "reds",
+            "domain": [
+              0,
+              500
+            ]
+          },
+          "legend": {
+            "orient": "bottom-right",
+            "direction": "horizontal",
+            "titleFontSize": 11,
+            "labelFontSize": 10,
+            "gradientLength": 150
+          }
+        },
+        "tooltip": [
+          {
+            "field": "acq_date",
+            "title": "Date"
+          },
+          {
+            "field": "frp",
+            "title": "Fire Intensity (MW)",
+            "format": ".1f"
+          },
+          {
+            "field": "latitude",
+            "title": "Lat",
+            "format": ".2f"
+          },
+          {
+            "field": "longitude",
+            "title": "Lon",
+            "format": ".2f"
+          }
+        ]
+      }
+    }
+  ]
+}

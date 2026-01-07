@@ -1,0 +1,124 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "title": {
+    "text": "Global Fire Activity: Where is the World Burning?",
+    "subtitle": [
+      "Fire Radiative Power (FRP) from NASA VIIRS | Last 10 days | Auto-updated"
+    ],
+    "fontSize": 16,
+    "subtitleFontSize": 11,
+    "subtitleColor": "#666",
+    "anchor": "start"
+  },
+  "width": 900,
+  "height": 500,
+  "background": "#f9f9f9",
+  "config": {
+    "view": {
+      "stroke": null
+    }
+  },
+  "projection": {
+    "type": "equalEarth"
+  },
+  "layer": [
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/vega/vega-datasets/master/data/world-110m.json",
+        "format": {
+          "type": "topojson",
+          "feature": "countries"
+        }
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "#e8e8e8",
+        "stroke": "white",
+        "strokeWidth": 0.5
+      }
+    },
+    {
+      "data": {
+        "url": "https://firms.modaps.eosdis.nasa.gov/api/area/csv/c1b3103f0545e52422812203f4ca642e/VIIRS_SNPP_NRT/world/10",
+        "format": {
+          "type": "csv"
+        }
+      },
+      "mark": {
+        "type": "circle",
+        "opacity": 0.5
+      },
+      "encoding": {
+        "longitude": {
+          "field": "longitude",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "latitude",
+          "type": "quantitative"
+        },
+        "size": {
+          "field": "frp",
+          "type": "quantitative",
+          "scale": {
+            "type": "sqrt",
+            "domain": [
+              0,
+              500
+            ],
+            "range": [
+              2,
+              50
+            ]
+          },
+          "legend": null
+        },
+        "color": {
+          "field": "frp",
+          "type": "quantitative",
+          "title": "Fire Intensity (MW)",
+          "scale": {
+            "type": "sqrt",
+            "scheme": "reds",
+            "domain": [
+              0,
+              500
+            ]
+          },
+          "legend": {
+            "title": "Fire Radiative Power (MW)",
+            "titleFontSize": 11,
+            "labelFontSize": 10,
+            "gradientLength": 200,
+            "gradientThickness": 12
+          }
+        },
+        "tooltip": [
+          {
+            "field": "acq_date",
+            "title": "Date"
+          },
+          {
+            "field": "frp",
+            "title": "Intensity (MW)",
+            "format": ".1f"
+          },
+          {
+            "field": "latitude",
+            "title": "Lat",
+            "format": ".2f"
+          },
+          {
+            "field": "longitude",
+            "title": "Lon",
+            "format": ".2f"
+          },
+          {
+            "field": "daynight",
+            "title": "Day/Night"
+          }
+        ]
+      }
+    }
+  ]
+}
