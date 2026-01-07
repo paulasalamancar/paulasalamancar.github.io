@@ -2,96 +2,89 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
     "text": "Model Performance Comparison",
-    "subtitle": "Predicting next-year deforestation | Test set (2019-2023)",
+    "subtitle": "Predicting next-year deforestation (hectares)",
     "anchor": "start",
     "fontSize": 16,
     "fontWeight": 600,
     "subtitleFontSize": 12,
     "subtitleColor": "#666"
   },
-  "width": 450,
-  "height": 200,
+  "width": 500,
+  "height": 300,
   "config": {
     "font": "Manrope",
-    "view": {"stroke": null},
     "axis": {
-      "labelFontSize": 12,
-      "titleFontSize": 13
+      "labelFontSize": 11,
+      "titleFontSize": 12
+    },
+    "legend": {
+      "labelFontSize": 11,
+      "titleFontSize": 12
     }
   },
   "data": {
     "values": [
-      {"model": "Random Forest", "r2": 0.805, "best": true},
-      {"model": "Linear Regression", "r2": 0.709, "best": false},
-      {"model": "SVM", "r2": 0.078, "best": false}
+      {"model": "Linear Regression", "metric": "R²", "value": 0.709, "display": "0.71"},
+      {"model": "Random Forest", "metric": "R²", "value": 0.805, "display": "0.81"},
+      {"model": "SVM", "metric": "R²", "value": 0.078, "display": "0.08"},
+      {"model": "Linear Regression", "metric": "MAE", "value": 170, "display": "170"},
+      {"model": "Random Forest", "metric": "MAE", "value": 101, "display": "101"},
+      {"model": "SVM", "metric": "MAE", "value": 180, "display": "180"},
+      {"model": "Linear Regression", "metric": "RMSE", "value": 555, "display": "555"},
+      {"model": "Random Forest", "metric": "RMSE", "value": 454, "display": "454"},
+      {"model": "SVM", "metric": "RMSE", "value": 988, "display": "988"}
     ]
   },
+  "transform": [
+    {
+      "calculate": "datum.metric == 'R²' ? datum.value * 1000 : datum.value",
+      "as": "normalized"
+    }
+  ],
   "encoding": {
-    "y": {
+    "x": {
       "field": "model",
       "type": "nominal",
       "title": null,
-      "sort": {"field": "r2", "order": "descending"},
-      "axis": {"labelFontSize": 13, "labelFontWeight": 500}
+      "axis": {"labelAngle": 0},
+      "sort": ["Linear Regression", "Random Forest", "SVM"]
     },
-    "x": {
-      "field": "r2",
+    "xOffset": {"field": "metric", "type": "nominal"},
+    "y": {
+      "field": "normalized",
       "type": "quantitative",
-      "title": "R² Score",
-      "scale": {"domain": [0, 1]},
-      "axis": {"format": ".0%", "grid": true, "gridDash": [3, 3]}
-    }
+      "title": "Value (R² scaled ×1000)",
+      "scale": {"domain": [0, 1000]}
+    },
+    "color": {
+      "field": "metric",
+      "type": "nominal",
+      "title": "Metric",
+      "scale": {
+        "domain": ["R²", "MAE", "RMSE"],
+        "range": ["#2D5A3D", "#7BC47F", "#c4e0c4"]
+      }
+    },
+    "tooltip": [
+      {"field": "model", "title": "Model"},
+      {"field": "metric", "title": "Metric"},
+      {"field": "display", "title": "Value"}
+    ]
   },
   "layer": [
     {
-      "mark": {
-        "type": "bar",
-        "cornerRadiusTopRight": 4,
-        "cornerRadiusBottomRight": 4,
-        "height": 30
-      },
-      "encoding": {
-        "color": {
-          "field": "model",
-          "type": "nominal",
-          "legend": null,
-          "scale": {
-            "domain": ["Random Forest", "Linear Regression", "SVM"],
-            "range": ["#2D5A3D", "#7BC47F", "#d4d4d4"]
-          }
-        }
-      }
+      "mark": {"type": "bar", "cornerRadiusTopLeft": 3, "cornerRadiusTopRight": 3}
     },
     {
       "mark": {
         "type": "text",
-        "align": "left",
-        "dx": 5,
-        "fontSize": 13,
-        "fontWeight": 600
+        "dy": -8,
+        "fontSize": 10,
+        "fontWeight": 500
       },
       "encoding": {
-        "text": {"field": "r2", "format": ".1%"},
+        "text": {"field": "display"},
         "color": {"value": "#333"}
-      }
-    },
-    {
-      "mark": {
-        "type": "text",
-        "align": "left",
-        "dx": 50,
-        "fontSize": 11,
-        "fontStyle": "italic"
-      },
-      "encoding": {
-        "text": {
-          "condition": {
-            "test": "datum.best == true",
-            "value": "← Best model: current deforestation is strongest predictor"
-          },
-          "value": ""
-        },
-        "color": {"value": "#2D5A3D"}
       }
     }
   ]
